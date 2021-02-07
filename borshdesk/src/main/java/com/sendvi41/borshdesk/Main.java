@@ -1,3 +1,5 @@
+package com.sendvi41.borshdesk;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 
