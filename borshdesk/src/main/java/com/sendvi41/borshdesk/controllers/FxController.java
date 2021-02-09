@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,6 +20,7 @@ abstract public class FxController {
     private Stage stage;
     private Scene scene;
 
+
     public void initialize(){
 
     }
@@ -26,9 +28,10 @@ abstract public class FxController {
     public static <T extends FxController> T init(Stage stage, String source) {
         FXMLLoader fxmlLoader = new FXMLLoader();
 
+
         try (InputStream inputStream = fxmlLoader.getClass().getClassLoader().getResourceAsStream(source)) {
 
-            Parent root = fxmlLoader.load();
+            Parent root = fxmlLoader.load(inputStream);
 
             Scene scene = new Scene(root);
 
@@ -46,8 +49,6 @@ abstract public class FxController {
             Platform.exit();
             throw new RuntimeException();
         }
-
     }
-
 
 }
