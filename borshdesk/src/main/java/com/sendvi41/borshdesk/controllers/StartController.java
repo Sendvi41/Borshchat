@@ -5,8 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import lombok.Getter;
 
-public class StartController {
+
+@Getter
+public class StartController extends FxController {
 
     @FXML
     private Button login;
