@@ -4,37 +4,38 @@ import com.sendvi41.borshdesk.controllers.FxController;
 import com.sendvi41.borshdesk.controllers.StartController;
 import com.sendvi41.borshdesk.controllers.WorkController;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.net.URL;
 
 
 @SpringBootApplication
-public class Main extends Application {
+public class BorshchatdeskApplication extends Application {
+    private static String[] args;
 
 
-
-    public static void main(String[] args){
-         Main.launch(args);
+    public static void main(String[] args) {
+        BorshchatdeskApplication.args = args;
+        BorshchatdeskApplication.launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-        Stage workStage = new Stage();
-
-        primaryStage.setResizable(false);
-
-        StartController startController = FxController.init(primaryStage, "/fxml/startScene.fxml");
-
-        WorkController workController =  FxController.init(workStage, "/fxml/workScene.fxml");
-
-
+        SpringApplication.run(BorshchatdeskApplication.class, args);
     }
+
+//    Stage workStage = new Stage();
+//
+//        primaryStage.setResizable(false);
+//
+//    StartController startController = FxController.init(primaryStage, "/fxml/startScene.fxml");
+//
+//    WorkController workController = FxController.init(workStage, "/fxml/workScene.fxml");
+//
+//        startController.getStage().show();
+
+
+
 //        FXMLLoader loader = new FXMLLoader();
 //        URL xmlUrl = getClass().getResource("/fxml/startScene.fxml");
 //        loader.setLocation(xmlUrl);

@@ -24,7 +24,7 @@
             </Label>
             <AnchorPane layoutY="75.99999856948853" prefHeight="270.0" prefWidth="572.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <Button fx:id="login" layoutX="216.0" onAction="#logIn" layoutY="228.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="140.0" style="-fx-background-color: #B3475A; -fx-background-radius: 20;" text="Войти" textFill="#faeedd">
+                  <Button fx:id="login" layoutX="216.0"  layoutY="228.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="140.0" style="-fx-background-color: #B3475A; -fx-background-radius: 20;" text="Войти" textFill="#faeedd">
                      <font>
                         <Font name="Comic Sans MS" size="15.0" />
                      </font>

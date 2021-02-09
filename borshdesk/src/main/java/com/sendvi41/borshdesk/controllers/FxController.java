@@ -1,6 +1,7 @@
 package com.sendvi41.borshdesk.controllers;
 
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,7 +19,11 @@ abstract public class FxController {
     private Stage stage;
     private Scene scene;
 
-    public static <T extends FxController> T init(Stage stage, String source) throws IOException {
+    public void initialize(){
+
+    }
+
+    public static <T extends FxController> T init(Stage stage, String source) {
         FXMLLoader fxmlLoader = new FXMLLoader();
 
         try (InputStream inputStream = fxmlLoader.getClass().getClassLoader().getResourceAsStream(source)) {
@@ -36,8 +41,11 @@ abstract public class FxController {
 
             return controller;
 
+        } catch (IOException e) {
+            e.printStackTrace();
+            Platform.exit();
+            throw new RuntimeException();
         }
-
 
     }
 
