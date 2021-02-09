@@ -18,6 +18,7 @@ public class StartController {
         try {
             Parent root = main.getScene("/fxml/workScene.fxml");
             Stage stage = main.createNewStage(root);
+            login.getScene().getWindow().hide();
             stage.showAndWait();
 
         } catch (Exception e) {
