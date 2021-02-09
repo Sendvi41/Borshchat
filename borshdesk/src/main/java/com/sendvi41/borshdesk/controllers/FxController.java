@@ -10,26 +10,24 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
 @Getter
-@Setter
 abstract public class FxController {
-    private Stage stage;
+    private final Stage stage = new Stage();
     private Scene scene;
 
+    protected abstract String getSource();
 
-    public void initialize(){
-
-    }
-
-    public static <T extends FxController> T init(Stage stage, String source) {
+     {
         FXMLLoader fxmlLoader = new FXMLLoader();
 
 
-        try (InputStream inputStream = fxmlLoader.getClass().getClassLoader().getResourceAsStream(source)) {
+        try (InputStream inputStream = fxmlLoader.getClass().getClassLoader().getResourceAsStream(getSource())) {
+            fxmlLoader.setControllerFactory(param->this);
 
             Parent root = fxmlLoader.load(inputStream);
 
@@ -37,18 +35,18 @@ abstract public class FxController {
 
             stage.setScene(scene);
 
-            T controller = fxmlLoader.getController();
-
-            controller.setStage(stage);
-            controller.setScene(scene);
-
-            return controller;
 
         } catch (IOException e) {
             e.printStackTrace();
             Platform.exit();
-            throw new RuntimeException();
         }
     }
 
+
+    public void initialize(){
+
+    }
+
+    @PostConstruct
+    public void init(){}
 }
