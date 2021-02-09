@@ -21,4 +21,22 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
     }
+
+    public Parent getScene(String fxmlUrl) throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        URL xmlUrl = getClass().getResource(fxmlUrl);
+        loader.setLocation(xmlUrl);
+
+        Parent root = loader.load();
+
+        return root;
+    }
+
+    public Stage createNewStage(Parent root)
+    {
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        return stage;
+    }
+
 }
