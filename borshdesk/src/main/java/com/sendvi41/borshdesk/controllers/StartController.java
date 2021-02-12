@@ -2,6 +2,7 @@ package com.sendvi41.borshdesk.controllers;
 
 import com.sendvi41.borshdesk.BorshchatdeskApplication;
 
+import com.sendvi41.borshdesk.services.Authorization;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -22,6 +23,8 @@ import javax.annotation.PostConstruct;
 public class StartController extends FxController implements CommandLineRunner {
     private final WorkController workController;
     private final String source = "fxml/startScene.fxml";
+    @Autowired
+    private Authorization authorization;
 
     @FXML
     private Button login;
@@ -29,7 +32,6 @@ public class StartController extends FxController implements CommandLineRunner {
 
     @FXML
     private void logIn() {
-
 
 
 
