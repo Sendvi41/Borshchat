@@ -5,6 +5,7 @@ package com.sendvi41.borshchatbackend.controllers;
 import com.sendvi41.borshchatbackend.entities.Consultant;
 import com.sendvi41.borshchatbackend.repositories.ConsultantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ public class AuthorizationController {
     ConsultantRepository consultantRepository;
 
 
-    @PostMapping("/authorization")
+    @PostMapping(value = "/authorization", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Response authorization(Consultant consultant)
     {
         Consultant cons = consultantRepository.validate(consultant.getName(),consultant.getPassword());

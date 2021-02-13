@@ -13,7 +13,7 @@ import java.net.URL;
 
 @Service
 public class Authorization {
-    private static final String WS_URI = "http://localhost:8080/consult/authorization";
+    private static final String WS_URI = "http://localhost:8080/api/consult/authorization";
 
 
 

@@ -33,7 +33,7 @@ public class StartController extends FxController implements CommandLineRunner {
     @FXML
     private void logIn() {
 
-
+        authorization.checkWS();
 
          workController.getStage().showAndWait();
          getStage().hide();
