@@ -3,13 +3,18 @@ package com.sendvi41.borshdesk.services;
 
 
 import com.sendvi41.borshdesk.entities.Consultant;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.UriBuilder;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class Authorization {
@@ -17,9 +22,7 @@ public class Authorization {
 
 
 
-    private static Boolean authorizate(Consultant consultant) {
-
-
+    public static Boolean authorizate(Consultant consultant) {
 
         return false;
     }

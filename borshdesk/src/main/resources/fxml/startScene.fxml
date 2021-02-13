@@ -29,12 +29,12 @@
                         <Font name="Comic Sans MS" size="15.0" />
                      </font>
                   </Button>
-                  <TextField layoutX="177.0" layoutY="84.0" prefHeight="26.0" prefWidth="218.0" promptText="Логин">
+                  <TextField  fx:id="log" layoutX="177.0" layoutY="84.0" prefHeight="26.0" prefWidth="218.0" promptText="Логин">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <PasswordField layoutX="177.0" layoutY="135.0" prefHeight="26.0" prefWidth="218.0" promptText="Пароль">
+                  <PasswordField fx:id="password" layoutX="177.0" layoutY="135.0" prefHeight="26.0" prefWidth="218.0" promptText="Пароль">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -44,7 +44,7 @@
                         <Font name="Comic Sans MS" size="35.0" />
                      </font>
                   </Label>
-                  <ImageView  fx:id ="log" fitHeight="38.0" fitWidth="36.0" layoutX="137.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView  fitHeight="38.0" fitWidth="36.0" layoutX="137.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@/img/login.png" />
                      </image>

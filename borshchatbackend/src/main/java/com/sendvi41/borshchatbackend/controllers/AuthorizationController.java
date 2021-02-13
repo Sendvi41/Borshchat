@@ -1,7 +1,6 @@
 package com.sendvi41.borshchatbackend.controllers;
 
 
-
 import com.sendvi41.borshchatbackend.entities.Consultant;
 import com.sendvi41.borshchatbackend.repositories.ConsultantRepository;
 import com.sendvi41.borshchatbackend.services.ConsultantService;
@@ -20,15 +19,14 @@ public class AuthorizationController {
     ConsultantService consultantService;
 
 
-
     @PostMapping(value = "/authorization", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Consultant authorization(@RequestBody Consultant consultant)
-    {
-
-
-        return new Consultant();
+    public Boolean authorization(@RequestBody Consultant consultant) {
+        if (consultantService.validate(consultant)) {
+            return true;
+        } else {
+            return false;
+        }
     }
-
 
 
 //    @GetMapping("/authorization")
@@ -36,9 +34,6 @@ public class AuthorizationController {
 //    {
 //        return "d";
 //    }
-
-
-
 
 
 }

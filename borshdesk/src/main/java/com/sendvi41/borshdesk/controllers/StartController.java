@@ -2,9 +2,12 @@ package com.sendvi41.borshdesk.controllers;
 
 import com.sendvi41.borshdesk.BorshchatdeskApplication;
 
+import com.sendvi41.borshdesk.entities.Consultant;
 import com.sendvi41.borshdesk.services.Authorization;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import lombok.Getter;
@@ -29,11 +32,20 @@ public class StartController extends FxController implements CommandLineRunner {
     @FXML
     private Button login;
 
+    @FXML
+    private TextField log;
+
+    @FXML
+    private PasswordField password;
+
 
     @FXML
     private void logIn() {
 
-        authorization.checkWS();
+        Consultant consultant = new Consultant();
+        consultant.setName(log.getText());
+        consultant.setPassword(password.getText());
+        authorization.authorizate(consultant);
 
          workController.getStage().showAndWait();
          getStage().hide();
