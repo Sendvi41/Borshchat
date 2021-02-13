@@ -13,7 +13,7 @@ import java.net.URL;
 
 @Service
 public class Authorization {
-    private static final String WS_URI = "http://localhost:8080/api/consult/authorization";
+    private static final String WS_URI = "http://localhost:8080/consult/authorization";
 
 
 
@@ -34,6 +34,7 @@ public class Authorization {
             HttpURLConnection connection = (HttpURLConnection) siteURL.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept", "application/json");
+            connection.setRequestProperty("Content-type","application/json");
             connection.connect();
             int code = connection.getResponseCode();
             if(code == 200) stateOfWS = true;
