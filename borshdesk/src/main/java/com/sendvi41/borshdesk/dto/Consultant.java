@@ -1,4 +1,4 @@
-package com.sendvi41.borshdesk.entities;
+package com.sendvi41.borshdesk.dto;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;

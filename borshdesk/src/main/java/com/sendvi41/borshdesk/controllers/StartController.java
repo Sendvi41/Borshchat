@@ -1,24 +1,17 @@
 package com.sendvi41.borshdesk.controllers;
 
-import com.sendvi41.borshdesk.BorshchatdeskApplication;
-
-import com.sendvi41.borshdesk.entities.Consultant;
+import com.sendvi41.borshdesk.dto.Consultant;
 import com.sendvi41.borshdesk.services.Authorization;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
 
 
 @Getter
