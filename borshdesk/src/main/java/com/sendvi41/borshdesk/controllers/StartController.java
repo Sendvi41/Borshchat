@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class StartController extends FxController implements CommandLineRunner {
-    private final WorkController workController;
+    private final MenuController menuController;
     private final String source = "fxml/startScene.fxml";
     @Autowired
     private Authorization authorization;
@@ -44,8 +44,9 @@ public class StartController extends FxController implements CommandLineRunner {
         consultant.setPassword(password.getText());
         if (authorization.checkLoginAndPassword(consultant)) {
             message.setVisible(false);
-            workController.getStage().showAndWait();
             getStage().hide();
+            menuController.getStage().showAndWait();
+
         } else {
             message.setVisible(true);
         }

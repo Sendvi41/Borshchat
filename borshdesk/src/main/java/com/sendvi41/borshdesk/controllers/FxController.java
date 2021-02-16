@@ -20,6 +20,7 @@ abstract public class FxController {
     private final Stage stage = new Stage();
     private Scene scene;
 
+
     protected abstract String getSource();
 
      {

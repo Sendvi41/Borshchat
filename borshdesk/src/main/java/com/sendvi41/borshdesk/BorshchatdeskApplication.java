@@ -1,8 +1,5 @@
 package com.sendvi41.borshdesk;
 
-import com.sendvi41.borshdesk.controllers.FxController;
-import com.sendvi41.borshdesk.controllers.StartController;
-import com.sendvi41.borshdesk.controllers.WorkController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
@@ -31,7 +28,7 @@ public class BorshchatdeskApplication extends Application {
 //
 //    StartController startController = FxController.init(primaryStage, "/fxml/startScene.fxml");
 //
-//    WorkController workController = FxController.init(workStage, "/fxml/workScene.fxml");
+//    WorkController workController = FxController.init(workStage, "/fxml/menuScene.fxml");
 //
 //        startController.getStage().show();
 
