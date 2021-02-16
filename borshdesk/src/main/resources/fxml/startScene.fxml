@@ -24,12 +24,12 @@
             </Label>
             <AnchorPane layoutY="75.99999856948853" prefHeight="270.0" prefWidth="572.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <Button fx:id="login" layoutX="216.0" onAction="#logIn" layoutY="228.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="140.0" style="-fx-background-color: #B3475A; -fx-background-radius: 20;" text="Войти" textFill="#faeedd">
+                  <Button fx:id="login" layoutX="216.0" layoutY="228.0" mnemonicParsing="false" onAction="#logIn" prefHeight="15.0" prefWidth="140.0" style="-fx-background-color: #B3475A; -fx-background-radius: 20;" text="Войти" textFill="#faeedd">
                      <font>
                         <Font name="Comic Sans MS" size="15.0" />
                      </font>
                   </Button>
-                  <TextField  fx:id="log" layoutX="177.0" layoutY="84.0" prefHeight="26.0" prefWidth="218.0" promptText="Логин">
+                  <TextField fx:id="log" layoutX="177.0" layoutY="84.0" prefHeight="26.0" prefWidth="218.0" promptText="Логин">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -44,7 +44,7 @@
                         <Font name="Comic Sans MS" size="35.0" />
                      </font>
                   </Label>
-                  <ImageView  fitHeight="38.0" fitWidth="36.0" layoutX="137.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="38.0" fitWidth="36.0" layoutX="137.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@/img/login.png" />
                      </image>
@@ -64,6 +64,11 @@
                         <Font name="Comic Sans MS" size="12.0" />
                      </font>
                   </Hyperlink>
+                  <Label fx:id="message" layoutX="185.0" layoutY="199.0" text="Пароль или логин введены неверно" textFill="RED" visible="false">
+                     <font>
+                        <Font name="Comic Sans MS" size="12.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <ImageView fitHeight="89.0" fitWidth="122.0" layoutX="454.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">

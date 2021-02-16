@@ -1,7 +1,6 @@
 package com.sendvi41.borshdesk.services;
 
 
-
 import com.sendvi41.borshdesk.entities.Consultant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -30,12 +29,15 @@ public class Authorization {
     private static final String WS_URI = "http://localhost:8080/consult";
 
 
-
     public Boolean checkLoginAndPassword(Consultant consultant) {
+        try {
+            ResponseEntity<String> response
+                    = restTemplate.postForEntity(WS_URI + "/authorization", new HttpEntity<>(consultant), String.class);
+            return response.getStatusCode().equals(HttpStatus.OK);
+        } catch (Exception ex) {
+            return false;
+        }
 
-        ResponseEntity<String> response
-                = restTemplate.postForEntity(WS_URI + "/authorization", new HttpEntity<>(consultant),String.class);
-        return response.getStatusCode().equals(HttpStatus.OK);
     }
 
 
@@ -54,11 +56,11 @@ public class Authorization {
             HttpURLConnection connection = (HttpURLConnection) siteURL.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept", "application/json");
-            connection.setRequestProperty("Content-type","application/json");
+            connection.setRequestProperty("Content-type", "application/json");
             connection.connect();
             int code = connection.getResponseCode();
-            if(code == 200) stateOfWS = true;
-        } catch(Exception e) {
+            if (code == 200) stateOfWS = true;
+        } catch (Exception e) {
             throw new RuntimeException();
         }
         return stateOfWS;

@@ -6,6 +6,7 @@ import com.sendvi41.borshdesk.entities.Consultant;
 import com.sendvi41.borshdesk.services.Authorization;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -38,6 +39,9 @@ public class StartController extends FxController implements CommandLineRunner {
     @FXML
     private PasswordField password;
 
+    @FXML
+    private Label message;
+
 
     @FXML
     private void logIn() {
@@ -49,7 +53,7 @@ public class StartController extends FxController implements CommandLineRunner {
             workController.getStage().showAndWait();
             getStage().hide();
         } else {
-            System.out.println("ОШИБКА");
+            message.setVisible(true);
         }
 
     }
