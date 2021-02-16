@@ -31,10 +31,10 @@ public class Authorization {
 
 
 
-    public Boolean authorizate(Consultant consultant) {
+    public Boolean checkLoginAndPassword(Consultant consultant) {
 
         ResponseEntity<String> response
-                = restTemplate.getForEntity(WS_URI + "/authorization", String.class);
+                = restTemplate.postForEntity(WS_URI + "/authorization", new HttpEntity<>(consultant),String.class);
         return response.getStatusCode().equals(HttpStatus.OK);
     }
 
