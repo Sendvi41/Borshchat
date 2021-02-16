@@ -2,6 +2,7 @@ package com.sendvi41.borshdesk.services;
 
 
 import com.sendvi41.borshdesk.entities.Consultant;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -27,6 +28,7 @@ public class Authorization {
 
     private final RestTemplate restTemplate = new RestTemplate();
     private static final String WS_URI = "http://localhost:8080/consult";
+    private final Logger logger = Logger.getLogger(Authorization.class.getName());
 
 
     public Boolean checkLoginAndPassword(Consultant consultant) {
@@ -35,6 +37,7 @@ public class Authorization {
                     = restTemplate.postForEntity(WS_URI + "/authorization", new HttpEntity<>(consultant), String.class);
             return response.getStatusCode().equals(HttpStatus.OK);
         } catch (Exception ex) {
+            logger.warn(ex);
             return false;
         }
 
