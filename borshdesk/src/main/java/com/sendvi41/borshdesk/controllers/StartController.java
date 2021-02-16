@@ -45,14 +45,17 @@ public class StartController extends FxController implements CommandLineRunner {
         Consultant consultant = new Consultant();
         consultant.setName(log.getText());
         consultant.setPassword(password.getText());
-        authorization.authorizate(consultant);
+        if (authorization.authorizate(consultant)) {
+            workController.getStage().showAndWait();
+            getStage().hide();
+        } else {
+            System.out.println("ОШИБКА");
+        }
 
-         workController.getStage().showAndWait();
-         getStage().hide();
     }
 
     @Override
-    public void run(String... args){
+    public void run(String... args) {
         getStage().show();
     }
 
