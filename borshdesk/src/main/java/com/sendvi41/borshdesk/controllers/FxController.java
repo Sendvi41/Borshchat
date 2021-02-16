@@ -19,6 +19,7 @@ import java.net.URL;
 abstract public class FxController {
     private final Stage stage = new Stage();
     private Scene scene;
+    private Parent root;
 
 
     protected abstract String getSource();
@@ -30,7 +31,7 @@ abstract public class FxController {
         try (InputStream inputStream = fxmlLoader.getClass().getClassLoader().getResourceAsStream(getSource())) {
             fxmlLoader.setControllerFactory(param->this);
 
-            Parent root = fxmlLoader.load(inputStream);
+            root = fxmlLoader.load(inputStream);
 
             Scene scene = new Scene(root);
 

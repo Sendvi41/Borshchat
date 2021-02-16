@@ -31,8 +31,7 @@ public class MenuController extends FxController {
 
     @FXML
     private void showTemplate() throws IOException {
-        AnchorPane target = FXMLLoader.load(getClass().getResource("/"+templateController.getSource()));
-        view.getChildren().setAll(target);
+        view.getChildren().setAll(templateController.getRoot().getChildrenUnmodifiable());
 
     }
 }
