@@ -1,14 +1,11 @@
-package com.sendvi41.borshchatbackend.controllers;
+package com.sendvi41.borshchatbackend.restcontrollers;
 
 
 import com.sendvi41.borshchatbackend.entities.Consultant;
-import com.sendvi41.borshchatbackend.repositories.ConsultantRepository;
 import com.sendvi41.borshchatbackend.services.ConsultantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import javax.ws.rs.core.Response;
 
 
 @RestController

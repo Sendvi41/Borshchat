@@ -3,6 +3,8 @@ package com.sendvi41.borshdesk.services;
 
 
 import com.sendvi41.borshdesk.entities.Consultant;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -18,13 +20,21 @@ import java.util.List;
 
 @Service
 public class Authorization {
-    private static final String WS_URI = "http://localhost:8080/consult/authorization";
+
+    private final RestTemplate restTemplate = new RestTemplate();
+    private static final String WS_URI = "http://localhost:8080/consult";
 
 
 
-    public static Boolean authorizate(Consultant consultant) {
+    public Boolean authorizate(Consultant consultant) {
 
-        return false;
+        return this.restTemplate.exchange(
+                WS_URI + "/authorization",
+                HttpMethod.GET,
+                null,
+                new Boolean(){
+                }
+        ).getBody();
     }
 
 
