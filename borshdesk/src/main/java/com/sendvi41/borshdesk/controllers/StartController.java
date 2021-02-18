@@ -9,6 +9,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Component;
 public class StartController extends FxController implements CommandLineRunner {
     private final MenuController menuController;
     private final String source = "fxml/startScene.fxml";
+    private final Logger logger = Logger.getLogger(StartController.class.getName());
     @Autowired
     private Authorization authorization;
 
@@ -45,6 +47,10 @@ public class StartController extends FxController implements CommandLineRunner {
         if (authorization.checkLoginAndPassword(consultant)) {
             message.setVisible(false);
             getStage().hide();
+            Consultant currentConsultant = authorization.getConsultant(consultant);
+            logger.info("consultant successfully received with id" + currentConsultant.getId());
+
+            menuController.setCurrentConsultant(currentConsultant);
             menuController.getStage().showAndWait();
 
         } else {

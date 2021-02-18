@@ -22,6 +22,7 @@ public class TemplateController extends FxController  {
 
     @Override
     public void init() {
+        this.scene
         super.init();
         area.getChildren().setAll();
 

@@ -3,7 +3,9 @@ package com.sendvi41.borshdesk.services;
 
 import com.sendvi41.borshdesk.dto.Consultant;
 import org.apache.log4j.Logger;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,21 @@ public class Authorization {
             return false;
         }
 
+    }
+
+    public Consultant getConsultant(Consultant consultant) {
+        try {
+            return this.restTemplate.exchange(
+                    WS_URI + "/getconsultant",
+                    HttpMethod.POST,
+                    new HttpEntity<>(consultant),
+                    new ParameterizedTypeReference<Consultant>() {
+                    }
+            ).getBody();
+        } catch (Exception ex) {
+            logger.warn(ex);
+            return null;
+        }
     }
 
 
