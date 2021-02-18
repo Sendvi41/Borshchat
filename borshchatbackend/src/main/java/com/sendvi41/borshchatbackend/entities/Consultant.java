@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "consultants")
@@ -27,4 +28,10 @@ public class Consultant{
     @Column(name = "password", nullable = false)
     @JsonProperty("password")
     private String password;
+
+    @JsonProperty("template_id")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "consultant_id")
+    private List<Template> templates;
+
+
 }
