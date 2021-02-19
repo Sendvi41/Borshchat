@@ -28,4 +28,10 @@ public class TemplateService implements TemplateServiceInterface {
 
     }
 
+    public void saveTemplate(Template template){
+        templateRepository.save(template);
+    }
+
+
+
 }

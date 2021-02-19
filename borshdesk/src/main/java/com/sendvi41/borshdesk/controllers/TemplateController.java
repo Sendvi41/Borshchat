@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,10 +22,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Getter
+@Setter
 @Component
 @RequiredArgsConstructor
 public class TemplateController extends FxController {
     private final String source = "fxml/templateScene.fxml";
+    Long userId;
 
 
     @Autowired
@@ -50,6 +53,7 @@ public class TemplateController extends FxController {
 
 
     public void showTemplates(Long id) {
+
         List<Template> templates = templateService.getTemplates(id);
         List<Label> list = new LinkedList<>();
         for (Template tem : templates) {
@@ -69,7 +73,11 @@ public class TemplateController extends FxController {
 
     @FXML
     private void createTemplate(){
-
+        if(templateService.createTemplate(textarea.getText(),getUserId())){
+            showTemplates(getUserId());
+        }else{
+            System.out.println("Шаблон не был создан");
+        }
 
     }
 

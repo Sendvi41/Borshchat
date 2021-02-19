@@ -8,4 +8,6 @@ import java.util.List;
 public interface TemplateServiceInterface {
 
     public List<Template> getTemplatesbyConsultId(Long id) throws ServiceResourceNotFoundException;
+
+    public void saveTemplate(Template template);
 }

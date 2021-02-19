@@ -40,4 +40,20 @@ public class TemplateController {
         }
     }
 
+    @PostMapping(value = "/createtemplate", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> createTemplate(@RequestBody TemplateDto templateDto) {
+
+        try{
+            Template template = templateMapper.convertToEntity(templateDto);
+            templateService.saveTemplate(template);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+    }
+
+
+
+
+
 }

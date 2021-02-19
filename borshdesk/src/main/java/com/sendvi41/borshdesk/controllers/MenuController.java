@@ -36,6 +36,7 @@ public class MenuController extends FxController {
 
     @FXML
     private void showTemplate() throws IOException {
+        templateController.setUserId(currentConsultant.getId());
         templateController.showTemplates(currentConsultant.getId());
         view.getChildren().setAll(templateController.getRoot().getChildrenUnmodifiable());
 
