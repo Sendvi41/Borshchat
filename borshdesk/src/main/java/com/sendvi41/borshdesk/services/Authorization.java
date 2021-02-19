@@ -23,7 +23,7 @@ public class Authorization implements AuthorizationInterface {
     private static final String WS_URI = "http://localhost:8080/consult";
     private final Logger logger = Logger.getLogger(Authorization.class.getName());
 
-
+    @Override
     public Boolean checkLoginAndPassword(Consultant consultant) {
         try {
             ResponseEntity<String> response
@@ -36,7 +36,7 @@ public class Authorization implements AuthorizationInterface {
 
     }
 
-
+    @Override
     public Consultant getConsultant(Consultant consultant) {
         try {
             return this.restTemplate.exchange(

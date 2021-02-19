@@ -10,4 +10,6 @@ public interface TemplateServiceInterface {
     List<Template> getTemplatesbyConsultId(Long id) throws ServiceResourceNotFoundException;
 
     void saveTemplate(Template template);
+
+    void deleteTemplate(Long id) throws ServiceResourceNotFoundException;
 }

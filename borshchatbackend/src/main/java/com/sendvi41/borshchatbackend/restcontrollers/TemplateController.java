@@ -27,33 +27,42 @@ public class TemplateController {
     TemplateMapper templateMapper;
 
     @GetMapping(value = "/gettemplates/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<TemplateDto>> getTemplates(@PathVariable("id") long id) {
+    public ResponseEntity<List<TemplateDto>> getTemplates(@PathVariable("id") long consultId) {
 
-        try{
-            List<Template> templates = templateService.getTemplatesbyConsultId(id);
+        try {
+            List<Template> templates = templateService.getTemplatesbyConsultId(consultId);
             List<TemplateDto> templatesDto = templates.stream()
                     .map(templateMapper::convertToDto)
                     .collect(Collectors.toList());
             return new ResponseEntity<List<TemplateDto>>(templatesDto, HttpStatus.OK);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<List<TemplateDto>>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @PostMapping(value = "/createtemplate", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> createTemplate(@RequestBody TemplateDto templateDto) {
-
-        try{
-            Template template = templateMapper.convertToEntity(templateDto);
-            templateService.saveTemplate(template);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+    @DeleteMapping(value = "/deletetemplate/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> deleteTemplate(@PathVariable("id") long id) {
+        try {
+            templateService.deleteTemplate(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception ex) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
     }
 
 
+    @PostMapping(value = "/createtemplate", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> createTemplate(@RequestBody TemplateDto templateDto) {
 
+        try {
+            Template template = templateMapper.convertToEntity(templateDto);
+            templateService.saveTemplate(template);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+    }
 
 
 }

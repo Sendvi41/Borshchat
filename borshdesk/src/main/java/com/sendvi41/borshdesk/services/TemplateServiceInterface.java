@@ -9,4 +9,6 @@ public interface TemplateServiceInterface {
     List<Template> getTemplates(Long id);
 
     Boolean createTemplate(String message, Long consultid);
+
+    Boolean deleteTemplate(Long id);
 }

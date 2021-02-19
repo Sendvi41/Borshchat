@@ -22,7 +22,7 @@ public class TemplateService implements TemplateServiceInterface {
     private final Logger logger = Logger.getLogger(TemplateService.class.getName());
 
 
-
+    @Override
     public List<Template> getTemplates(Long id) {
         try {
             return this.restTemplate.exchange(
@@ -38,6 +38,7 @@ public class TemplateService implements TemplateServiceInterface {
         }
     }
 
+    @Override
     public Boolean createTemplate(String message, Long consultid){
         Template template = new Template();
         template.setMessage(message);
@@ -55,6 +56,17 @@ public class TemplateService implements TemplateServiceInterface {
             return false;
         }
 
+    }
+
+    @Override
+    public Boolean deleteTemplate(Long id) {
+        try {
+            this.restTemplate.delete(WS_URI + "/deletetemplate/"+id);
+            return true;
+        } catch (Exception ex) {
+            logger.warn(ex);
+            return false;
+        }
     }
 
 

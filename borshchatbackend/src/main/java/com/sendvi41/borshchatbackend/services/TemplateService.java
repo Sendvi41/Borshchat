@@ -16,6 +16,7 @@ public class TemplateService implements TemplateServiceInterface {
     @Autowired
     TemplateRepository templateRepository;
 
+    @Override
     @Transactional
     public List<Template> getTemplatesbyConsultId(Long id) throws ServiceResourceNotFoundException{
 
@@ -27,11 +28,24 @@ public class TemplateService implements TemplateServiceInterface {
         }
 
     }
-
+    @Override
+    @Transactional
     public void saveTemplate(Template template){
         templateRepository.save(template);
     }
 
+    @Override
+    @Transactional
+    public void deleteTemplate(Long id) throws ServiceResourceNotFoundException{
+        if (templateRepository.findById(id).isPresent()) {
+            templateRepository.deleteById(id);
+
+        } else {
+            throw new ServiceResourceNotFoundException("No such id "+id);
+        }
+
+
+    }
 
 
 }

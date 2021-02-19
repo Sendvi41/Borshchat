@@ -14,6 +14,7 @@ public class ConsultantService implements ConsultServiceInterface {
     @Autowired
     ConsultantRepository consultantRepository;
 
+    @Override
     @Transactional
     public boolean validate(Consultant consultant) {
         if (consultantRepository.validate(consultant.getName(), consultant.getPassword()) != null) {
@@ -22,6 +23,7 @@ public class ConsultantService implements ConsultServiceInterface {
         return false;
     }
 
+    @Override
     @Transactional
     public Consultant getConsultant(Consultant consultant) throws ServiceResourceNotFoundException{
         if (consultantRepository.validate(consultant.getName(), consultant.getPassword()) != null) {
