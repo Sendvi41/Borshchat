@@ -1,0 +1,7 @@
+.label{
+    -fx-alignment: center;
+    -fx-padding: 20px;
+    -fx-background-color: aqua;
+    -fx-arc-height: 160px;
+    -fx-arc-width: 80px;
+}

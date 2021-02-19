@@ -4,6 +4,7 @@ import com.sendvi41.borshdesk.dto.Template;
 import com.sendvi41.borshdesk.services.TemplateService;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -39,16 +40,16 @@ public class TemplateController extends FxController {
 
     public void showTemplates(Long id) {
         List<Template> templates = templateService.getTemplates(id);
-        List<Text> list = new LinkedList<>();
+        List<Label> list = new LinkedList<>();
         for (Template tem : templates) {
 
             String message = tem.getMessage();
-            Text newText = new Text(tem.getMessage());
-            newText.setOnMouseClicked((e)->{
-                newText.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+            Label newLabel = new Label(tem.getMessage());
+            newLabel.setOnMouseClicked((e)->{
+                newLabel.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
                 showInTextArea(message);
             });
-            list.add(newText);
+            list.add(newLabel);
         }
         area.getChildren().setAll(list);
 
