@@ -2,8 +2,10 @@ package com.sendvi41.borshdesk.controllers;
 
 import com.sendvi41.borshdesk.dto.Template;
 import com.sendvi41.borshdesk.services.TemplateService;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
+import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -31,16 +33,29 @@ public class TemplateController extends FxController {
     @FXML
     private VBox area;
 
+    @FXML
+    private TextArea textarea;
+
 
     public void showTemplates(Long id) {
         List<Template> templates = templateService.getTemplates(id);
         List<Text> list = new LinkedList<>();
         for (Template tem : templates) {
 
-            list.add(new Text(tem.getMessage()));
+            String message = tem.getMessage();
+            Text newText = new Text(tem.getMessage());
+            newText.setOnMouseClicked((e)->{
+                newText.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+                showInTextArea(message);
+            });
+            list.add(newText);
         }
         area.getChildren().setAll(list);
 
+    }
+
+    public void showInTextArea(String text){
+        textarea.setText(text);
     }
 
     @Override
