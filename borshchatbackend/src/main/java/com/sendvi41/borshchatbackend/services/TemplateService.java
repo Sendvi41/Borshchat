@@ -3,10 +3,10 @@ package com.sendvi41.borshchatbackend.services;
 
 import com.sendvi41.borshchatbackend.entities.Template;
 import com.sendvi41.borshchatbackend.exceptions.ServiceResourceNotFoundException;
-import com.sendvi41.borshchatbackend.repositories.ConsultantRepository;
 import com.sendvi41.borshchatbackend.repositories.TemplateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +16,7 @@ public class TemplateService {
     @Autowired
     TemplateRepository templateRepository;
 
+    @Transactional
     public List<Template> getTemplatesbyConsultId(Long id) throws ServiceResourceNotFoundException{
 
         if (templateRepository.getTemplatesbyConsultId(id) != null) {

@@ -36,6 +36,7 @@ public class Authorization {
 
     }
 
+
     public Consultant getConsultant(Consultant consultant) {
         try {
             return this.restTemplate.exchange(

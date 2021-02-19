@@ -4,6 +4,7 @@ package com.sendvi41.borshchatbackend.restcontrollers;
 import com.sendvi41.borshchatbackend.entities.Consultant;
 import com.sendvi41.borshchatbackend.entities.Template;
 import com.sendvi41.borshchatbackend.services.TemplateService;
+import com.sendvi41.borshchatbackend.services.TemplateServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,10 +18,10 @@ import java.util.List;
 public class TemplateController {
 
     @Autowired
-    TemplateService templateService;
+    TemplateServiceInterface templateService;
 
     @GetMapping(value = "/gettemplates/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Template>> getConsultant(@PathVariable("id") long id) {
+    public ResponseEntity<List<Template>> getTemplates(@PathVariable("id") long id) {
         try{
             List<Template> templates = templateService.getTemplatesbyConsultId(id);
             return new ResponseEntity<List<Template>>(templates, HttpStatus.OK);

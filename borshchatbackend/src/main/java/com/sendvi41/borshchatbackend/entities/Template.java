@@ -25,7 +25,7 @@ public class Template {
     private String message;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "consultant_id", nullable = false)
     @JsonProperty("consultant_id")
     private Consultant consultant_id;

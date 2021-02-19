@@ -7,13 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lombok.Getter;
-import lombok.Setter;
-import org.springframework.context.ConfigurableApplicationContext;
-
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
+
 
 @Getter
 abstract public class FxController {
