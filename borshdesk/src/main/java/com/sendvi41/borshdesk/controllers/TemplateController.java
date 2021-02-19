@@ -3,6 +3,7 @@ package com.sendvi41.borshdesk.controllers;
 import com.sendvi41.borshdesk.dto.Template;
 import com.sendvi41.borshdesk.services.TemplateService;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -11,14 +12,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Getter
 @Component
 @RequiredArgsConstructor
-public class TemplateController extends FxController  {
+public class TemplateController extends FxController {
     private final String source = "fxml/templateScene.fxml";
-
 
 
     @Autowired
@@ -31,14 +32,17 @@ public class TemplateController extends FxController  {
     private VBox area;
 
 
-    public void showTemplates(Long id){
+    public void showTemplates(Long id) {
         List<Template> templates = templateService.getTemplates(id);
+        List<Text> list = new LinkedList<>();
+        for (Template tem : templates) {
 
-        for (Template tem: templates) {
-            area.getChildren().setAll(new Text(tem.getMessage()));
+            list.add(new Text(tem.getMessage()));
         }
+        area.getChildren().setAll(list);
 
     }
+
     @Override
     public void init() {
 

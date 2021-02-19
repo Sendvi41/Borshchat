@@ -14,10 +14,6 @@ public class Template {
     @JsonProperty("message")
     private String message;
 
-    @JsonProperty("consultant_id")
-    private Consultant consultant_id;
-
-
 
     public Template() {
     }

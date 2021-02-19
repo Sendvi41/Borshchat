@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class TemplateService {
+public class TemplateService implements TemplateServiceInterface {
 
     @Autowired
     TemplateRepository templateRepository;

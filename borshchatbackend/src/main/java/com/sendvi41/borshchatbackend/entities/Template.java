@@ -2,6 +2,7 @@ package com.sendvi41.borshchatbackend.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -27,6 +28,6 @@ public class Template {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "consultant_id", nullable = false)
-    @JsonProperty("consultant_id")
+    @JsonIgnore
     private Consultant consultant_id;
 }
