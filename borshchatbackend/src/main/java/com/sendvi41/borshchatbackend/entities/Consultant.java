@@ -2,6 +2,7 @@ package com.sendvi41.borshchatbackend.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -30,8 +31,8 @@ public class Consultant{
     @JsonProperty("password")
     private String password;
 
-    @JsonProperty("template_id")
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "consultant_id")
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "consultant_id")
     private Set<Template> templates;
 
 

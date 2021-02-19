@@ -20,7 +20,7 @@ public class TemplateController {
     TemplateService templateService;
 
     @GetMapping(value = "/gettemplates/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Template>> getConsultant(@PathVariable(name = "id") long id) {
+    public ResponseEntity<List<Template>> getConsultant(@PathVariable("id") long id) {
         try{
             List<Template> templates = templateService.getTemplatesbyConsultId(id);
             return new ResponseEntity<List<Template>>(templates, HttpStatus.OK);

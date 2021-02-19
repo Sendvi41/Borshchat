@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.util.Set;
+
 @Data
 @JsonAutoDetect
 public class Template {
@@ -16,6 +18,8 @@ public class Template {
 
     @JsonProperty("consultant_id")
     private Consultant consultant_id;
+
+
 
     public Template() {
     }
