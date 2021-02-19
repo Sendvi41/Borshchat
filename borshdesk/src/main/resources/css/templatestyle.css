@@ -1,7 +1,11 @@
 .label{
     -fx-alignment: center;
     -fx-padding: 20px;
-    -fx-background-color: aqua;
-    -fx-arc-height: 160px;
-    -fx-arc-width: 80px;
+    -fx-background-color: #00ffff;
+    /*-fx-arc-height: 160px;*/
+    /*-fx-arc-width: 120px;*/
+    -fx-pref-height: 56px;
+    -fx-pref-width: 346px;
+    -fx-vgrow: "ALWAYS";
+    -fx-max-width: 1200px;
 }

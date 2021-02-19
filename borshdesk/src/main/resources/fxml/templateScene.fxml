@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="491.0" prefWidth="676.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sendvi41.borshdesk.controllers.TemplateController">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="491.0" prefWidth="676.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sendvi41.borshdesk.controllers.TemplateController">
    <children>
-      <SplitPane dividerPositions="0.4910979228486647" prefHeight="491.0" prefWidth="676.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.4896142433234421" prefHeight="491.0" prefWidth="676.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-            <VBox fx:id="area" alignment="TOP_CENTER" prefHeight="491.0" prefWidth="346.0" style="-fx-background-color: #FDF7F7;" stylesheets="@/css/templatestyle.css">
+            <AnchorPane prefHeight="496.0" prefWidth="327.0">
                <children>
-                  <Label prefHeight="56.0" prefWidth="332.0" text="Label" />
-               </children></VBox>
+                  <VBox fx:id="area" alignment="TOP_CENTER" prefHeight="491.0" prefWidth="346.0" style="-fx-background-color: #FDF7F7;" stylesheets="@/css/templatestyle.css" AnchorPane.bottomAnchor="0.8000000000000114" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.8000000000000114">
+                     <children>
+                        <Label maxWidth="1.7976931348623157E308" prefHeight="56.0" prefWidth="327.0" style="-fx-background-color: FF00FFFF;" text="Label" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
 
 
             <AnchorPane fx:id="templates" prefHeight="490.0" prefWidth="310.0">

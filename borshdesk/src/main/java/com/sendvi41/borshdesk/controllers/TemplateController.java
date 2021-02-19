@@ -4,10 +4,12 @@ import com.sendvi41.borshdesk.dto.Template;
 import com.sendvi41.borshdesk.services.TemplateService;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lombok.Getter;
@@ -37,6 +39,15 @@ public class TemplateController extends FxController {
     @FXML
     private TextArea textarea;
 
+    @FXML
+    private Button create;
+
+    @FXML
+    private Button update;
+
+    @FXML
+    private Button delete;
+
 
     public void showTemplates(Long id) {
         List<Template> templates = templateService.getTemplates(id);
@@ -45,10 +56,12 @@ public class TemplateController extends FxController {
 
             String message = tem.getMessage();
             Label newLabel = new Label(tem.getMessage());
+
             newLabel.setOnMouseClicked((e)->{
                 newLabel.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
                 showInTextArea(message);
             });
+
             list.add(newLabel);
         }
         area.getChildren().setAll(list);
