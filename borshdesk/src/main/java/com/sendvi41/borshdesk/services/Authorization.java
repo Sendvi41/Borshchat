@@ -17,7 +17,7 @@ import java.net.URI;
 import java.net.URL;
 
 @Service
-public class Authorization {
+public class Authorization implements AuthorizationInterface {
 
     private final RestTemplate restTemplate = new RestTemplate();
     private static final String WS_URI = "http://localhost:8080/consult";
@@ -61,25 +61,25 @@ public class Authorization {
 //    }
 //        ).getBody();
 
-    public static boolean checkWS() {
-        Boolean stateOfWS = false;
-        try {
-            URL siteURL = new URL(getBaseUri().toString());
-            HttpURLConnection connection = (HttpURLConnection) siteURL.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setRequestProperty("Accept", "application/json");
-            connection.setRequestProperty("Content-type", "application/json");
-            connection.connect();
-            int code = connection.getResponseCode();
-            if (code == 200) stateOfWS = true;
-        } catch (Exception e) {
-            throw new RuntimeException();
-        }
-        return stateOfWS;
-    }
-
-    private static URI getBaseUri() {
-        return UriBuilder.fromUri(WS_URI).build();
-    }
+//    public static boolean checkWS() {
+//        Boolean stateOfWS = false;
+//        try {
+//            URL siteURL = new URL(getBaseUri().toString());
+//            HttpURLConnection connection = (HttpURLConnection) siteURL.openConnection();
+//            connection.setRequestMethod("GET");
+//            connection.setRequestProperty("Accept", "application/json");
+//            connection.setRequestProperty("Content-type", "application/json");
+//            connection.connect();
+//            int code = connection.getResponseCode();
+//            if (code == 200) stateOfWS = true;
+//        } catch (Exception e) {
+//            throw new RuntimeException();
+//        }
+//        return stateOfWS;
+//    }
+//
+//    private static URI getBaseUri() {
+//        return UriBuilder.fromUri(WS_URI).build();
+//    }
 
 }

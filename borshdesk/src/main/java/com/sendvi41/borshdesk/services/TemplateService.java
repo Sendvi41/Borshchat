@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @Service
-public class TemplateService {
+public class TemplateService implements TemplateServiceInterface {
 
     private final RestTemplate restTemplate = new RestTemplate();
     private static final String WS_URI = "http://localhost:8080/template";
