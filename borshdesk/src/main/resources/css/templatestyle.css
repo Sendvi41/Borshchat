@@ -1,7 +1,9 @@
 .label{
-    -fx-alignment: center;
+    -fx-alignment: top-left;
     -fx-padding: 20px;
-    -fx-background-color: #00ffff;
+    -fx-background-color: rgba(38, 147, 255, 0.45);
+    -fx-font-size: 15px;
+    -fx-font-family:"Comic Sans MS";
     /*-fx-arc-height: 160px;*/
     /*-fx-arc-width: 120px;*/
     -fx-pref-height: 56px;
@@ -9,6 +11,7 @@
     -fx-vgrow: "ALWAYS";
     -fx-max-width: 1200px;
 }
+
 
 #shiny{
 
