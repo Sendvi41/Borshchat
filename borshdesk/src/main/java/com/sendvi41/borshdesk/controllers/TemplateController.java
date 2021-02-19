@@ -58,15 +58,25 @@ public class TemplateController extends FxController {
             Label newLabel = new Label(tem.getMessage());
 
             newLabel.setOnMouseClicked((e)->{
-                newLabel.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+                newLabel.setStyle("-fx-text-fill: red; -fx-font-size: 16px");
                 showInTextArea(message);
             });
 
             list.add(newLabel);
         }
         area.getChildren().setAll(list);
+    }
+
+    @FXML
+    private void createTemplate(){
+
 
     }
+
+
+
+
+
 
     public void showInTextArea(String text){
         textarea.setText(text);

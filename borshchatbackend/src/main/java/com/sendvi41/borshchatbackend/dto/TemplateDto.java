@@ -1,12 +1,17 @@
-package com.sendvi41.borshdesk.dto;
+package com.sendvi41.borshchatbackend.dto;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 @Data
 @JsonAutoDetect
-public class Template {
+@AllArgsConstructor
+@NoArgsConstructor
+public class TemplateDto {
 
     @JsonProperty("id")
     private Long id;
@@ -16,12 +21,4 @@ public class Template {
 
     @JsonProperty("consultant_id")
     private Long consultant_id;
-
-    public Template() {
-    }
-
-    protected boolean canEqual(final Object other) {
-        return other instanceof Template;
-    }
-
 }

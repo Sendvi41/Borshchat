@@ -1,8 +1,10 @@
 package com.sendvi41.borshchatbackend.restcontrollers;
 
 
+import com.sendvi41.borshchatbackend.dto.TemplateDto;
 import com.sendvi41.borshchatbackend.entities.Consultant;
 import com.sendvi41.borshchatbackend.entities.Template;
+import com.sendvi41.borshchatbackend.mappers.TemplateMapper;
 import com.sendvi41.borshchatbackend.services.TemplateService;
 import com.sendvi41.borshchatbackend.services.TemplateServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/template")
@@ -20,13 +23,20 @@ public class TemplateController {
     @Autowired
     TemplateServiceInterface templateService;
 
+    @Autowired
+    TemplateMapper templateMapper;
+
     @GetMapping(value = "/gettemplates/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Template>> getTemplates(@PathVariable("id") long id) {
+    public ResponseEntity<List<TemplateDto>> getTemplates(@PathVariable("id") long id) {
+
         try{
             List<Template> templates = templateService.getTemplatesbyConsultId(id);
-            return new ResponseEntity<List<Template>>(templates, HttpStatus.OK);
+            List<TemplateDto> templatesDto = templates.stream()
+                    .map(templateMapper::convertToDto)
+                    .collect(Collectors.toList());
+            return new ResponseEntity<List<TemplateDto>>(templatesDto, HttpStatus.OK);
         } catch (Exception e){
-            return new ResponseEntity<List<Template>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<TemplateDto>>(HttpStatus.NOT_FOUND);
         }
     }
 

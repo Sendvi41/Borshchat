@@ -1,5 +1,6 @@
 package com.sendvi41.borshchatbackend.repositories;
 
+import com.sendvi41.borshchatbackend.dto.TemplateDto;
 import com.sendvi41.borshchatbackend.entities.Consultant;
 import com.sendvi41.borshchatbackend.entities.Template;
 import org.springframework.data.jpa.repository.JpaRepository;

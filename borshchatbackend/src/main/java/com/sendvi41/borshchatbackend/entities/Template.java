@@ -4,7 +4,10 @@ package com.sendvi41.borshchatbackend.entities;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sendvi41.borshchatbackend.dto.TemplateDto;
 import lombok.Data;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
@@ -26,8 +29,11 @@ public class Template {
     private String message;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "consultant_id", nullable = false)
     @JsonIgnore
     private Consultant consultant_id;
+
+
+
 }
