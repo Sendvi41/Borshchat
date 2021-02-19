@@ -12,4 +12,7 @@ public interface TemplateServiceInterface {
     void saveTemplate(Template template);
 
     void deleteTemplate(Long id) throws ServiceResourceNotFoundException;
+
+    void updateTemplate(Template template) throws ServiceResourceNotFoundException;
+
 }

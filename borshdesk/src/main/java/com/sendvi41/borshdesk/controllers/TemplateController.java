@@ -122,6 +122,20 @@ public class TemplateController extends FxController {
     }
 
 
+    @FXML
+    private void updateTemplate() {
+        if (getSelectedID() != null) {
+            if (templateService.updateTemplate(getSelectedID(), textarea.getText(), getUserId())) {
+                showTemplates(getUserId());
+            } else {
+                System.out.println("Шаблон не был обновлен");
+            }
+        } else {
+            System.out.println("Шаблон не был выбран");
+        }
+    }
+
+
     public void showInTextArea(String text) {
         textarea.setText(text);
     }

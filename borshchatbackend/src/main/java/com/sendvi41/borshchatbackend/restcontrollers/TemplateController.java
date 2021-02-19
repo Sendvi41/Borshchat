@@ -64,5 +64,17 @@ public class TemplateController {
         }
     }
 
+    @PostMapping(value = "/updatetemplate", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> updateTemplate(@RequestBody TemplateDto templateDto) {
+
+        try {
+            Template template = templateMapper.convertToEntity(templateDto);
+            templateService.updateTemplate(template);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 }

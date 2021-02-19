@@ -70,5 +70,26 @@ public class TemplateService implements TemplateServiceInterface {
     }
 
 
+    @Override
+    public Boolean updateTemplate(Long id, String message, Long consultid){
+        Template template = new Template();
+        template.setId(id);
+        template.setMessage(message);
+        template.setConsultant_id(consultid);
+
+        try {
+            ResponseEntity<String> response
+                    = restTemplate.postForEntity(WS_URI + "/updatetemplate",
+                    new HttpEntity<>(template), String.class);
+
+            return response.getStatusCode().equals(HttpStatus.OK);
+        } catch (Exception ex) {
+            logger.warn(ex);
+            return false;
+        }
+
+    }
+
+
 
 }

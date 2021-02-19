@@ -18,33 +18,45 @@ public class TemplateService implements TemplateServiceInterface {
 
     @Override
     @Transactional
-    public List<Template> getTemplatesbyConsultId(Long id) throws ServiceResourceNotFoundException{
+    public List<Template> getTemplatesbyConsultId(Long id) throws ServiceResourceNotFoundException {
 
         if (templateRepository.getTemplatesbyConsultId(id) != null) {
             return templateRepository.getTemplatesbyConsultId(id);
-        }else{
+        } else {
             throw new ServiceResourceNotFoundException("Don't find templates by consultant id" +
-                    ""+id);
+                    "" + id);
         }
 
     }
+
     @Override
     @Transactional
-    public void saveTemplate(Template template){
+    public void saveTemplate(Template template) {
         templateRepository.save(template);
     }
 
     @Override
     @Transactional
-    public void deleteTemplate(Long id) throws ServiceResourceNotFoundException{
+    public void deleteTemplate(Long id) throws ServiceResourceNotFoundException {
         if (templateRepository.findById(id).isPresent()) {
             templateRepository.deleteById(id);
 
         } else {
-            throw new ServiceResourceNotFoundException("No such id "+id);
+            throw new ServiceResourceNotFoundException("No such id " + id);
         }
 
+    }
 
+    @Override
+    @Transactional
+    public void updateTemplate(Template template) throws ServiceResourceNotFoundException {
+
+        if (template.getId() != 0) {
+            templateRepository.save(template);
+        } else {
+            throw new ServiceResourceNotFoundException("Not found template");
+
+        }
     }
 
 

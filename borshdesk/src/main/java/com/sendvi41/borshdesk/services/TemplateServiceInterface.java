@@ -11,4 +11,6 @@ public interface TemplateServiceInterface {
     Boolean createTemplate(String message, Long consultid);
 
     Boolean deleteTemplate(Long id);
+
+    Boolean updateTemplate(Long id, String message, Long consultid);
 }
