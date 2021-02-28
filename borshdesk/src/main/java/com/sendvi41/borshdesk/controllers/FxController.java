@@ -42,6 +42,26 @@ abstract public class FxController {
     }
 
 
+    public void updateRoot(){
+        FXMLLoader fxmlLoader = new FXMLLoader();
+
+
+        try (InputStream inputStream = fxmlLoader.getClass().getClassLoader().getResourceAsStream(getSource())) {
+            fxmlLoader.setControllerFactory(param->this);
+
+            root = fxmlLoader.load(inputStream);
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Platform.exit();
+        }
+    }
+
     public void initialize(){
 
     }

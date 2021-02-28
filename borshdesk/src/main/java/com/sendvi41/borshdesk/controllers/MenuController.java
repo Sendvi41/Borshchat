@@ -42,6 +42,7 @@ public class MenuController extends FxController {
 
     @FXML
     private void showTemplate() throws IOException {
+        templateController.updateRoot();
         templateController.setUserId(currentConsultant.getId());
         templateController.showTemplates(currentConsultant.getId());
         view.getChildren().setAll(templateController.getRoot().getChildrenUnmodifiable());
@@ -50,12 +51,14 @@ public class MenuController extends FxController {
 
     @FXML
     private void showChat() throws IOException {
+        chatController.updateRoot();
         view.getChildren().setAll(chatController.getRoot().getChildrenUnmodifiable());
 
     }
 
     @FXML
     private void showQueue() throws IOException {
+        queueController.updateRoot();
         view.getChildren().setAll(queueController.getRoot().getChildrenUnmodifiable());
 
     }
