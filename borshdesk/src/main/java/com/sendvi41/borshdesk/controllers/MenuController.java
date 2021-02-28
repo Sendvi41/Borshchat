@@ -30,6 +30,12 @@ public class MenuController extends FxController {
     @Autowired
     private TemplateController templateController;
 
+    @Autowired
+    private ChatController chatController;
+
+    @Autowired
+    private QueueController queueController;
+
     @FXML
     private AnchorPane view;
 
@@ -39,6 +45,18 @@ public class MenuController extends FxController {
         templateController.setUserId(currentConsultant.getId());
         templateController.showTemplates(currentConsultant.getId());
         view.getChildren().setAll(templateController.getRoot().getChildrenUnmodifiable());
+
+    }
+
+    @FXML
+    private void showChat() throws IOException {
+        view.getChildren().setAll(chatController.getRoot().getChildrenUnmodifiable());
+
+    }
+
+    @FXML
+    private void showQueue() throws IOException {
+        view.getChildren().setAll(queueController.getRoot().getChildrenUnmodifiable());
 
     }
 
