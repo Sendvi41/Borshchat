@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom';
 import {Launcher} from 'react-chat-window'
+import './css/chatstyle.css'
 
 class Demo extends Component {
 
@@ -33,8 +34,8 @@ class Demo extends Component {
         return (<div>
             <Launcher
                 agentProfile={{
-                    teamName: 'react-chat-window',
-                    imageUrl: 'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png'
+                    teamName: 'Borshchat',
+                    imageUrl: 'https://static.wixstatic.com/media/81d525_68448533e55943ee950091135534c418~mv2.png/v1/fill/w_34,h_34,al_c,usm_0.66_1.00_0.01/81d525_68448533e55943ee950091135534c418~mv2.png'
                 }}
                 onMessageWasSent={this._onMessageWasSent.bind(this)}
                 messageList={this.state.messageList}
