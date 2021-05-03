@@ -2,7 +2,17 @@ import React, {Component} from 'react'
 import {render} from 'react-dom';
 import {Launcher} from 'react-chat-window'
 import './css/chatstyle.css'
+import SockJsClient from "react-stomp";
 
+function getIndex(list, id) {
+    for (var i = 0; i < list.length; i++ ) {
+        if (list[i].id === id) {
+            return i
+        }
+    }
+
+    return -1
+}
 class Demo extends Component {
 
     constructor() {
@@ -12,23 +22,28 @@ class Demo extends Component {
         };
     }
 
+
+
     _onMessageWasSent(message) {
+        console.log(message);
         this.setState({
             messageList: [...this.state.messageList, message]
         })
+        // if (message.length > 0) {
+        //     console.log("enter to _sendMessage");
+        //     this.setState({
+        //         messageList: [...this.state.messageList, {
+        //             author: 'them',
+        //             type: 'text',
+        //             data: { message }
+        //         }]
+        //
+        //     })
+        // }
+        this.clientRef.sendMessage('/app/user-all', JSON.stringify( message));
     }
 
-    _sendMessage(text) {
-        if (text.length > 0) {
-            this.setState({
-                messageList: [...this.state.messageList, {
-                    author: 'them',
-                    type: 'text',
-                    data: { text }
-                }]
-            })
-        }
-    }
+
 
     render() {
         return (<div>
@@ -37,10 +52,33 @@ class Demo extends Component {
                     teamName: 'Borshchat',
                     imageUrl: 'https://static.wixstatic.com/media/81d525_68448533e55943ee950091135534c418~mv2.png/v1/fill/w_34,h_34,al_c,usm_0.66_1.00_0.01/81d525_68448533e55943ee950091135534c418~mv2.png'
                 }}
+
                 onMessageWasSent={this._onMessageWasSent.bind(this)}
                 messageList={this.state.messageList}
                 showEmoji
+
+
             />
+            <SockJsClient url='http://localhost:8080/websocket-chat/'
+                          topics={['/topic/user']}
+                          onConnect={() => {
+                              console.log("connected");
+                          }}
+                          onDisconnect={() => {
+                              console.log("Disconnected");
+                          }}
+                          onMessage={(msg) => {
+                              msg['author']='them';
+                              console.log(msg);
+                              this.setState({
+                                  messageList: [...this.state.messageList, msg]
+                              })
+                              console.log(this.state);
+                          }}
+                          ref={(client) => {
+                              this.clientRef = client
+                              console.log("Client got correct")
+                          }}/>
         </div>)
     }
 }
