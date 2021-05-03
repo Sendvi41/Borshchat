@@ -1,5 +1,6 @@
 package com.sendvi41.borshdesk;
 
+import com.sendvi41.borshdesk.websocket.StompClient;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
@@ -20,6 +21,7 @@ public class BorshchatdeskApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         SpringApplication.run(BorshchatdeskApplication.class, args);
+
     }
 
 //    Stage workStage = new Stage();

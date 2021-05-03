@@ -2,6 +2,7 @@ package com.sendvi41.borshdesk.controllers;
 
 import com.sendvi41.borshdesk.dto.Consultant;
 import com.sendvi41.borshdesk.services.Authorization;
+import com.sendvi41.borshdesk.websocket.StompClient;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -45,6 +46,7 @@ public class StartController extends FxController implements CommandLineRunner {
         consultant.setName(log.getText());
         consultant.setPassword(password.getText());
         if (authorization.checkLoginAndPassword(consultant)) {
+
             message.setVisible(false);
             getStage().hide();
             Consultant currentConsultant = authorization.getConsultant(consultant);
