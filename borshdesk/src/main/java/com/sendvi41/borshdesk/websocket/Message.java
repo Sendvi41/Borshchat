@@ -22,6 +22,12 @@ public class Message {
     @JsonProperty("type")
     private String type;
 
+    @JsonProperty("senderid")
+    private String senderid;
+
+    @JsonProperty("recipientid")
+    private String recipientid;
+
 
 }
 

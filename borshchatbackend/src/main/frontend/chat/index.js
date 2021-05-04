@@ -18,7 +18,9 @@ class Demo extends Component {
     constructor() {
         super();
         this.state = {
-            messageList: []
+            messageList: [],
+            senderid: 1,
+            recipientid: null
         };
     }
 
@@ -40,7 +42,16 @@ class Demo extends Component {
         //
         //     })
         // }
-        this.clientRef.sendMessage('/app/user-all', JSON.stringify( message));
+
+        message['senderid'] =this.state.senderid;
+        message['recipientid'] =this.state.recipientid;
+        if(this.state.recipientid==null){
+
+            this.clientRef.sendMessage('/app/user-all', JSON.stringify( message));
+        }else{
+            this.clientRef.sendMessage('/app/chatdesk', JSON.stringify( message));
+        }
+
     }
 
 
@@ -60,7 +71,7 @@ class Demo extends Component {
 
             />
             <SockJsClient url='http://localhost:8080/websocket-chat/'
-                          topics={['/topic/user']}
+                          topics={["/user/" + this.state.senderid + "/queue/messages"]}
                           onConnect={() => {
                               console.log("connected");
                           }}
@@ -68,7 +79,13 @@ class Demo extends Component {
                               console.log("Disconnected");
                           }}
                           onMessage={(msg) => {
+
                               msg['author']='them';
+                              if(msg.recipientid!=null){
+                                  this.setState({
+                                      recipientid: msg.recipientid
+                                  })
+                              }
                               console.log(msg);
                               this.setState({
                                   messageList: [...this.state.messageList, msg]

@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @JsonAutoDetect
 @AllArgsConstructor
@@ -22,6 +23,13 @@ public class MessageBean {
 
     @JsonProperty("type")
     private String type;
+
+    @JsonProperty("senderid")
+    private String senderid;
+
+    @JsonProperty("recipientid")
+    private String recipientid;
+
 
     @JsonAutoDetect
     @AllArgsConstructor
@@ -38,4 +46,7 @@ public class MessageBean {
             this.text = text;
         }
     }
+
+
+
 }

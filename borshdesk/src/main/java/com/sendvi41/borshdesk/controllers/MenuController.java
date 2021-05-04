@@ -23,13 +23,13 @@ public class MenuController extends FxController {
     private final String source = "fxml/menuScene.fxml";
     private final Logger logger = Logger.getLogger(MenuController.class.getName());
     Consultant currentConsultant;
-    static {
-        Thread webSocThread = new Thread(){ public void run(){
-            StompClient.startConnect();
-        }
-        };
-        webSocThread.start();
-    }
+//    static {
+//        Thread webSocThread = new Thread(){ public void run(){
+//            StompClient.startConnect();
+//        }
+//        };
+//        webSocThread.start();
+//    }
 
 
 
@@ -57,6 +57,7 @@ public class MenuController extends FxController {
         templateController.setUserId(currentConsultant.getId());
         templateController.showTemplates(currentConsultant.getId());
         view.getChildren().setAll(templateController.getRoot().getChildrenUnmodifiable());
+        StompClient.startConnect();
 
     }
 

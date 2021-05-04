@@ -1,6 +1,5 @@
 package com.sendvi41.borshdesk.websocket;
 
-
 import org.apache.log4j.Logger;
 import org.springframework.messaging.simp.stomp.StompCommand;
 import org.springframework.messaging.simp.stomp.StompHeaders;
@@ -9,13 +8,12 @@ import org.springframework.messaging.simp.stomp.StompSessionHandlerAdapter;
 
 import java.lang.reflect.Type;
 
-public class MyStompSessionHandler extends StompSessionHandlerAdapter {
+public class StompConsultantHandler extends StompSessionHandlerAdapter {
 
     private final Logger logger = Logger.getLogger(MyStompSessionHandler.class.getName());
-    StompSession session;
+
     @Override
     public void afterConnected(StompSession session, StompHeaders connectedHeaders) {
-        this.session = session;
         logger.info("New session established : " + session.getSessionId());
         session.subscribe("/topic/user", this);
         logger.info("Subscribed to /topic/user");
@@ -37,17 +35,16 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
     public void handleFrame(StompHeaders headers, Object payload) {
         Message msg = (Message) payload;
         logger.info("Received : " + msg.getData().getText() + " from : " + msg.getAuthor() + " from : " + msg.getType() );
-//        this.session.subscribe("/user/" + 2 + "/queue/messages", this);
-//        this.session.send("/app/chat", getSampleMessage());
-//        logger.info("Message sent to websocket server");
     }
 
 
     private Message getSampleMessage() {
         Message msg = new Message();
         msg.setAuthor("me");
-        msg.setData(new DataBean("LOL LOL OOLO LOL OL OL OL"));
+        msg.setData(new DataBean("Hello I'am consultant"));
         msg.setType("text");
+        msg.setRecipientid("1");
         return msg;
     }
 }
+
