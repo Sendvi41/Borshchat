@@ -66,12 +66,15 @@ public class MenuController extends FxController {
     private void showQueue() throws IOException {
         queueController.updateRoot();
         view.getChildren().setAll(queueController.getRoot().getChildrenUnmodifiable());
-//        StompClient.startConnect();
-        Thread webSocThread = new Thread(){ public void run(){
-            StompClient.startConnect();
-        }
+        queueController.showAllChats();
+        Thread webSocThread = new Thread() {
+            public void run() {
+                StompClient.startConnect();
+            }
         };
         webSocThread.start();
+//        StompClient.startConnect();
+
 
     }
 

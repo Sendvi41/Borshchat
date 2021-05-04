@@ -1,6 +1,9 @@
 package com.sendvi41.borshdesk.controllers;
 
 
+import com.sendvi41.borshdesk.dto.Template;
+import com.sendvi41.borshdesk.utils.LabelChat;
+import com.sendvi41.borshdesk.utils.Tools;
 import com.sendvi41.borshdesk.websocket.MyStompSessionHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -24,57 +27,29 @@ public class QueueController extends FxController {
 
 
 
-    static private List<Label> list = new LinkedList<>();
+
 
     @FXML
     private VBox area;
 
 
 
-    @Getter
-    @Setter
-    protected class LabelChat {
+    public void showAllChats(){
+        List<LabelChat> list;
+        List<Label> labels = new LinkedList<>();
+        list = Tools.getListChats();
 
-        private Long id;
-        private Label label;
-        private List<ChatMessage> history = new LinkedList<>();
-
-        public LabelChat(Long id, Label label) {
-            this.id = id;
-            this.label = label;
+        for (LabelChat lc : list) {
+           labels.add(lc.getLabel());
         }
-
-        public void setMessage(String author,String message ) {
-            this.history.add(new ChatMessage(author, message));
-        }
-        protected class ChatMessage{
-            private String author;
-            private String message;
-
-            public ChatMessage(String author, String message) {
-                this.author = author;
-                this.message = message;
-            }
-        }
-
+        area.getChildren().setAll(labels);
 
     }
 
 
 
 
-    static public synchronized void addNewChat(String id, String message){
-        logger.info("Enter to addNewChat");
-        List<LabelChat> listnode = new LinkedList<>();
 
-
-        Label newLabel = new Label(id);
-
-        list.add(newLabel);
-
-
-        logger.info("Set all Labels");
-    }
 
 
 }

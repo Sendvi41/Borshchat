@@ -2,6 +2,7 @@ package com.sendvi41.borshdesk.websocket;
 
 
 import com.sendvi41.borshdesk.controllers.QueueController;
+import com.sendvi41.borshdesk.utils.Tools;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,8 +20,7 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
     private final Logger logger = Logger.getLogger(MyStompSessionHandler.class.getName());
     StompSession session;
 
-    @Autowired
-    private QueueController queueController;
+
 
     @Override
     public void afterConnected(StompSession session, StompHeaders connectedHeaders) {
@@ -47,7 +47,7 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
     public void handleFrame(StompHeaders headers, Object payload) {
         Message msg = (Message) payload;
         logger.info("Received : " + msg.getData().getText() + " from : " + msg.getAuthor() + " from : " + msg.getType() );
-        queueController.addNewChat(msg.getSenderid(),msg.getData().getText());
+        Tools.addNewChat(msg.getSenderid(), msg.getData().getText());
 //        this.session.subscribe("/user/" + 2 + "/queue/messages", this);
 //        this.session.send("/app/chat", getSampleMessage());
 //        logger.info("Message sent to websocket server");
