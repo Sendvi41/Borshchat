@@ -3,6 +3,7 @@ package com.sendvi41.borshdesk.websocket;
 import java.util.Scanner;
 
 import org.springframework.messaging.converter.MappingJackson2MessageConverter;
+import org.springframework.messaging.simp.stomp.StompSession;
 import org.springframework.messaging.simp.stomp.StompSessionHandler;
 import org.springframework.web.socket.client.WebSocketClient;
 import org.springframework.web.socket.client.standard.StandardWebSocketClient;
@@ -24,4 +25,5 @@ public class StompClient {
 
         new Scanner(System.in).nextLine(); // Don't close immediately.
     }
+
 }

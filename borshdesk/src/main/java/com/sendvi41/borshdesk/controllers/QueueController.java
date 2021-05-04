@@ -2,6 +2,7 @@ package com.sendvi41.borshdesk.controllers;
 
 
 import com.sendvi41.borshdesk.dto.Template;
+import com.sendvi41.borshdesk.utils.ChatMessage;
 import com.sendvi41.borshdesk.utils.LabelChat;
 import com.sendvi41.borshdesk.utils.Tools;
 import com.sendvi41.borshdesk.websocket.MyStompSessionHandler;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 import com.sendvi41.borshdesk.websocket.StompClient;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -24,7 +26,7 @@ public class QueueController extends FxController {
 
     private static final Logger logger = Logger.getLogger(QueueController.class.getName());
 
-
+    private Long selectedID = null;
 
 
 
@@ -32,15 +34,43 @@ public class QueueController extends FxController {
     @FXML
     private VBox area;
 
+    @FXML
+    private VBox received;
 
+    public void showHistoryChat(){
+
+    }
 
     public void showAllChats(){
         List<LabelChat> list;
         List<Label> labels = new LinkedList<>();
         list = Tools.getListChats();
-
+        List<Label> messages = new LinkedList<>();
         for (LabelChat lc : list) {
-           labels.add(lc.getLabel());
+            Label newlab = lc.getLabel();
+            newlab.setOnMouseClicked((e) -> {
+                if (getSelectedID() != null) {
+                    List<LabelChat> result = list.stream()
+                            .filter(item -> item.getId().equals(getSelectedID()))
+                            .collect(Collectors.toList());
+                    Label res = result.get(0).getLabel();
+                    res.setStyle("");
+
+                }
+                newlab.setStyle("-fx-text-fill: red; -fx-font-size: 16px");
+                this.selectedID = lc.getId();
+                received.getChildren().clear();
+               for( ChatMessage a :lc.getHistory()) {
+                    if(a.getAuthor()=="client")
+                    {
+                        received.getChildren().addAll(new Label (a.getMessage()));
+//                        messages.add();
+                    }
+
+                }
+//                .setAll(messages);
+            });
+            labels.add(newlab);
         }
         area.getChildren().setAll(labels);
 

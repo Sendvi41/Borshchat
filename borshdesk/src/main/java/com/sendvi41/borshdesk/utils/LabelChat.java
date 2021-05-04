@@ -24,15 +24,7 @@ public class LabelChat {
     public void setMessage(String author,String message ) {
         this.history.add(new ChatMessage(author, message));
     }
-    protected class ChatMessage{
-        private String author;
-        private String message;
 
-        public ChatMessage(String author, String message) {
-            this.author = author;
-            this.message = message;
-        }
-    }
 
 
 }

@@ -16,13 +16,18 @@ function getIndex(list, id) {
 
     return -1
 }
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+var id = getRandomInt(1, 10000);
 class Demo extends Component {
 
     constructor() {
         super();
         this.state = {
             messageList: [],
-            senderid: 1,
+            senderid: id,
             recipientid: null
         };
     }
