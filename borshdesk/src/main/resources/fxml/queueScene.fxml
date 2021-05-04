@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="491.0" prefWidth="676.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sendvi41.borshdesk.controllers.TemplateController">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="491.0" prefWidth="676.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sendvi41.borshdesk.controllers.QueueController">
    <children>
       <SplitPane dividerPositions="0.4896142433234421" prefHeight="491.0" prefWidth="676.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>

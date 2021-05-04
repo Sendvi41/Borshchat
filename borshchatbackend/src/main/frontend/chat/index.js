@@ -4,6 +4,9 @@ import {Launcher} from 'react-chat-window'
 import './css/chatstyle.css'
 import SockJsClient from "react-stomp";
 
+
+
+
 function getIndex(list, id) {
     for (var i = 0; i < list.length; i++ ) {
         if (list[i].id === id) {
@@ -45,12 +48,12 @@ class Demo extends Component {
 
         message['senderid'] =this.state.senderid;
         message['recipientid'] =this.state.recipientid;
-        if(this.state.recipientid==null){
+        // if(this.state.recipientid==null){
 
             this.clientRef.sendMessage('/app/user-all', JSON.stringify( message));
-        }else{
-            this.clientRef.sendMessage('/app/chatdesk', JSON.stringify( message));
-        }
+        // }else{
+        //     this.clientRef.sendMessage('/app/chatdesk', JSON.stringify( message));
+        // }
 
     }
 
@@ -72,6 +75,7 @@ class Demo extends Component {
             />
             <SockJsClient url='http://localhost:8080/websocket-chat/'
                           topics={["/user/" + this.state.senderid + "/queue/messages"]}
+                          // topics={['/topic/user']}
                           onConnect={() => {
                               console.log("connected");
                           }}
@@ -81,11 +85,11 @@ class Demo extends Component {
                           onMessage={(msg) => {
 
                               msg['author']='them';
-                              if(msg.recipientid!=null){
-                                  this.setState({
-                                      recipientid: msg.recipientid
-                                  })
-                              }
+                              // if(msg.recipientid!=null){
+                              //     this.setState({
+                              //         recipientid: msg.recipientid
+                              //     })
+                              // }
                               console.log(msg);
                               this.setState({
                                   messageList: [...this.state.messageList, msg]
