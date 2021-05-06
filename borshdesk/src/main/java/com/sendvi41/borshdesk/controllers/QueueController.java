@@ -50,7 +50,7 @@ public class QueueController extends FxController {
     private void takeChat() throws IOException {
         Tools.deleteChatFromMainQueue(selectedID.toString());
         ConsultClient thread = new ConsultClient(userId.toString(), selectedID.toString());
-        thread.run();
+        thread.start();
         received.getChildren().clear();
         selectedID = null;
         showAllChats();

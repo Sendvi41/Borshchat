@@ -56,6 +56,23 @@ public class Tools {
         logger.info("Chat have taken");
     }
 
+
+    static public synchronized void addPersonalChat(String id, String message){
+        List<LabelChat> result = receivedChats.stream()
+                .filter(item -> item.getId().equals(Long.parseLong(id)))
+                .collect(Collectors.toList());
+        if(!result.isEmpty())
+        {
+            logger.info("Chat already exist");
+            result.get(0).setMessage("client", message);
+        }else {
+            LabelChat newLabel = new LabelChat(Long.parseLong(id), new Label(id));
+            newLabel.setMessage("client", message);
+            listchats.add(newLabel);
+        }
+
+    }
+
 }
 
 

@@ -1,5 +1,6 @@
 package com.sendvi41.borshdesk.websocket;
 
+import com.sendvi41.borshdesk.utils.Tools;
 import org.apache.log4j.Logger;
 import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.simp.stomp.*;
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @Component
-public class ConsultClient implements Runnable{
+public class ConsultClient extends Thread{
 
     private final Logger logger = Logger.getLogger(ConsultClient.class.getName());
 
@@ -88,6 +89,7 @@ public class ConsultClient implements Runnable{
 
             public void handleFrame(StompHeaders stompHeaders, Object payload) {
                 Message msg = (Message) payload;
+                Tools.addPersonalChat(msg.getSenderid(), msg.getData().getText());
                 logger.info("Received : " + msg.getData().getText() + " from : " + msg.getAuthor() + " from : " + msg.getType());
             }
         });
@@ -128,7 +130,7 @@ public class ConsultClient implements Runnable{
 
             while (turn)
             {
-                Thread.sleep(50000);
+                Thread.sleep(1000);
                 if(this.message!=null){
                     sendMessage(stompSession, this.message);
                     this.message = null;
