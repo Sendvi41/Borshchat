@@ -128,7 +128,7 @@ public class ConsultClient implements Runnable{
 
             while (turn)
             {
-                Thread.sleep(2000);
+                Thread.sleep(50000);
                 if(this.message!=null){
                     sendMessage(stompSession, this.message);
                     this.message = null;
