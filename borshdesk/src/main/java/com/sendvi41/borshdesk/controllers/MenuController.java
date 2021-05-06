@@ -25,8 +25,6 @@ public class MenuController extends FxController {
     Consultant currentConsultant;
 
 
-
-
     @Autowired
     private Authorization authorization;
 
@@ -66,6 +64,7 @@ public class MenuController extends FxController {
     @FXML
     private void showQueue() throws IOException {
         queueController.updateRoot();
+        queueController.setUserId(currentConsultant.getId());
         view.getChildren().setAll(queueController.getRoot().getChildrenUnmodifiable());
         queueController.showAllChats();
 

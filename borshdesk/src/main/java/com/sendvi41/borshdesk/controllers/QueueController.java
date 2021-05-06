@@ -5,6 +5,7 @@ import com.sendvi41.borshdesk.dto.Template;
 import com.sendvi41.borshdesk.utils.ChatMessage;
 import com.sendvi41.borshdesk.utils.LabelChat;
 import com.sendvi41.borshdesk.utils.Tools;
+import com.sendvi41.borshdesk.websocket.ConsultClient;
 import com.sendvi41.borshdesk.websocket.MyStompSessionHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -30,6 +31,8 @@ public class QueueController extends FxController {
 
     private Long selectedID = null;
 
+    private Long userId;
+
 
 
 
@@ -46,10 +49,11 @@ public class QueueController extends FxController {
     @FXML
     private void takeChat() throws IOException {
         Tools.deleteChatFromMainQueue(selectedID.toString());
+        ConsultClient thread = new ConsultClient(userId.toString(), selectedID.toString());
+        thread.run();
         received.getChildren().clear();
         selectedID = null;
         showAllChats();
-
     }
 
 
@@ -89,10 +93,7 @@ public class QueueController extends FxController {
 
     }
 
-
-
-
-
-
-
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 }

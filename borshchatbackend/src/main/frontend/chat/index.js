@@ -53,12 +53,14 @@ class Demo extends Component {
 
         message['senderid'] =this.state.senderid;
         message['recipientid'] =this.state.recipientid;
-        // if(this.state.recipientid==null){
+        if(this.state.recipientid==null){
 
             this.clientRef.sendMessage('/app/user-all', JSON.stringify( message));
-        // }else{
-        //     this.clientRef.sendMessage('/app/chatdesk', JSON.stringify( message));
-        // }
+            console.log("Subscribe to user-all ")
+        }else{
+            this.clientRef.sendMessage('/app/chatdesk', JSON.stringify( message));
+            console.log('Subscribe to chatdesk')
+        }
 
     }
 
@@ -90,11 +92,11 @@ class Demo extends Component {
                           onMessage={(msg) => {
 
                               msg['author']='them';
-                              // if(msg.recipientid!=null){
-                              //     this.setState({
-                              //         recipientid: msg.recipientid
-                              //     })
-                              // }
+                              if(msg.recipientid!=null){
+                                  this.setState({
+                                      recipientid: msg.recipientid
+                                  })
+                              }
                               console.log(msg);
                               this.setState({
                                   messageList: [...this.state.messageList, msg]
