@@ -23,7 +23,7 @@ public class MenuController extends FxController {
     private final String source = "fxml/menuScene.fxml";
     private final Logger logger = Logger.getLogger(MenuController.class.getName());
     Consultant currentConsultant;
-    boolean sesiarun = false;
+
 
 
 
@@ -67,15 +67,7 @@ public class MenuController extends FxController {
         queueController.updateRoot();
         view.getChildren().setAll(queueController.getRoot().getChildrenUnmodifiable());
         queueController.showAllChats();
-        if(!sesiarun) {
-            Thread webSocThread = new Thread() {
-                public void run() {
-                    StompClient.startConnect();
-                }
-            };
-            webSocThread.start();
-            sesiarun=true;
-        }
+
 
 //        StompClient.startConnect();
 

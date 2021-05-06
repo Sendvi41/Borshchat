@@ -23,6 +23,7 @@ public class StartController extends FxController implements CommandLineRunner {
     private final MenuController menuController;
     private final String source = "fxml/startScene.fxml";
     private final Logger logger = Logger.getLogger(StartController.class.getName());
+    boolean sesiarun = false;
     @Autowired
     private Authorization authorization;
 
@@ -54,6 +55,15 @@ public class StartController extends FxController implements CommandLineRunner {
 
             menuController.setCurrentConsultant(currentConsultant);
             menuController.getStage().showAndWait();
+            if(!sesiarun) {
+                Thread webSocThread = new Thread() {
+                    public void run() {
+                        StompClient.startConnect();
+                    }
+                };
+                webSocThread.start();
+                sesiarun=true;
+            }
 
         } else {
             message.setVisible(true);
