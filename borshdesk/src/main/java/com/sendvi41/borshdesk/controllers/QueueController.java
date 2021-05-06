@@ -14,6 +14,8 @@ import lombok.Setter;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 import com.sendvi41.borshdesk.websocket.StompClient;
+
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,6 +42,17 @@ public class QueueController extends FxController {
     public void showHistoryChat(){
 
     }
+
+    @FXML
+    private void takeChat() throws IOException {
+        Tools.deleteChatFromMainQueue(selectedID.toString());
+        received.getChildren().clear();
+        selectedID = null;
+        showAllChats();
+
+    }
+
+
 
     public void showAllChats(){
         List<LabelChat> list;

@@ -23,7 +23,7 @@ public class StompClient {
         StompSessionHandler sessionHandler = new MyStompSessionHandler();
         stompClient.connect(URL, sessionHandler);
 
-        new Scanner(System.in).nextLine(); // Don't close immediately.
+        new Scanner(System.in).nextLine();
     }
 
 }

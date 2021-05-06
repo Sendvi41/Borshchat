@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Tools {
     private static final Logger logger = Logger.getLogger(Tools.class.getName());
+    static List<LabelChat> receivedChats = new LinkedList<>();
     static List<LabelChat> listchats = new LinkedList<>();
 
     static public synchronized void addNewChat(String id, String firstmessage){
@@ -34,8 +35,27 @@ public class Tools {
 
     }
     static public synchronized List<LabelChat> getListChats(){
-        return listchats;
+        return listchats ;
     }
+
+    static public synchronized List<LabelChat> getReceivedChats(){
+        return receivedChats;
+    }
+
+    static public synchronized void deleteChatFromMainQueue(String id){
+
+        LabelChat a = listchats.stream()
+                .filter(item -> item.getId().equals(Long.parseLong(id)))
+                .collect(Collectors.toList()).get(0);
+            a.getLabel().setStyle("");
+        receivedChats.add(a);
+
+        listchats = listchats.stream()
+                .filter(item -> !item.getId().equals(Long.parseLong(id)))
+                .collect(Collectors.toList());
+        logger.info("Chat have taken");
+    }
+
 }
 
 

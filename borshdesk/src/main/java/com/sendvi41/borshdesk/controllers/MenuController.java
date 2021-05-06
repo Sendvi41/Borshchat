@@ -59,6 +59,7 @@ public class MenuController extends FxController {
     private void showChat() throws IOException {
         chatController.updateRoot();
         view.getChildren().setAll(chatController.getRoot().getChildrenUnmodifiable());
+        chatController.showAllChats();
 
     }
 
