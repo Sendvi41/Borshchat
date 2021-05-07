@@ -56,10 +56,10 @@ class Demo extends Component {
         if(this.state.recipientid==null){
 
             this.clientRef.sendMessage('/app/user-all', JSON.stringify( message));
-            console.log("Subscribe to user-all ")
+            console.log("Send to user-all ")
         }else{
             this.clientRef.sendMessage('/app/chatdesk', JSON.stringify( message));
-            console.log('Subscribe to chatdesk')
+            console.log('Send to chatdesk')
         }
 
     }
@@ -82,6 +82,7 @@ class Demo extends Component {
             />
             <SockJsClient url='http://localhost:8080/websocket-chat/'
                           topics={["/user/" + this.state.senderid + "/queue/messages"]}
+                          // topics={["/user/queue/messages"]}
                           // topics={['/topic/user']}
                           onConnect={() => {
                               console.log("connected");

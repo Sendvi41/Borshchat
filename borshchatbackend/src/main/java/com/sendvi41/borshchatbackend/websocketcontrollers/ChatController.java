@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
 public class ChatController {
 
     @MessageMapping("/user-all")
-    @SendTo("/user/queue")
+    @SendTo("/topic/queue")
     public MessageBean send(@Payload MessageBean message) {
         System.out.println("Enter to method send in ChatController");
         System.out.println(message);

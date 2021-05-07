@@ -26,7 +26,7 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
     public void afterConnected(StompSession session, StompHeaders connectedHeaders) {
         this.session = session;
         logger.info("New session established : " + session.getSessionId());
-        session.subscribe("/user/queue", this);
+        session.subscribe("/topic/queue", this);
         logger.info("Subscribed to /topic/user");
 //        session.send("/app/user-all", getSampleMessage());
 //        logger.info("Message sent to websocket server");
