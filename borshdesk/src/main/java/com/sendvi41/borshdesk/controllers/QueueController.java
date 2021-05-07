@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.sendvi41.borshdesk.websocket.StompClient;
 
@@ -28,6 +29,7 @@ public class QueueController extends FxController {
     private final String source = "fxml/queueScene.fxml";
 
     private static final Logger logger = Logger.getLogger(QueueController.class.getName());
+
 
     private Long selectedID = null;
 
@@ -51,6 +53,8 @@ public class QueueController extends FxController {
         Tools.deleteChatFromMainQueue(selectedID.toString());
         ConsultClient thread = new ConsultClient(userId.toString(), selectedID.toString());
         thread.start();
+        ChatController.addThread(thread);
+
         received.getChildren().clear();
         selectedID = null;
         showAllChats();

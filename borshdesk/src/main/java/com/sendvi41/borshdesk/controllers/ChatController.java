@@ -3,8 +3,10 @@ package com.sendvi41.borshdesk.controllers;
 import com.sendvi41.borshdesk.utils.ChatMessage;
 import com.sendvi41.borshdesk.utils.LabelChat;
 import com.sendvi41.borshdesk.utils.Tools;
+import com.sendvi41.borshdesk.websocket.ConsultClient;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +25,8 @@ public class ChatController extends FxController {
 
     private static final Logger logger = Logger.getLogger(ChatController.class.getName());
 
+    private static List<ConsultClient> threadList = new LinkedList<>();
+
     private Long selectedID = null;
 
     @FXML
@@ -33,6 +37,38 @@ public class ChatController extends FxController {
 
     @FXML
     private VBox sendChats;
+
+    @FXML
+    private TextArea textarea;
+
+    public static void addThread(ConsultClient thread)
+    {
+        threadList.add(thread);
+    }
+
+
+    @FXML
+    private void send()
+    {
+        if(!textarea.getText().trim().equals("")) {
+
+            List<ConsultClient> result = threadList.stream()
+                    .filter(item -> item.getSenderid().equals(getSelectedID().toString()))
+                    .collect(Collectors.toList());
+            ConsultClient res = result.get(0);
+            res.sendMessageToClient(textarea.getText());
+            Tools.addPersonalChat(res.getSenderid(),textarea.getText(),"consult");
+
+            sendChats.getChildren().addAll(new Label (textarea.getText()));
+            Label emptyLabel = new Label();
+            emptyLabel.setVisible(false);
+            receivedChats.getChildren().addAll(emptyLabel);
+
+            textarea.clear();
+        }
+    }
+
+
 
 
     public void showAllChats(){
@@ -53,6 +89,7 @@ public class ChatController extends FxController {
                 newlab.setStyle("-fx-text-fill: red; -fx-font-size: 16px");
                 this.selectedID = lc.getId();
                 receivedChats.getChildren().clear();
+                sendChats.getChildren().clear();
                 for( ChatMessage a :lc.getHistory()) {
                     if(a.getAuthor().equals("client"))
                     {

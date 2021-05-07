@@ -2,7 +2,9 @@ package com.sendvi41.borshdesk.controllers;
 
 import com.sendvi41.borshdesk.dto.Consultant;
 import com.sendvi41.borshdesk.services.Authorization;
+import com.sendvi41.borshdesk.websocket.ConsultClient;
 import com.sendvi41.borshdesk.websocket.StompClient;
+import com.sendvi41.borshdesk.websocket.SubscribeClientForPersonalQueue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -56,10 +58,17 @@ public class StartController extends FxController implements CommandLineRunner {
             webSocThread.start();
 
 
+
             message.setVisible(false);
             getStage().hide();
             Consultant currentConsultant = authorization.getConsultant(consultant);
             logger.info("consultant successfully received with id" + currentConsultant.getId());
+
+            SubscribeClientForPersonalQueue subscribeClientForPersonalQueue =
+                    new SubscribeClientForPersonalQueue(currentConsultant.getId().toString());
+
+            subscribeClientForPersonalQueue.start();
+
 
             menuController.setCurrentConsultant(currentConsultant);
             menuController.getStage().showAndWait();

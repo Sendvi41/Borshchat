@@ -89,7 +89,7 @@ public class ConsultClient extends Thread{
 
             public void handleFrame(StompHeaders stompHeaders, Object payload) {
                 Message msg = (Message) payload;
-                Tools.addPersonalChat(msg.getSenderid(), msg.getData().getText());
+                Tools.addPersonalChat(msg.getSenderid(), msg.getData().getText(),"client");
                 logger.info("Received : " + msg.getData().getText() + " from : " + msg.getAuthor() + " from : " + msg.getType());
             }
         });
@@ -123,10 +123,9 @@ public class ConsultClient extends Thread{
         try {
             StompSession stompSession = f.get();
 
-            subscribeTopic(stompSession,  getRecepientid());
-            logger.info("Subscribing to topic using session " + stompSession);
+            sendMessage(stompSession, "Здравствуйте!");
 
-            sendMessage(stompSession, "Hello");
+            Tools.addPersonalChat(getSenderid(),"Здравствуйте!","consult");
 
             while (turn)
             {

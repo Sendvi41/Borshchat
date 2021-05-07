@@ -57,17 +57,17 @@ public class Tools {
     }
 
 
-    static public synchronized void addPersonalChat(String id, String message){
+    static public synchronized void addPersonalChat(String id, String message, String author){
         List<LabelChat> result = receivedChats.stream()
                 .filter(item -> item.getId().equals(Long.parseLong(id)))
                 .collect(Collectors.toList());
         if(!result.isEmpty())
         {
             logger.info("Chat already exist");
-            result.get(0).setMessage("client", message);
+            result.get(0).setMessage(author, message);
         }else {
             LabelChat newLabel = new LabelChat(Long.parseLong(id), new Label(id));
-            newLabel.setMessage("client", message);
+            newLabel.setMessage(author, message);
             listchats.add(newLabel);
         }
 
