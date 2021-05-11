@@ -35,5 +35,4 @@ public class Template {
     private Consultant consultant_id;
 
 
-
 }
