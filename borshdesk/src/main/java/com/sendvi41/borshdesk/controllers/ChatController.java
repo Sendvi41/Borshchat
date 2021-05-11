@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,6 +38,9 @@ public class ChatController extends FxController {
 
     @Autowired
     private TaskServiceInterface taskService;
+
+    @FXML
+    private AnchorPane taskarea;
 
     @FXML
     private VBox areaChats;
@@ -98,19 +102,48 @@ public class ChatController extends FxController {
 
 
     public void showAllChats(){
+        taskarea.setVisible(selectedID != null);
         List<LabelChat> list;
         List<Label> labels = new LinkedList<>();
         list = Tools.getReceivedChats();
+        if(selectedID!=null) {
+            List<LabelChat> result = list.stream()
+                    .filter(item -> item.getId().equals(getSelectedID()))
+                    .collect(Collectors.toList());
+            LabelChat current =result.get(0);
+            receivedChats.getChildren().clear();
+            sendChats.getChildren().clear();
+
+            for( ChatMessage a :current.getHistory()) {
+                if(a.getAuthor().equals("client"))
+                {
+                    receivedChats.getChildren().addAll(new Label (a.getMessage()));
+                    Label emptyLabel = new Label();
+                    emptyLabel.setVisible(false);
+                    sendChats.getChildren().addAll(emptyLabel);
+                }
+                else if(a.getAuthor().equals("consult")){
+
+                    sendChats.getChildren().addAll(new Label (a.getMessage()));
+                    Label emptyLabel = new Label();
+                    emptyLabel.setVisible(false);
+                    receivedChats.getChildren().addAll(emptyLabel);
+                }
+
+            }
+        }
+
         for (LabelChat lc : list) {
             Label newlab = lc.getLabel();
             newlab.setOnMouseClicked((e) -> {
+                taskarea.setVisible(true);
                 if (getSelectedID() != null) {
+
                     List<LabelChat> result = list.stream()
                             .filter(item -> item.getId().equals(getSelectedID()))
                             .collect(Collectors.toList());
                     Label res = result.get(0).getLabel();
                     res.setStyle("");
-
                 }
                 newlab.setStyle("-fx-text-fill: red; -fx-font-size: 16px");
                 this.selectedID = lc.getId();
@@ -147,5 +180,8 @@ public class ChatController extends FxController {
         taskService.createTask(name.getText(),surname.getText(), patronymic.getText(), email.getText(), comment.getText(), getUserId());
     }
 
-
+    @Override
+    public void init() {
+        taskarea.setVisible(false);
+    }
 }
