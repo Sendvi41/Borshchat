@@ -2,6 +2,7 @@ package com.sendvi41.borshchatbackend.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -28,6 +29,10 @@ public class TaskClient {
     @JsonProperty("surnameclient")
     private String surnameclient;
 
+    @Column(name = "patronymicclient", nullable = false)
+    @JsonProperty("patronymicclient")
+    private String patronymicclient;
+
     @Column(name = "email", nullable = false, unique = true)
     @JsonProperty("email")
     private String email;
@@ -36,13 +41,11 @@ public class TaskClient {
     @JsonProperty("comment")
     private String comment;
 
-    @Column(name = "idconsult", nullable = false)
-    @JsonProperty("idconsult")
-    private Long idconsult;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "consultant_id", nullable = false)
+    @JsonIgnore
+    private Consultant consultant_id;
 
-    @Column(name = "nameconsult", nullable = false)
-    @JsonProperty("nameconsult")
-    private String nameconsult;
 
 
 

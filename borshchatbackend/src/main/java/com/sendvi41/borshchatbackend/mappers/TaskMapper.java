@@ -1,7 +1,9 @@
 package com.sendvi41.borshchatbackend.mappers;
 
 
+import com.sendvi41.borshchatbackend.dto.TaskDto;
 import com.sendvi41.borshchatbackend.dto.TemplateDto;
+import com.sendvi41.borshchatbackend.entities.TaskClient;
 import com.sendvi41.borshchatbackend.entities.Template;
 import com.sendvi41.borshchatbackend.repositories.ConsultantRepository;
 import org.modelmapper.Converter;
@@ -14,7 +16,7 @@ import java.text.ParseException;
 import java.util.Objects;
 
 @Component
-public class TemplateMapper {
+public class TaskMapper {
 
     @Autowired
     private ModelMapper modelMapper;
@@ -22,51 +24,51 @@ public class TemplateMapper {
     @Autowired
     ConsultantRepository consultantRepository;
 
-    public TemplateDto convertToDto(Template temp)  {
-        TemplateDto tempDto = modelMapper.map(temp, TemplateDto.class);
+
+    public TaskDto convertToDto(TaskClient task)  {
+        TaskDto tempDto = modelMapper.map(task, TaskDto.class);
         return tempDto;
     }
 
-    public Template convertToEntity(TemplateDto TemplateDto) throws ParseException {
-        Template template = modelMapper.map( TemplateDto, Template.class);
+    public TaskClient convertToEntity(TaskDto TaskDto) throws ParseException {
+        TaskClient task = modelMapper.map( TaskDto, TaskClient.class);
 
-        return template;
+        return task;
     }
 
     @PostConstruct
     public void setupMapper() {
-        modelMapper.createTypeMap(Template.class, TemplateDto.class)
-                .addMappings(m -> m.skip(TemplateDto::setConsultant_id)).setPostConverter(toDtoConverter());
-        modelMapper.createTypeMap(TemplateDto.class, Template.class)
-                .addMappings(m -> m.skip(Template::setConsultant_id)).setPostConverter(toEntityConverter());
+        modelMapper.createTypeMap(TaskClient.class, TaskDto.class)
+                .addMappings(m -> m.skip(TaskDto::setConsultant_id)).setPostConverter(toDtoConverter());
+        modelMapper.createTypeMap(TaskDto.class, TaskClient.class)
+                .addMappings(m -> m.skip(TaskClient::setConsultant_id)).setPostConverter(toEntityConverter());
     }
 
 
 
-    public Converter<TemplateDto, Template> toEntityConverter() {
+    public Converter<TaskDto, TaskClient> toEntityConverter() {
         return context -> {
-            TemplateDto source = context.getSource();
-            Template destination = context.getDestination();
+            TaskDto source = context.getSource();
+            TaskClient destination = context.getDestination();
             mapSpecificFields(source, destination);
             return context.getDestination();
         };
     }
 
-    public Converter<Template, TemplateDto> toDtoConverter() {
+    public Converter<TaskClient, TaskDto> toDtoConverter() {
         return context -> {
-            Template source = context.getSource();
-            TemplateDto destination = context.getDestination();
+            TaskClient source = context.getSource();
+            TaskDto destination = context.getDestination();
             mapSpecificFields(source, destination);
             return context.getDestination();
         };
     }
-    public void mapSpecificFields(Template source, TemplateDto destination) {
+    public void mapSpecificFields(TaskClient source, TaskDto destination) {
         destination.setConsultant_id(Objects.isNull(source) || Objects.isNull(source.getId()) ? null : source.getConsultant_id().getId());
     }
 
-    void mapSpecificFields(TemplateDto source, Template destination) {
+    void mapSpecificFields(TaskDto source, TaskClient destination) {
         destination.setConsultant_id(consultantRepository.findById(source.getConsultant_id()).orElse(null));
     }
-
 
 }
