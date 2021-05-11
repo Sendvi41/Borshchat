@@ -56,6 +56,7 @@ public class MenuController extends FxController {
     @FXML
     private void showChat() throws IOException {
         chatController.updateRoot();
+        chatController.setUserId(currentConsultant.getId());
         view.getChildren().setAll(chatController.getRoot().getChildrenUnmodifiable());
         chatController.showAllChats();
 

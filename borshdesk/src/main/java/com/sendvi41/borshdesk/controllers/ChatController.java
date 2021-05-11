@@ -1,5 +1,7 @@
 package com.sendvi41.borshdesk.controllers;
 
+import com.sendvi41.borshdesk.services.TaskServiceInterface;
+import com.sendvi41.borshdesk.services.TemplateServiceInterface;
 import com.sendvi41.borshdesk.utils.ChatMessage;
 import com.sendvi41.borshdesk.utils.LabelChat;
 import com.sendvi41.borshdesk.utils.Tools;
@@ -7,10 +9,12 @@ import com.sendvi41.borshdesk.websocket.ConsultClient;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.LinkedList;
@@ -28,6 +32,11 @@ public class ChatController extends FxController {
     private static List<ConsultClient> threadList = new LinkedList<>();
 
     private Long selectedID = null;
+    private Long userId;
+
+
+    @Autowired
+    private TaskServiceInterface taskService;
 
     @FXML
     private VBox areaChats;
@@ -40,6 +49,23 @@ public class ChatController extends FxController {
 
     @FXML
     private TextArea textarea;
+
+/// for creating task
+    @FXML
+    private TextField name;
+
+    @FXML
+    private TextField surname;
+
+    @FXML
+    private TextField patronymic;
+
+    @FXML
+    private TextField email;
+
+    @FXML
+    private TextArea comment;
+
 
     public static void addThread(ConsultClient thread)
     {
@@ -114,5 +140,12 @@ public class ChatController extends FxController {
         areaChats.getChildren().setAll(labels);
 
     }
+
+    @FXML
+    private void createTask()
+    {
+        taskService.createTask(name.getText(),surname.getText(), patronymic.getText(), email.getText(), comment.getText(), getUserId());
+    }
+
 
 }

@@ -2,6 +2,7 @@ package com.sendvi41.borshdesk.controllers;
 
 import com.sendvi41.borshdesk.dto.Template;
 import com.sendvi41.borshdesk.services.TemplateService;
+import com.sendvi41.borshdesk.services.TemplateServiceInterface;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -48,7 +49,7 @@ public class TemplateController extends FxController {
 
 
     @Autowired
-    private TemplateService templateService;
+    private TemplateServiceInterface templateService;
 
     @FXML
     private AnchorPane templates;
