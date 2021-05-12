@@ -3,7 +3,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 module.exports = {
-    entry: './chat/index.js',
+    entry: {
+      chat:  './chat/index.js',
+      main:  './main/index.js',
+    },
 
     module: {
         rules: [
