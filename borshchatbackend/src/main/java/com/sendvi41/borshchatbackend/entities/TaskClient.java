@@ -46,7 +46,7 @@ public class TaskClient {
     @JsonProperty("comment")
     private String comment;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "consultant_id", nullable = false)
 //    @JsonIgnore
     private Consultant consultant_id;

@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import {Task} from './task';
+import TaskService from './taskservice'
+
 
 
 
@@ -7,23 +9,55 @@ export class Listtasks extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {tasks: []};
+        this.state = {
+            tasks: []};
     }
-    //
-    // componentDidMount() { (2)
-    //     client({method: 'GET', path: uri}).done(response => {
-    //         this.setState({tasks: response.entity._embedded.tasks});
-    //     });
-    // }
+
+    componentDidMount() {
+        TaskService.getTasks().then((response)=>{
+            this.setState({tasks: response.data})
+            }
+        )
+    }
 
 
     render() {
         return (
-            <ul>
-                <Task/>
-                <Task/>
-                <Task/>
-            </ul>
+            <section className="content-area">
+                <div className="table-area">
+               <table className="responsive-table table">
+                   <thead>
+                       <tr>
+                           <th>id</th>
+                           <th>Tracker</th>
+                           <th>Status</th>
+                           <th>Priority</th>
+                           <th>Theme</th>
+                           <th>Author</th>
+                           <th>Date</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                   {
+                       this.state.tasks.map(
+                            task=>
+                                <tr key = {task.id}>
+                                    <td>{task.id}</td>
+                                    <td>{task.tracker}</td>
+                                    <td>{task.status}</td>
+                                    <td>{task.priority}</td>
+                                    <td>{task.theme}</td>
+                                    <td>{task.consultant_id.name}</td>
+                                    <td>{new Date(Date.parse(task.date+"0000")).toDateString()}<br/>
+                                    {new Date(Date.parse(task.date+"0000")).toTimeString()}</td>
+                                </tr>
+                       )
+                   }
+                   </tbody>
+               </table>
+                </div>
+            </section>
+
         )
     }
 }
