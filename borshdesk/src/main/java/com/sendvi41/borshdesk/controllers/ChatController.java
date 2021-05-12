@@ -6,7 +6,10 @@ import com.sendvi41.borshdesk.utils.ChatMessage;
 import com.sendvi41.borshdesk.utils.LabelChat;
 import com.sendvi41.borshdesk.utils.Tools;
 import com.sendvi41.borshdesk.websocket.ConsultClient;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -31,6 +34,9 @@ public class ChatController extends FxController {
     private static final Logger logger = Logger.getLogger(ChatController.class.getName());
 
     private static List<ConsultClient> threadList = new LinkedList<>();
+
+    ObservableList<String> trackers = FXCollections.observableArrayList("Bug", "Support");
+    ObservableList<String> priorities = FXCollections.observableArrayList("High", "Normal", "Low", "Immediate");
 
     private Long selectedID = null;
     private Long userId;
@@ -70,6 +76,21 @@ public class ChatController extends FxController {
     @FXML
     private TextArea comment;
 
+    @FXML
+    private TextField theme;
+
+    @FXML
+    private ChoiceBox priority;
+
+    @FXML
+    private ChoiceBox tracker;
+
+    @Override
+    public void initialize() {
+        super.initialize();
+        priority.setItems(priorities);
+        tracker.setItems(trackers);
+    }
 
     public static void addThread(ConsultClient thread)
     {
@@ -177,7 +198,9 @@ public class ChatController extends FxController {
     @FXML
     private void createTask()
     {
-        taskService.createTask(name.getText(),surname.getText(), patronymic.getText(), email.getText(), comment.getText(), getUserId());
+        taskService.createTask(name.getText(),surname.getText(), patronymic.getText(),
+                email.getText(), comment.getText(), getUserId(),theme.getText(),
+                tracker.getValue().toString(), priority.getValue().toString());
     }
 
     @Override

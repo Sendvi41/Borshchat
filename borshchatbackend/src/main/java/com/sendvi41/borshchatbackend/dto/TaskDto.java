@@ -33,6 +33,18 @@ public class TaskDto {
     @JsonProperty("comment")
     private String comment;
 
+    @Column(name = "theme", nullable = false)
+    @JsonProperty("theme")
+    private String theme;
+
+    @Column(name = "tracker", nullable = false)
+    @JsonProperty("tracker")
+    private String tracker;
+
+    @Column(name = "priority", nullable = false)
+    @JsonProperty("priority")
+    private String priority;
+
     @JsonProperty("consultant_id")
     private Long consultant_id;
 }

@@ -38,5 +38,9 @@ public class Consultant{
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "consultant_id")
     private Set<TaskClient> tasks;
 
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "consultant_id")
+    private Set<CommentTask> commentTasks;
+
 
 }

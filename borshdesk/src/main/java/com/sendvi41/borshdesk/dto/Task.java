@@ -31,6 +31,15 @@ public class Task {
     @JsonProperty("comment")
     private String comment;
 
+    @JsonProperty("theme")
+    private String theme;
+
+    @JsonProperty("tracker")
+    private String tracker;
+
+    @JsonProperty("priority")
+    private String priority;
+
     @JsonProperty("consultant_id")
     private Long consultant_id;
 

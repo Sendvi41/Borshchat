@@ -20,7 +20,7 @@ public class TaskService implements TaskServiceInterface{
 
     @Override
     public Boolean createTask(String nameclient, String surnameclient, String patronymicclient,
-                              String email, String comment, Long consultid) {
+                              String email, String comment, Long consultid, String theme, String tracker, String priority) {
 
         Task task = new Task();
         task.setNameclient(nameclient);
@@ -29,6 +29,9 @@ public class TaskService implements TaskServiceInterface{
         task.setEmail(email);
         task.setComment(comment);
         task.setConsultant_id(consultid);
+        task.setTheme(theme);
+        task.setTracker(tracker);
+        task.setPriority(priority);
 
         try {
             ResponseEntity<String> response
