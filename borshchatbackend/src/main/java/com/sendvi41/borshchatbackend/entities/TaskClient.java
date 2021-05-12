@@ -8,7 +8,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Set;
 
 @Entity
@@ -57,17 +59,17 @@ public class TaskClient {
     @JsonProperty("priority")
     private String priority;
 
-    @Column(name = "status",  columnDefinition = "varchar(255) default 'New'")
+    @Column(name = "status")
     @JsonProperty("status")
-    private String status;
+    private String status = "New";
 
     @Column(name = "theme", nullable = false)
     @JsonProperty("theme")
     private String theme;
 
-    @Column(name = "date",  columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "date")
     @JsonProperty("date")
-    private LocalDateTime localDateTime;;
+    private LocalDateTime localDateTime = LocalDateTime.now();
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "task_id")
