@@ -38,7 +38,7 @@ public class TaskClient {
     @JsonProperty("patronymicclient")
     private String patronymicclient;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email", nullable = false)
     @JsonProperty("email")
     private String email;
 
