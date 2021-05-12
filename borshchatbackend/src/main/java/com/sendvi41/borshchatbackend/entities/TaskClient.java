@@ -48,7 +48,7 @@ public class TaskClient {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "consultant_id", nullable = false)
-    @JsonIgnore
+//    @JsonIgnore
     private Consultant consultant_id;
 
     @Column(name = "tracker", nullable = false)
