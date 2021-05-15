@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Task} from './task';
+
 import TaskService from './taskservice'
 
 

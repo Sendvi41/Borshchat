@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import './menu.css'
-
+import Rout from './router'
 
 
 
@@ -13,15 +13,18 @@ export default class Menu extends Component {
 
     render() {
         return (
-            <div className="nav">
-                <div className="toggle"></div>
-                <ul>
-                    <li><a href="/">Tasks</a></li>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Statistics</a></li>
-                    <li><a href="#">Administration</a></li>
-                    <li><a href="#">Download</a></li>
-                </ul>
+            <div>
+                <div className="nav">
+                    <ul>
+                        <li><a href="/">Tasks</a></li>
+                        <li><a href="/docs">Documentation</a></li>
+                        <li><a href="/stat">Statistics</a></li>
+                        <li><a href="/admin">Administration</a></li>
+                        <li><a href="/load">Download</a></li>
+                    </ul>
+                </div>
+                <Rout>
+                </Rout>
             </div>
         )
     }
