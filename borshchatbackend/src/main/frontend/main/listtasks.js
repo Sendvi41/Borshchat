@@ -5,7 +5,7 @@ import TaskService from './taskservice'
 
 
 
-export class Listtasks extends Component {
+export default class Listtasks extends Component {
 
     constructor(props) {
         super(props);
