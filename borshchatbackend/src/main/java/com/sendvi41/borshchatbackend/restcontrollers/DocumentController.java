@@ -1,15 +1,15 @@
 package com.sendvi41.borshchatbackend.restcontrollers;
 
 
-import com.sendvi41.borshchatbackend.dto.TemplateDto;
 import com.sendvi41.borshchatbackend.entities.Document;;
-import com.sendvi41.borshchatbackend.entities.Template;
 import com.sendvi41.borshchatbackend.services.DocumentServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -31,10 +31,14 @@ public class DocumentController {
         }
     }
 
-    @PostMapping(value = "/createdoc", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> createDocument(@RequestBody Document doc) {
+    @PostMapping(value = "/uploaddoc")
+    public ResponseEntity<?> uploadDocument(@RequestParam("document") MultipartFile multipartFile) {
+        try {
+            Document doc = new Document();
+            doc.setName(StringUtils.cleanPath(multipartFile.getOriginalFilename()));
+            doc.setContent(multipartFile.getBytes());
+            doc.setSize(multipartFile.getSize());
 
-        try { ;
             documentService.saveDocument(doc);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
