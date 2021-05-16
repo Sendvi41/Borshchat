@@ -25,7 +25,7 @@ export default class ListDocs extends Component {
         return (
             <section className="content-area">
                 <div className="table-area-button">
-                    <table className="responsive-table table">
+                    <table className="responsive-table-2 table">
                         <thead>
                         <tr>
                             <th>id</th>

@@ -1,18 +1,20 @@
 
 
 .position{
-    position: relative;
-    float: left;
-    width: 20%;
+    /*position: fixed;*/
+    /*float: left;*/
+    /*width: 20%;*/
+    /*margin-top: 0px;*/
 
 
 }
 
 .input__wrapper {
-    width: 100%;
-    position: relative;
-    margin: 5px 0;
-    text-align: center
+    float: left;
+    width: 20%;
+    position: fixed;
+    margin: 13px 0;
+    /*text-align: center*/
 }
 
 .input__file {
