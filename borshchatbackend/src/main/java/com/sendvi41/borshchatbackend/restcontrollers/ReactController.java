@@ -9,9 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ReactController {
 
-    @RequestMapping(value = { "/", "/{x:[\\w\\-]+}", "/{x:^(?!api$).*$}/**/{y:[\\w\\-]+}" })
+    @RequestMapping(value = "/")
     public String getIndex(HttpServletRequest request) {
         return "index.html";
     }
 
+    @RequestMapping(value = "/docs")
+    public String getDocs(HttpServletRequest request) {
+        return "index.html";
+    }
 }
