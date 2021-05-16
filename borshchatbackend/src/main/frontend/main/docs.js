@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import FileUpload from "./listdocs/fileupload";
+import ListDocs from "./listdocs/listdocs";
 
 
 
@@ -14,7 +15,10 @@ export default class Docs extends Component {
 
     render() {
         return (
-            <div><FileUpload/></div>
+            <div>
+                <FileUpload/>
+                <ListDocs/>
+            </div>
         )
     }
 }

@@ -3,7 +3,6 @@ import './menu.css'
 import Rout from './router'
 
 
-
 export default class Menu extends Component {
 
     constructor(props) {
@@ -13,7 +12,7 @@ export default class Menu extends Component {
 
     render() {
         return (
-            <div>
+            <div className="pos">
                 <div className="nav">
                     <ul>
                         <li><a href="/">Tasks</a></li>
@@ -23,8 +22,7 @@ export default class Menu extends Component {
                         <li><a href="/load">Download</a></li>
                     </ul>
                 </div>
-                <Rout>
-                </Rout>
+                <Rout></Rout>
             </div>
         )
     }

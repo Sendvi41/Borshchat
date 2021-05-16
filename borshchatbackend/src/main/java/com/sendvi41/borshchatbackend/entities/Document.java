@@ -4,6 +4,7 @@ package com.sendvi41.borshchatbackend.entities;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -34,6 +35,8 @@ public class Document {
     private LocalDateTime localDateTime = LocalDateTime.now();
 
     @Column(name = "content")
+    @Lob
+//    @Type(type = "org.hibernate.type.TextType")
     @JsonProperty("content")
     private byte[] content;
 

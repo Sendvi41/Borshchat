@@ -40,7 +40,6 @@ class FileUpload extends React.Component {
         return (
 
             <div className="position">
-                <br/>
                 <div className="input__wrapper">
                     <input type="file"  className="input input__file" id="input__file" name="upload_file" onChange={this.handleInputChange}/>
                         <label htmlFor="input__file" className="input__file-button">

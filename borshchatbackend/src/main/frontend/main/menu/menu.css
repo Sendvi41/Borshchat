@@ -7,10 +7,15 @@
 body{
     background: #fff;
 }
+.pos{
+    display: inline-block;
+
+}
 .nav{
     position: fixed;
     top: 0;   left: 0;
     width: 100%;
+
 }
 .nav .toggle{
     position: relative;

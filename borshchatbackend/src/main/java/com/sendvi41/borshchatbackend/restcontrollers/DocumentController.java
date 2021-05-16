@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
+import org.apache.log4j.Logger;
 import java.util.List;
 
 @RestController
@@ -20,6 +20,8 @@ public class DocumentController {
     @Autowired
     DocumentServiceInterface documentService;
 
+    private final Logger logger = Logger.getLogger(DocumentController.class.getName());
+
     @GetMapping(value = "/getalldocs", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Document>> getAllDocs() {
         try {
@@ -27,6 +29,7 @@ public class DocumentController {
 
             return new ResponseEntity<>(docs, HttpStatus.OK);
         } catch (Exception e) {
+            logger.error(e);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
