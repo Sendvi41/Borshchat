@@ -1,9 +1,12 @@
 import React, {Component} from 'react'
 import icon from './downloaddoc.png'
+import icondelete from './deleteicondoc.png'
 
 import ListDocService from './listservice'
 import {Link} from 'react-router-dom'
 const TASK_REST_API_URL_DOWNLOAD = "document/download";
+const TASK_REST_API_URL_DELETE = "document/deletedoc";
+import '../css/buttomstyle.css'
 
 
 
@@ -15,6 +18,12 @@ export default class ListDocs extends Component {
         this.state = {
             docs: []};
     }
+
+    humanFileSize(size) {
+        var i = Math.floor( Math.log(size) / Math.log(1024) );
+        return ( size / Math.pow(1024, i) ).toFixed(2) * 1 + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
+    };
+
 
     componentDidMount() {
         ListDocService.getDocs().then((response)=>{
@@ -37,8 +46,9 @@ export default class ListDocs extends Component {
         return TASK_REST_API_URL_DOWNLOAD + "?id="+ id.toString();
     }
 
-    openLink(id){
-        window.open(TASK_REST_API_URL_DOWNLOAD + "?id="+ id.toString())
+    getDeleteLink(id){
+        fetch(TASK_REST_API_URL_DELETE + "/"+ id.toString(), { method: 'DELETE' });
+
     }
 
     render() {
@@ -55,6 +65,7 @@ export default class ListDocs extends Component {
                             <th>Size</th>
                             <th>Date</th>
                             <th>Download</th>
+                            <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -65,11 +76,19 @@ export default class ListDocs extends Component {
                                         <td>{doc.id}</td>
 
                                         <td>{doc.name}</td>
-                                        <td>{doc.size}</td>
+                                        <td>{this. humanFileSize(doc.size)}</td>
                                         <td>{new Date(Date.parse(doc.date+"0000")).toDateString()}<br/>
                                             {new Date(Date.parse(doc.date+"0000")).toTimeString()}</td>
                                         <td>
                                             <a href={this.getLink(doc.id)}><img src={icon} /></a>
+                                        </td>
+                                        <td>
+                                            {/*<a data-method="delete" href={this.getDeleteLink(doc.id)}><img src={icondelete} /></a>*/}
+                                            {/*<form action={this.getDeleteLink(doc.id)} method="delete">*/}
+                                            {/*    <input type="image" src={icondelete}  value="delete"/>*/}
+                                                <button className="buttonstyle" onClick={()=>this.getDeleteLink(doc.id)} ><img src={icondelete} />
+                                                </button>
+                                            {/*</form>*/}
                                         </td>
                                     </tr>
                             )
