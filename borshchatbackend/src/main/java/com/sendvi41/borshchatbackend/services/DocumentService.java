@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class DocumentService implements DocumentServiceInterface {
@@ -48,5 +50,11 @@ public class DocumentService implements DocumentServiceInterface {
         } else {
             throw new ServiceResourceNotFoundException("Not found document");
         }
+    }
+
+    @Override
+    @Transactional
+    public Optional<Document> findById(Long id) {
+        return documentRepository.findById(id);
     }
 }

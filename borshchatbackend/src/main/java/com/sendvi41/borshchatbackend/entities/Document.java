@@ -7,6 +7,7 @@ import lombok.Data;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.time.LocalDateTime;
 
 @Entity
@@ -36,9 +37,11 @@ public class Document {
 
     @Column(name = "content")
     @Lob
+//    @Type(type="org.hibernate.type.PrimitiveByteArrayBlobType")
+    @Type(type="org.hibernate.type.BinaryType")
 //    @Type(type = "org.hibernate.type.TextType")
-    @JsonProperty("content")
-    private byte[] content;
+//    @JsonProperty("content")
+    private byte [] content;
 
 
 }

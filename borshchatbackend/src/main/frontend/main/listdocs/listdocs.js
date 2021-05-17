@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 
 import ListDocService from './listservice'
+import {Link} from 'react-router-dom'
+const TASK_REST_API_URL_DOWNLOAD = "document/download";
 
 
 
@@ -21,7 +23,26 @@ export default class ListDocs extends Component {
     }
 
 
+    // download(arrayBuffer) {
+    //     var array = new Uint16Array([arrayBuffer]);
+    //     var blob = new Blob([array], { type: 'application/octet-stream' });
+    //     var url = URL.createObjectURL(blob);
+    //     window.open(url, "createdocument.docx");
+    //
+    //         window.URL.createObjectURL(new Blob(), { type:'application/octet-stream' })}
+    // }
+
+    getLink(id){
+        return TASK_REST_API_URL_DOWNLOAD + "?id="+ id.toString();
+    }
+
+    openLink(id){
+        window.open(TASK_REST_API_URL_DOWNLOAD + "?id="+ id.toString())
+    }
+
     render() {
+
+
         return (
             <section className="content-area">
                 <div className="table-area-button">
@@ -41,7 +62,10 @@ export default class ListDocs extends Component {
                                 doc=>
                                     <tr key = {doc.id}>
                                         <td>{doc.id}</td>
-                                        <td>{doc.content}</td>
+                                        <td>
+                                            <a href={this.getLink(doc.id)}>Скачать</a>
+                                            {/*<Link to={} activeClassName="active">Скачать</Link>*/}
+                                        </td>
                                         <td>{doc.name}</td>
                                         <td>{doc.size}</td>
                                         <td>{new Date(Date.parse(doc.date+"0000")).toDateString()}<br/>
