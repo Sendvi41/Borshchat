@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import icon from './downloaddoc.png'
 
 import ListDocService from './listservice'
 import {Link} from 'react-router-dom'
@@ -50,10 +51,10 @@ export default class ListDocs extends Component {
                         <thead>
                         <tr>
                             <th>id</th>
-                            <th>Document</th>
                             <th>Name</th>
                             <th>Size</th>
                             <th>Date</th>
+                            <th>Download</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -62,14 +63,14 @@ export default class ListDocs extends Component {
                                 doc=>
                                     <tr key = {doc.id}>
                                         <td>{doc.id}</td>
-                                        <td>
-                                            <a href={this.getLink(doc.id)}>Скачать</a>
-                                            {/*<Link to={} activeClassName="active">Скачать</Link>*/}
-                                        </td>
+
                                         <td>{doc.name}</td>
                                         <td>{doc.size}</td>
                                         <td>{new Date(Date.parse(doc.date+"0000")).toDateString()}<br/>
                                             {new Date(Date.parse(doc.date+"0000")).toTimeString()}</td>
+                                        <td>
+                                            <a href={this.getLink(doc.id)}><img src={icon} /></a>
+                                        </td>
                                     </tr>
                             )
                         }
