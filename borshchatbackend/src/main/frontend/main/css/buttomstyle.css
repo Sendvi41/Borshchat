@@ -1,4 +1,5 @@
 .buttonstyle {
     border: none;
+    backface-visibility: hidden;
     padding: 0;
 }
