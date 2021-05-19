@@ -51,4 +51,16 @@ public class TaskController {
         }
     }
 
+    @GetMapping(value = "/gettask/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TaskClient> getTask(@PathVariable("id") long id) {
+
+        try {
+            TaskClient task = taskService.getTaskById(id);
+            return new ResponseEntity<TaskClient>(task, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<TaskClient>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+
 }

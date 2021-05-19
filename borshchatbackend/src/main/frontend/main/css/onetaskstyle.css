@@ -1,0 +1,46 @@
+.task_form ul {
+    width:750px;
+    list-style-type:none;
+    list-style-position:outside;
+    margin:0px;
+    padding:0px;
+}
+.task_form li{
+    padding:12px;
+    position:relative;
+}
+
+.task_form li:first-child, .task_form li:last-child {
+    border-bottom:1px solid #777;
+}
+
+.labelbold {
+    font-weight: bold;
+    font-size: large;
+}
+
+.description {
+    font-weight: bold;
+    font-size: large;
+    padding:12px 12px 0px;
+}
+
+.underline {
+
+    padding:12px;
+
+    /*margin:12px auto;*/
+    width:750px;
+    word-break:break-word;
+    white-space: normal;
+    border-bottom:1px solid #777;
+
+}
+
+/*.size_block {*/
+/*    column-count: 2;*/
+/*}*/
+
+/*.size_block label {*/
+/*    display: block;*/
+/*}*/

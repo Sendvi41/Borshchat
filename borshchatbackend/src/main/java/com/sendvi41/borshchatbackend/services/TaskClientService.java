@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskClientService implements TaskClientInterface {
@@ -26,6 +27,17 @@ public class TaskClientService implements TaskClientInterface {
     @Transactional
     public void saveTask(TaskClient task) {
         taskClientRepository.save(task);
+    }
+
+    @Override
+    @Transactional
+    public TaskClient getTaskById(Long id) throws ServiceResourceNotFoundException  {
+        Optional <TaskClient> task = taskClientRepository.findById(id);
+        if(task.isEmpty())
+        {
+            throw new ServiceResourceNotFoundException("No such id " + id);
+        }
+         return task.get();
     }
 
     @Override

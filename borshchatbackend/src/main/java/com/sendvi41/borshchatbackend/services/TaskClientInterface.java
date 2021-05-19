@@ -12,6 +12,8 @@ public interface TaskClientInterface  {
 
     void saveTask(TaskClient task);
 
+    TaskClient getTaskById (Long id) throws ServiceResourceNotFoundException ;
+
     void deleteTask(Long id) throws ServiceResourceNotFoundException;
 
     void updateTask(TaskClient task) throws ServiceResourceNotFoundException;
