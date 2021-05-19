@@ -29,8 +29,9 @@ export default class Task extends Component {
                 <br/>
                 <br/>
                 <h2 className="title">Task#id {this.state.id} </h2>
-                <label className="labelbold">{this.state.task.theme}</label>
-                <div className="task_form">
+                <div className="form">
+                    <label className="labelbold">{this.state.task.theme}</label>
+                    <div className="task_form">
 
                         <div className="size_block">
 
@@ -53,9 +54,10 @@ export default class Task extends Component {
 
                         </div>
 
-                    <label className="description">Description</label>
-                    <br/>
-                    <label className="underline">{this.state.task.comment}</label>
+                        <label className="description">Description</label>
+                        <br/>
+                        <label className="underline">{this.state.task.comment}</label>
+                    </div>
                 </div>
             </div>
 
