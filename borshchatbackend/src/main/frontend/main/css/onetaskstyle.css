@@ -13,16 +13,33 @@
 .task_form li:first-child, .task_form li:last-child {
     border-bottom:1px solid #777;
 }
-
+.title{
+    padding:12px 12px 0px;
+}
 .labelbold {
     font-weight: bold;
     font-size: large;
+    padding:12px 12px 0px;
+    border-bottom:1px solid #777;
+    width:750px;
+
+}
+
+.size_block label {
+    font-weight: 600;
+    font-size: 1em;
+}
+.size_block label span {
+    font-weight: normal;
+    font-size: 1em;
 }
 
 .description {
     font-weight: bold;
     font-size: large;
     padding:12px 12px 0px;
+    border-bottom:1px solid #777;
+    width:750px;
 }
 
 .underline {
@@ -37,10 +54,12 @@
 
 }
 
-/*.size_block {*/
-/*    column-count: 2;*/
-/*}*/
+.size_block {
+    column-count: 2;
+    width:750px;
+}
 
-/*.size_block label {*/
-/*    display: block;*/
-/*}*/
+.size_block label {
+    padding:12px;
+    display: block;
+}
