@@ -2,16 +2,25 @@ import React, {Component} from 'react'
 
 
 
-export class Task extends Component {
+export default class Task extends Component {
 
-    constructor() {
-        super();
+    constructor( {match}) {
+        super(match);
+        this.state = {
+            id: match.params.userId
+        };
     }
 
 
     render() {
         return (
-                <li>1</li>
+            <div>
+            <br/>
+            <br/>
+            <br/>
+                <h1>{this.state.id}</h1>
+                </div>
+
         )
     }
 }
