@@ -47,7 +47,7 @@ class FileUpload extends React.Component {
                                                                                onClick={() => this.submit()}>
                                 <img className="input__file-icon"
                                                                             src={icon} alt="Выбрать файл"
-                                                                            width="25"/>    </button></span>
+                                     height="30" width="25"/>    </button></span>
                             <span className="input__file-button-text" >Select file</span>
                         </label>
                 </div>
