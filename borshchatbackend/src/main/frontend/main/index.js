@@ -12,7 +12,8 @@ class Main extends Component {
     constructor() {
         super();
         this.state = {
-            authorization: true
+            authorization: false
+
         };
     }
 

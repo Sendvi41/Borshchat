@@ -6,6 +6,7 @@
 }
 body{
     background: #fff;
+    /*background-image: none;*/
 }
 .pos{
     display: inline-block;

@@ -3,6 +3,7 @@ import './menu.css'
 import Rout from './router'
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
 import Listtasks from "../listtasks";
+import ListDocService from "../listdocs/listservice";
 
 
 export default class Menu extends Component {
@@ -10,7 +11,9 @@ export default class Menu extends Component {
     constructor(props) {
         super(props);
     }
-
+    componentDidMount() {
+        document.body.style.backgroundImage = "none";
+    }
 
     render() {
         return (
