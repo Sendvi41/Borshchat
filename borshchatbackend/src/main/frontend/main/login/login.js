@@ -1,11 +1,15 @@
 import React, {Component, useContext} from "react";
+import LogInService from "./logInservice"
+import Menu from "../menu/menu";
+import AuthorizationForm from "./autorizationform";
 
 export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
             name: '',
-            password: ''
+            password: '',
+            error: false
         };
     }
 
@@ -22,7 +26,22 @@ export default class Login extends Component {
     onLogin(event) {
         event.preventDefault();
         console.log("onLogin");
-        this.props.onChangeState();
+        LogInService.valiadte(this.state.name, this.state.password)
+            .then((response) => {
+                    if (response.status === 200) {
+                        this.props.onChangeState();
+                    }
+                }
+            ).catch((exception) => {
+                if(exception.response.status===404){
+                    this.setState({
+                        error: true
+                    })
+                }
+            }
+        )
+
+
         // if (this.props.onChangeState) {
         //     this.props.onChangeState();
         // }
@@ -53,6 +72,14 @@ export default class Login extends Component {
                         <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                     </div>
                 </div>
+                {
+                    this.state.error ?
+                        (<div className="form-group">
+                            <label>Password or login entered incorrectly</label>
+                        </div>)
+                        : (<div/>)
+                }
+
 
                 <button type="submit" className="btn btn-primary btn-block"
                         onClick={(event) => this.onLogin(event)}>Sign in
