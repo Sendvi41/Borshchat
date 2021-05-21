@@ -7,7 +7,9 @@ import Login from "./login";
 import background from './red.jpg'
 
 
-function AuthorizationForm() {
+function AuthorizationForm(props) {
+
+
     return (<Router>
             <div className="App back" >
                 {/*<nav className="navbar navbar-expand-lg navbar-light fixed-top">*/}
@@ -28,8 +30,11 @@ function AuthorizationForm() {
                 <div className="auth-wrapper">
                     <div className="auth-inner">
                         <Switch>
-                            <Route path='/' component={Login} />
-                            <Route path="/sign-in" component={Login} />
+                                <Route  path='/'
+                                render={() => <Login {...props}/>}
+                                />
+                            }
+                            {/*<Route path="/sign-in" component={Login} />*/}
                             {/*<Route path="/sign-up" component={SignUp} />*/}
                         </Switch>
                     </div>

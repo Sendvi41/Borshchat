@@ -13,20 +13,30 @@ class Main extends Component {
         super();
         this.state = {
             authorization: false
-
         };
+
+
+    }
+
+    onChangeState() {
+        console.log("onChangeState");
+        this.setState({
+            authorization : true
+        })
     }
 
 
     render() {
         return (
-            <div>
-                {
-                    this.state.authorization ?
-                        (<Menu/>)
-                        : (<AuthorizationForm/>
-                        )}
-            </div>)
+                <div>
+                    {
+                        this.state.authorization ?
+                            (<Menu/>)
+                            : (<AuthorizationForm onChangeState={this.onChangeState.bind(this)}/>
+                            )}
+                </div>
+        )
+
     }
 }
 
