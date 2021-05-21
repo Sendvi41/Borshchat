@@ -97,3 +97,9 @@ h1,h2,h3,h4,h5,h6,label,span {
 .forgot-password a {
     color: #ff7800;
 }
+
+.error-style {
+    padding: 12px;
+    font-weight: normal;
+    color: #ff091d;
+}

@@ -29,6 +29,10 @@ export default class Login extends Component {
         LogInService.valiadte(this.state.name, this.state.password)
             .then((response) => {
                     if (response.status === 200) {
+                        LogInService.getDataAboutConsultant(this.state.name, this.state.password).
+                        then((response)=> {
+                            this.props.onSetConsultant(response.data)
+                        })
                         this.props.onChangeState();
                     }
                 }
@@ -75,7 +79,7 @@ export default class Login extends Component {
                 {
                     this.state.error ?
                         (<div className="form-group">
-                            <label>Password or login entered incorrectly</label>
+                            <label className="error-style">Password or login entered incorrectly</label>
                         </div>)
                         : (<div/>)
                 }

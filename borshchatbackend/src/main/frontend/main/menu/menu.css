@@ -54,6 +54,19 @@ body{
     background: #ffd400;
 }
 
+.nav ul li div{
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    bottom: 14px;
+    font-size: 30px;
+    font-weight: lighter;
+    /*width: 50%;*/
+    /*height: 50%;*/
+}
+
 
 
 @media screen and (max-width: 600px) {

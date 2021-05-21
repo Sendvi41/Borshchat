@@ -12,7 +12,8 @@ class Main extends Component {
     constructor() {
         super();
         this.state = {
-            authorization: JSON.parse(localStorage.getItem('authorization'))||false
+            authorization: JSON.parse(localStorage.getItem('authorization'))||false,
+            consultant: JSON.parse(localStorage.getItem('consultant'))|| {}
         };
 
 
@@ -24,6 +25,12 @@ class Main extends Component {
             authorization : true
         }, ()=>localStorage.setItem('authorization', JSON.stringify(this.state.authorization)))
     }
+    onSetConsultant(consultant) {
+        this.setState({
+            consultant : consultant
+        }, ()=>localStorage.setItem('consultant', JSON.stringify(this.state.consultant)))
+    }
+
 
 
     render() {
@@ -31,8 +38,9 @@ class Main extends Component {
                 <div>
                     {
                         this.state.authorization ?
-                            (<Menu/>)
-                            : (<AuthorizationForm onChangeState={this.onChangeState.bind(this)}/>
+                            (<Menu consultant={this.state.consultant}/>)
+                            : (<AuthorizationForm onChangeState={this.onChangeState.bind(this)}
+                                                  onSetConsultant={this.onSetConsultant.bind(this)}/>
                             )}
                 </div>
         )

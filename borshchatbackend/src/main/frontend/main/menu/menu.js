@@ -10,6 +10,7 @@ export default class Menu extends Component {
 
     constructor(props) {
         super(props);
+
     }
     componentDidMount() {
         document.body.style.backgroundImage = "none";
@@ -25,7 +26,9 @@ export default class Menu extends Component {
                         <li><a href="/stat">Statistics</a></li>
                         <li><a href="/admin">Administration</a></li>
                         <li><a href="/load">Download</a></li>
+                        <li><div>{this.props.consultant.name}</div></li>
                     </ul>
+
                 </div>
                 <Rout></Rout>
             </div>
