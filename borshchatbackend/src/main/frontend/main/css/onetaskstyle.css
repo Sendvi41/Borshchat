@@ -55,7 +55,7 @@
 .underline {
 
     padding:12px;
-
+    font-weight: normal;
     /*margin:12px auto;*/
     width:750px;
     word-break:break-word;
