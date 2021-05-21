@@ -12,7 +12,7 @@ class Main extends Component {
     constructor() {
         super();
         this.state = {
-            authorization: false
+            authorization: JSON.parse(localStorage.getItem('authorization'))||false
         };
 
 
@@ -22,7 +22,7 @@ class Main extends Component {
         console.log("onChangeState");
         this.setState({
             authorization : true
-        })
+        }, ()=>localStorage.setItem('authorization', JSON.stringify(this.state.authorization)))
     }
 
 
