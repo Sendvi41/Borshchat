@@ -72,6 +72,7 @@ public class TaskClient {
     private LocalDateTime localDateTime = LocalDateTime.now();
 
     @JsonIgnore
+    @JsonProperty("comments")
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "task_id")
     private Set<CommentTask> commentTasks;
 

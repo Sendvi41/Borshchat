@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import TaskService from "./taskservice";
 import "./css/onetaskstyle.css"
+import Comment from "./commenttask"
 
 
 export default class Task extends Component {
@@ -9,6 +10,7 @@ export default class Task extends Component {
         super(match);
         this.state = {
             id: match.params.userId,
+            consultant: JSON.parse(localStorage.getItem('consultant'))|| {},
             task: {}
         };
     }
@@ -57,6 +59,11 @@ export default class Task extends Component {
                         <label className="description">Description</label>
                         <br/>
                         <label className="underline">{this.state.task.comment}</label>
+                    </div>
+                    <div>
+                        {this.state.comments && this.state.comments.map(comment =>
+                            <Comment comment={comment}/>
+                        )}
                     </div>
                 </div>
             </div>
