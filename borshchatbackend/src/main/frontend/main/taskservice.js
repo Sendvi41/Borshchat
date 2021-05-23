@@ -3,6 +3,7 @@ import axios from 'axios'
 
 const TASK_REST_API_URL = "http://localhost:8080/task/getalltasks";
 const TASK_REST_API_URL_ONE_TASK = "http://localhost:8080/task/gettask/";
+const TASK_REST_API_URL_ADD_COMMENT = "http://localhost:8080/taskcomment/addcomment";
 
 
 class TaskService {
@@ -14,6 +15,19 @@ class TaskService {
     getOnetTask(id){
         return axios.get(TASK_REST_API_URL_ONE_TASK + id.toString())
     }
+
+    addOneComment(comment, consult_id, date, task_id){
+        let data =  {
+            id: '',
+            comment: comment,
+            consultant_id: consult_id,
+            date: date,
+            task_id: task_id
+        };
+        return axios.post(TASK_REST_API_URL_ADD_COMMENT,data);
+    }
+
+
 }
 
 export default new TaskService()

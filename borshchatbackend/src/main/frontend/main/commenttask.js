@@ -23,13 +23,10 @@ export default class Comment extends Component {
                 <div>
                     <div key={this.state.id}>
                         <span
-                            style={{fontStyle: 'italic'}}>{this.state.comment} - {format(this.state.date, 'DD/MM/YYYY')}: </span>
+                            style={{fontStyle: 'italic'}}>{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(new Date(Date.parse(this.state.date + "0000"))).toString()}: </span>
                         <strong>{this.state.nameconsult}, </strong>
                         <span>{this.state.comment}</span>
-                        <button
-                            // onClick={this.removeComment.bind(null, comment.id)}
-                        >Удалить комментарий
-                        </button>
+
                     </div>
                 </div>
 

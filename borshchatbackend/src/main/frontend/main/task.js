@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import TaskService from "./taskservice";
 import "./css/onetaskstyle.css"
 import Comment from "./commenttask"
+import LogInService from "./login/logInservice";
 
 
 export default class Task extends Component {
@@ -10,8 +11,9 @@ export default class Task extends Component {
         super(match);
         this.state = {
             id: match.params.userId,
-            consultant: JSON.parse(localStorage.getItem('consultant'))|| {},
-            task: {}
+            consultant: JSON.parse(localStorage.getItem('consultant')) || {},
+            task: {},
+            comment: ''
         };
     }
 
@@ -19,11 +21,28 @@ export default class Task extends Component {
     componentDidMount() {
         TaskService.getOnetTask(this.state.id).then((response) => {
                 this.setState({task: response.data})
-                console.log(response.data.toString())
+                console.log(response.data)
             }
         )
     }
 
+    handleChangeComment = (comment) => {
+        this.setState({comment: comment})
+    }
+
+    addComment = () => {
+        console.log("add comemnt")
+        TaskService.addOneComment(this.state.comment, this.state.consultant,
+            new Date(), this.state.task.id).then((response) => {
+                if (response.status === 200) {
+                    this.componentDidMount();
+                }
+            }
+        ).catch((exception) => {
+                console.log(exception.response.status)
+            }
+        )
+    }
 
     render() {
         return (
@@ -60,12 +79,24 @@ export default class Task extends Component {
                         <br/>
                         <label className="underline">{this.state.task.comment}</label>
                     </div>
-                    <div>
-                        {this.state.comments && this.state.comments.map(comment =>
-                            <Comment comment={comment}/>
-                        )}
-                    </div>
                 </div>
+                <div>
+                    {this.state.task.comments && this.state.task.comments.map(comment =>
+                        <Comment comment={comment}/>
+                    )}
+                </div>
+                <div>
+                    <label>Имя: {this.state.consultant.name} </label>
+                    <label>Комментарий:
+                        <textarea
+                        name="comment"
+                        onChange={(event) => this.handleChangeComment(event.target.value)}></textarea>
+                    </label>
+                    <button onClick={this.addComment}>Добавить комментарий</button>
+
+                </div>
+
+
             </div>
 
         )

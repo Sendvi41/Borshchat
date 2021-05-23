@@ -5,20 +5,23 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "comments")
-@Data
+@Getter
+@Setter
 @JsonAutoDetect
 public class CommentTask {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ_COMMENT")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence_com")
+    @SequenceGenerator(name = "id_Sequence_com", sequenceName = "ID_SEQ_COMMENT")
     @JsonProperty("id")
     private Long id;
 

@@ -32,7 +32,7 @@ public class CommentTaskDto {
     @JsonProperty("date")
     private LocalDateTime localDateTime;
 
-    @JsonIgnore
+    @JsonProperty("task_id")
     private Long task_id;
 
 

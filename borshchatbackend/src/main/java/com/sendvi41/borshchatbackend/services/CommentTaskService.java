@@ -6,8 +6,12 @@ import com.sendvi41.borshchatbackend.exceptions.ServiceResourceNotFoundException
 
 import com.sendvi41.borshchatbackend.repositories.CommentTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+
+@Service
 public class CommentTaskService implements CommentTaskServiceInterface {
 
     @Autowired
