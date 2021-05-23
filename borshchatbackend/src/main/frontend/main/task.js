@@ -3,6 +3,7 @@ import TaskService from "./taskservice";
 import "./css/onetaskstyle.css"
 import Comment from "./commenttask"
 import LogInService from "./login/logInservice";
+import taskservice from "./taskservice";
 
 
 export default class Task extends Component {
@@ -13,6 +14,7 @@ export default class Task extends Component {
             id: match.params.userId,
             consultant: JSON.parse(localStorage.getItem('consultant')) || {},
             task: {},
+            comments: [],
             comment: ''
         };
     }
@@ -22,6 +24,14 @@ export default class Task extends Component {
         TaskService.getOnetTask(this.state.id).then((response) => {
                 this.setState({task: response.data})
                 console.log(response.data)
+            }
+        ).then(()=>{
+            TaskService.getComments(this.state.task.id).then(
+                (response) =>{
+                    console.log(response.data)
+                    this.setState({comments: response.data})
+                }
+            )
             }
         )
     }
@@ -33,9 +43,18 @@ export default class Task extends Component {
     addComment = () => {
         console.log("add comemnt")
         TaskService.addOneComment(this.state.comment, this.state.consultant,
-            new Date(), this.state.task.id).then((response) => {
-                if (response.status === 200) {
-                    this.componentDidMount();
+            new Date(), this.state.task.id)
+            .then((response) => {
+                if (response.status === 201) {
+                    TaskService.getComments(this.state.task.id).then(
+                        (response) =>{
+                            console.log(response.data)
+                            this.setState({
+                                comments: response.data,
+                                comment: ''
+                            })
+                        }
+                    )
                 }
             }
         ).catch((exception) => {
@@ -81,7 +100,7 @@ export default class Task extends Component {
                     </div>
                 </div>
                 <div>
-                    {this.state.task.comments && this.state.task.comments.map(comment =>
+                    {this.state.comments && this.state.comments.map(comment =>
                         <Comment comment={comment}/>
                     )}
                 </div>
@@ -90,6 +109,7 @@ export default class Task extends Component {
                     <label>Комментарий:
                         <textarea
                         name="comment"
+                        value={this.state.comment}
                         onChange={(event) => this.handleChangeComment(event.target.value)}></textarea>
                     </label>
                     <button onClick={this.addComment}>Добавить комментарий</button>
