@@ -104,16 +104,18 @@ export default class Task extends Component {
                         <Comment comment={comment}/>
                     )}
                 </div>
-                <div>
-                    <label>Имя: {this.state.consultant.name} </label>
-                    <label>Комментарий:
+                <div className="commentform">
+                    <label className="headercomment" >Имя: {this.state.consultant.name} </label>
+                    <br/>
+                    <label>
                         <textarea
+                            className="text-area-form"
                         name="comment"
                         value={this.state.comment}
                         onChange={(event) => this.handleChangeComment(event.target.value)}></textarea>
                     </label>
-                    <button onClick={this.addComment}>Добавить комментарий</button>
-
+                    <br/>
+                    <button className="send" onClick={this.addComment}>SEND</button>
                 </div>
 
 

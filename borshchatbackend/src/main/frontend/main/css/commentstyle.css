@@ -1,0 +1,26 @@
+.header {
+    font-weight: bold;
+    font-size: large;
+    padding:12px 12px 0px;
+    border-bottom:1px solid #777;
+    width: 500px;
+}
+.formcomment{
+    margin: 12px;
+    border: 1px solid #2d2d2d;
+    width: 502px;
+    background: rgba(255, 82, 0, 0.3)
+}
+.header span {
+    font-weight: lighter;
+    font-size: 0.7em;
+    padding:12px 12px 0px;
+    width: 500px;
+}
+.textcomment{
+    padding:12px;
+    font-weight: normal;
+    width:500px;
+    word-break:break-word;
+    white-space: normal;
+}

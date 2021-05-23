@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import "./css/commentstyle.css"
 
 
 export default class Comment extends Component {
@@ -20,13 +21,15 @@ export default class Comment extends Component {
     render() {
         return (
             <div>
-                <div>
+                <div className="formcomment">
                     <div key={this.state.id}>
-                        <span
-                            style={{fontStyle: 'italic'}}>{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(new Date(Date.parse(this.state.date + "0000"))).toString()}: </span>
-                        <strong>{this.state.nameconsult}, </strong>
-                        <span>{this.state.comment}</span>
-
+                        <label className="header">{this.state.nameconsult} <span
+                            style={{fontStyle: 'italic'}}>
+                            {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(new Date(Date.parse(this.state.date + "0000"))).toString()}
+                        </span>
+                        </label>
+                        <br/>
+                        <span className="textcomment">{this.state.comment}</span>
                     </div>
                 </div>
 
