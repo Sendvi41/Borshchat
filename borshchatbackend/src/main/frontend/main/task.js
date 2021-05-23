@@ -25,13 +25,13 @@ export default class Task extends Component {
                 this.setState({task: response.data})
                 console.log(response.data)
             }
-        ).then(()=>{
-            TaskService.getComments(this.state.task.id).then(
-                (response) =>{
-                    console.log(response.data)
-                    this.setState({comments: response.data})
-                }
-            )
+        ).then(() => {
+                TaskService.getComments(this.state.task.id).then(
+                    (response) => {
+                        console.log(response.data)
+                        this.setState({comments: response.data})
+                    }
+                )
             }
         )
     }
@@ -41,26 +41,28 @@ export default class Task extends Component {
     }
 
     addComment = () => {
-        console.log("add comemnt")
-        TaskService.addOneComment(this.state.comment, this.state.consultant,
-            new Date(), this.state.task.id)
-            .then((response) => {
-                if (response.status === 201) {
-                    TaskService.getComments(this.state.task.id).then(
-                        (response) =>{
-                            console.log(response.data)
-                            this.setState({
-                                comments: response.data,
-                                comment: ''
-                            })
+        if (this.state.comment !== "") {
+            console.log("add comemnt")
+            TaskService.addOneComment(this.state.comment, this.state.consultant,
+                new Date(), this.state.task.id)
+                .then((response) => {
+                        if (response.status === 201) {
+                            TaskService.getComments(this.state.task.id).then(
+                                (response) => {
+                                    console.log(response.data)
+                                    this.setState({
+                                        comments: response.data,
+                                        comment: ''
+                                    })
+                                }
+                            )
                         }
-                    )
+                    }
+                ).catch((exception) => {
+                    console.log(exception.response.status)
                 }
-            }
-        ).catch((exception) => {
-                console.log(exception.response.status)
-            }
-        )
+            )
+        }
     }
 
     render() {
@@ -105,17 +107,19 @@ export default class Task extends Component {
                     )}
                 </div>
                 <div className="commentform">
-                    <label className="headercomment" >Имя: {this.state.consultant.name} </label>
+                    <label className="headercomment">{this.state.consultant.name}
+                        <button className="send" onClick={this.addComment}>Submit сomment</button>
+                    </label>
+
                     <br/>
                     <label>
                         <textarea
                             className="text-area-form"
-                        name="comment"
-                        value={this.state.comment}
-                        onChange={(event) => this.handleChangeComment(event.target.value)}></textarea>
+                            name="comment"
+                            value={this.state.comment}
+                            onChange={(event) => this.handleChangeComment(event.target.value)}></textarea>
                     </label>
-                    <br/>
-                    <button className="send" onClick={this.addComment}>SEND</button>
+
                 </div>
 
 

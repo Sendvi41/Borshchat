@@ -63,7 +63,7 @@
     width:750px;
     word-break:break-word;
     white-space: normal;
-    border-bottom:1px solid #777;
+    border-bottom:1px solid #777777;
 
 }   
 
@@ -80,9 +80,13 @@
 
 .commentform{
     border: 1px solid #2d2d2d;
-    width: 502px;
+    width: 471px;
+    height:98px;
     background: rgba(255, 0, 0, 0.3);
+    margin-top: 2px;
     margin-left: 12px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 
@@ -90,49 +94,54 @@
     font-weight: bold;
     font-size: large;
     padding:12px 12px 0px;
-    border-bottom:1px solid #777;
-    width: 500px;
+    width: 472px;
 }
 
 
 .text-area-form{
     height:50px;
     width: 470px;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgb(226, 226, 226);
     resize: none;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 0px;
 }
 
 .send {
     /* Сбрасываем дефолтные стили */
+    float: right;
     border: none;
     outline: none;
     display: inline-block;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 10px;
     /* Можно также использовать любые встроенные и кастомные шрифты, например, отсюда  */
     font-family: Roboto;
     /* Тут можно поэкспериментировать */
-    padding: 12px 16px;
+
     border-radius: 100px;
-    color: #fff;
+    color: #ffffff;
+    padding:8px 6px;
 }
 .send {
     margin-right: 4px;
+    margin-bottom: 6px;
 }
 .send {
     margin-left: 6px;
 }
 .send{
-    background: #2196F3;
+    background: #9c1818;
 }
 
 .send:hover {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 .send:hover {
-    background: #39a1f4;
+    background: #ff0404;
 }
 
 .send:active {
@@ -140,5 +149,5 @@
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 .send:active {
-    background: #0d8aee;
+    background: #ff0000;
 }
