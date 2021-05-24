@@ -128,7 +128,6 @@ public class ChatController extends FxController {
         leftpane.maxWidthProperty().bind(firstsplit.widthProperty().multiply(0.4));
 
 
-        
 
         chatarea.layoutXProperty().addListener((InvalidationListener) observable -> {
             updateSizePopup();
@@ -316,9 +315,6 @@ public class ChatController extends FxController {
     @Override
     public void init() {
         taskarea.setVisible(false);
-        this.getScene().xProperty().addListener((InvalidationListener) observable -> {
-            updateSizePopup();
-        });
 
 
     }

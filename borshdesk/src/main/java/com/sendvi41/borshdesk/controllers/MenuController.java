@@ -4,6 +4,7 @@ package com.sendvi41.borshdesk.controllers;
 import com.sendvi41.borshdesk.dto.Consultant;
 import com.sendvi41.borshdesk.services.Authorization;
 import com.sendvi41.borshdesk.websocket.StompClient;
+import javafx.beans.InvalidationListener;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import lombok.Getter;
@@ -77,7 +78,9 @@ public class MenuController extends FxController {
 
     @Override
     public void init() {
-
+        this.getStage().xProperty().addListener((InvalidationListener) observable -> {
+            chatController.updateSizePopup();
+        });
 
     }
 }
