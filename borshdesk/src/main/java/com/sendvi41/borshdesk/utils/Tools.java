@@ -2,6 +2,7 @@ package com.sendvi41.borshdesk.utils;
 
 import com.sendvi41.borshdesk.controllers.MenuController;
 import com.sendvi41.borshdesk.controllers.QueueController;
+import com.sendvi41.borshdesk.dto.Template;
 import javafx.scene.control.Label;
 
 import java.util.LinkedList;
@@ -18,6 +19,18 @@ public class Tools {
     private static final Logger logger = Logger.getLogger(Tools.class.getName());
     static List<LabelChat> receivedChats = new LinkedList<>();
     static List<LabelChat> listchats = new LinkedList<>();
+    static List<Template> templates = new LinkedList<>();
+
+    static public synchronized List<Template>getListTemplates(){
+        return templates;
+    }
+
+    static public synchronized void setListTemplates(List<Template> listtemplates){
+        templates = listtemplates;
+    }
+
+
+
 
     static public synchronized void addNewChat(String id, String firstmessage){
                 List<LabelChat> result = listchats.stream()

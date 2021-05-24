@@ -3,6 +3,7 @@ package com.sendvi41.borshdesk.services;
 
 import com.sendvi41.borshdesk.dto.Consultant;
 import com.sendvi41.borshdesk.dto.Template;
+import com.sendvi41.borshdesk.utils.Tools;
 import org.apache.log4j.Logger;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -25,13 +26,15 @@ public class TemplateService implements TemplateServiceInterface {
     @Override
     public List<Template> getTemplates(Long id) {
         try {
-            return this.restTemplate.exchange(
+            List<Template> list = this.restTemplate.exchange(
                     WS_URI + "/gettemplates/"+id,
                     HttpMethod.GET,
                     null,
                     new ParameterizedTypeReference<List<Template>>() {
                     }
             ).getBody();
+            Tools.setListTemplates(list);
+            return list;
         } catch (Exception ex) {
             logger.warn(ex);
             return null;

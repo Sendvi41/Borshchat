@@ -31,6 +31,7 @@ abstract public class FxController {
             root = fxmlLoader.load(inputStream);
 
             Scene scene = new Scene(root);
+            this.scene = scene;
 
             stage.setScene(scene);
 
@@ -64,6 +65,10 @@ abstract public class FxController {
 
     public void initialize(){
 
+    }
+
+    public Scene getScene() {
+        return scene;
     }
 
     @PostConstruct

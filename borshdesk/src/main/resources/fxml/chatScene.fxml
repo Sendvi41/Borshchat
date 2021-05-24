@@ -6,13 +6,13 @@
 
 <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="491.0" prefWidth="676.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sendvi41.borshdesk.controllers.ChatController">
    <children>
-      <SplitPane dividerPositions="0.7789317507418397" prefHeight="491.0" prefWidth="676.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane  dividerPositions="0.7789317507418397" prefHeight="491.0" prefWidth="676.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane  minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <SplitPane dividerPositions="0.3873239436619718" prefHeight="491.0" prefWidth="676.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane fx:id="firstsplit" dividerPositions="0.3873239436619718" prefHeight="491.0" prefWidth="676.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <items>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="486.0" prefWidth="327.0">
+                        <ScrollPane fx:id="leftpane" fitToHeight="true" fitToWidth="true" prefHeight="486.0" prefWidth="327.0">
                            <content>
                               <AnchorPane prefHeight="490.0" prefWidth="326.0">
                                  <children>
@@ -25,11 +25,11 @@
                               </AnchorPane>
                            </content>
                         </ScrollPane>
-                        <AnchorPane fx:id="templates" prefHeight="490.0" prefWidth="310.0">
+                        <AnchorPane fx:id="chatarea" prefHeight="490.0" prefWidth="310.0">
                            <children>
                               <VBox fx:id="sendChats" alignment="BOTTOM_RIGHT" layoutX="175.0" prefHeight="422.0" prefWidth="141.0" stylesheets="@/css/textstyle2.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0" />
                               <VBox fx:id="receivedChats" alignment="BOTTOM_LEFT" layoutY="-3.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="422.0" prefWidth="167.0" stylesheets="@/css/textstyle.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="-3.0" />
-                              <AnchorPane layoutY="476.0" prefHeight="67.0" prefWidth="341.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <AnchorPane  fx:id="buttonarea"  layoutY="476.0" prefHeight="67.0" prefWidth="341.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
                                     <TextArea fx:id="textarea" layoutY="-1.0" prefHeight="43.0" prefWidth="341.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0" />
                                     <Button layoutX="241.0" layoutY="42.0" mnemonicParsing="false" onAction="#send" prefHeight="5.0" prefWidth="100.0" text="Отправить" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
