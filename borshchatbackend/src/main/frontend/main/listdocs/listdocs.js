@@ -83,12 +83,8 @@ export default class ListDocs extends Component {
                                             <a href={this.getLink(doc.id)}><img src={icon} /></a>
                                         </td>
                                         <td>
-                                            {/*<a data-method="delete" href={this.getDeleteLink(doc.id)}><img src={icondelete} /></a>*/}
-                                            {/*<form action={this.getDeleteLink(doc.id)} method="delete">*/}
-                                            {/*    <input type="image" src={icondelete}  value="delete"/>*/}
                                                 <button className="buttonstyle" onClick={()=>this.getDeleteLink(doc.id)} ><img src={icondelete} />
                                                 </button>
-                                            {/*</form>*/}
                                         </td>
                                     </tr>
                             )

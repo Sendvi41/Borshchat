@@ -20,8 +20,8 @@ public class Consultant{
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ_PROD")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence_consult")
+    @SequenceGenerator(name = "id_Sequence_consult", sequenceName = "ID_SEQ_CONSULT")
     @JsonProperty("id")
     private Long id;
 

@@ -21,8 +21,8 @@ public class TaskClient {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ_TASK")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence_Task")
+    @SequenceGenerator(name = "id_Sequence_Task", sequenceName = "ID_SEQ_TASK")
     @JsonProperty("id")
     private Long id;
 

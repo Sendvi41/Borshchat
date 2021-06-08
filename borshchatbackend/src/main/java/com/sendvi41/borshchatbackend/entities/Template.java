@@ -19,8 +19,8 @@ public class Template {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ_TEMP")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence_Temp")
+    @SequenceGenerator(name = "id_Sequence_Temp", sequenceName = "ID_SEQ_TEMP")
     @JsonProperty("id")
     private Long id;
 
