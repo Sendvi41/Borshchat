@@ -90,6 +90,9 @@ table.responsive-table th {
 table.responsive-table td {
     line-height: 4em;
 }
+table.responsive-table-2 td {
+    line-height: 4em;
+}
 
 table.responsive-table tr > td,
 table.responsive-table th {

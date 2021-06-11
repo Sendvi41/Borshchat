@@ -77,8 +77,9 @@ export default class ListDocs extends Component {
 
                                         <td>{doc.name}</td>
                                         <td>{this. humanFileSize(doc.size)}</td>
-                                        <td>{new Date(Date.parse(doc.date+"0000")).toDateString()}<br/>
-                                            {new Date(Date.parse(doc.date+"0000")).toTimeString()}</td>
+                                        <td>{new Intl.DateTimeFormat('en-US', {year: 'numeric', month:
+                                                '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).
+                                        format(new Date(Date.parse(doc.date + "0000"))).toString()}</td>
                                         <td>
                                             <a href={this.getLink(doc.id)}><img src={icon} /></a>
                                         </td>
