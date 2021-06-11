@@ -6,7 +6,6 @@ import iconedit from './editdocument.png'
 import Select from 'react-select';
 
 
-
 const optionsTracker = [
     {value: 'Bug', label: 'Bug'},
     {value: 'Support', label: 'Support'}
@@ -22,19 +21,6 @@ const optionsStatus = [
     {value: 'In process', label: 'In process'},
     {value: 'Finished', label: 'Finished'}
 ]
-
-const colourStyles = {
-    control: styles => ({ ...styles, backgroundColor: 'white' }),
-    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-        return {
-
-            backgroundColor: isDisabled ? 'red' : blue,
-            color: '#FFF',
-            cursor: isDisabled ? 'not-allowed' : 'default',
-
-        };
-    },
-};
 
 export default class Task extends Component {
 
@@ -68,13 +54,54 @@ export default class Task extends Component {
         )
     }
 
+    submitEdit = () => {
+        console.log(this.state.task)
+        TaskService.updateTask(this.state.task).then((response) => {
+                console.log(response.status)
+            }
+        ).then(() => {
+                TaskService.getOnetTask(this.state.id).then((response) => {
+                        this.setState({task: response.data})
+                        console.log(response.data)
+                    }
+                )
+            }
+        ).then(() => {
+            this.setState({editForm: false})
+        })
+    }
+
+    handleChangeTracker(event) {
+        this.setState({
+            task: {
+                ...this.state.task,
+                tracker: event.target.value
+            }
+        })
+    }
+
+    handleChangeStatus(event) {
+        this.setState({
+            task: {
+                ...this.state.task,
+                status: event.target.value
+            }
+        })
+    }
+
+    handleChangePriority(event) {
+        this.setState({
+            task: {
+                ...this.state.task,
+                priority: event.target.value
+            }
+        })
+    }
+
     functionEdit = () => {
         this.setState({editForm: true})
     }
 
-    submitEdit = () => {
-        this.setState({editForm: false})
-    }
 
     handleChangeComment = (comment) => {
         this.setState({comment: comment})
@@ -113,7 +140,7 @@ export default class Task extends Component {
                 <h2 className="title">Task#id {this.state.id} </h2>
                 <div className="form">
                     <label className="labelbold">{this.state.task.theme}
-                        {this.state.editForm ? (<button className="labelboldbutton" onClick={this.submitEdit}>
+                        {this.state.editForm ? (<button className="labelboldbutton" onClick={this.submitEdit.bind(this)}>
                                 <img src={iconedit}/>
                                 Confirm changes
                             </button>) :
@@ -131,7 +158,15 @@ export default class Task extends Component {
                             <label>Client's surname: <span>{this.state.task.surnameclient}</span> </label>
                             <label>Client's patronymic: <span>{this.state.task.patronymicclient}</span></label>
                             <label>E-mail:<span> {this.state.task.email}</span></label>
-                            <label>Priority of task: <span>{this.state.task.priority}</span>
+                            <label className="select">Priority of task:
+                                {!this.state.editForm ? (<span>{this.state.task.priority}</span>) :
+                                    (<select value={this.state.task.priority} onChange={this.handleChangePriority.bind(this)}>
+                                        <option value="High">High</option>
+                                        <option value="Normal">Normal</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Immediate">Immediate</option>
+                                    </select>)
+                                }
 
 
                             </label>
@@ -149,16 +184,25 @@ export default class Task extends Component {
                             <label>Consult's
                                 id: <span>{this.state.task.consultant_id && this.state.task.consultant_id.id}</span></label>
 
-                            <label className="select" >Tracker:{!this.state.editForm ? (<span>{this.state.task.tracker}</span>) :
-                                (   <select value={this.state.task.tracker}>
-                                    <option value="Bug">Bug</option>
-                                    <option value="Support">Support</option>
-                                </select>
+                            <label className="select">Tracker:{!this.state.editForm ? (
+                                    <span>{this.state.task.tracker}</span>) :
+                                (<select value={this.state.task.tracker} onChange={this.handleChangeTracker.bind(this)}>
+                                        <option value="Bug">Bug</option>
+                                        <option value="Support">Support</option>
+                                    </select>
                                 )
                             }
 
                             </label>
-                            <label>Status: <span>{this.state.task.status}</span></label>
+                            <label className="select">Status:{!this.state.editForm ? (
+                                <span>{this.state.task.status}</span>) : (
+                                <select value={this.state.task.status} onChange={this.handleChangeStatus.bind(this)}>
+                                    <option value="New">New</option>
+                                    <option value="In process">In process</option>
+                                    <option value="Finished">Finished</option>
+                                </select>
+                            )
+                            }</label>
 
 
                         </div>

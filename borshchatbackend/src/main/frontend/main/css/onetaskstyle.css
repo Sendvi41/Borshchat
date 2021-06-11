@@ -176,7 +176,7 @@
 
 .select {
     position: relative;
-    min-width: 70px;
+    min-width: 50px;
 }
 .select svg {
     position: absolute;
@@ -222,11 +222,5 @@
 .select select:hover + svg {
     stroke: #07f;
 }
-.select sprites {
-    position: absolute;
-    width: 0;
-    height: 0;
-    pointer-events: none;
-    user-select: none;
-}
+
 

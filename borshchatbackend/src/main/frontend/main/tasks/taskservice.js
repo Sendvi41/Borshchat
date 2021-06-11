@@ -5,7 +5,7 @@ const TASK_REST_API_URL = "http://localhost:8080/task/getalltasks";
 const TASK_REST_API_URL_ONE_TASK = "http://localhost:8080/task/gettask/";
 const TASK_REST_API_URL_ADD_COMMENT = "http://localhost:8080/taskcomment/addcomment";
 const TASK_REST_API_URL_COMMENTS = "http://localhost:8080/taskcomment/getcomments/";
-
+const TASK_REST_API_URL_UPDATE = "http://localhost:8080/task/updatetask";
 
 class TaskService {
 
@@ -31,6 +31,12 @@ class TaskService {
         };
         return axios.post(TASK_REST_API_URL_ADD_COMMENT,data);
     }
+
+    updateTask(task){
+        return axios.post(TASK_REST_API_URL_UPDATE,task);
+    }
+
+
 
 
 }

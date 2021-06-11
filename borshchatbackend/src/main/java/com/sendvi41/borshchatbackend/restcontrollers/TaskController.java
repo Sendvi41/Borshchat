@@ -39,6 +39,22 @@ public class TaskController {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }
+    @PostMapping(value = "/updatetask", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> updateTask(@RequestBody TaskClient task) {
+
+        try {
+            taskService.updateTask(task);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+    }
+
+
+
+
+
+
 
     @GetMapping(value = "/getalltasks", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TaskClient>> getAllTasks() {
