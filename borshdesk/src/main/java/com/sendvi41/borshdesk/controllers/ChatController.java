@@ -8,6 +8,7 @@ import com.sendvi41.borshdesk.utils.LabelChat;
 import com.sendvi41.borshdesk.utils.Tools;
 import com.sendvi41.borshdesk.websocket.ConsultClient;
 
+import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.property.BooleanProperty;
@@ -176,8 +177,16 @@ public class ChatController extends FxController {
                     while (true) {
                         Thread.sleep(100);
                         if (Tools.updateCurrentChat.getValue()) {
-                            updateChat.setValue(true);
-                            Tools.updateCurrentChat.setValue(false);
+                            Platform.runLater(()->{
+                                try{
+                                    updateChat.setValue(true);
+                                    Tools.updateCurrentChat.setValue(false);
+                                }
+                                catch (Exception ex){
+                                    logger.error(ex);
+                                }
+                            });
+
                         }
 
                     }
