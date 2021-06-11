@@ -2,10 +2,33 @@ import React, {Component} from 'react'
 import TaskService from "./taskservice";
 import "../css/onetaskstyle.css"
 import Comment from "./commenttask"
+import iconedit from './editdocument.png'
+import Select from 'react-select';
+
+
+
+const optionsTracker = [
+    { value: 'Bug', label: 'Bug' },
+    { value: 'Support', label: 'Support' }
+]
+const optionsPriority = [
+    { value: 'High', label: 'High' },
+    { value: 'Normal', label: 'Normal' },
+    { value: 'Low', label: 'Low' },
+    { value: 'Immediate', label: 'Immediate' }
+]
+const optionsStatus = [
+    { value: 'New', label: 'New' },
+    { value: 'In process', label: 'In process' },
+    { value: 'Finished', label: 'Finished' }
+]
 
 
 
 export default class Task extends Component {
+
+
+
 
     constructor({match}) {
         super(match);
@@ -14,7 +37,8 @@ export default class Task extends Component {
             consultant: JSON.parse(localStorage.getItem('consultant')) || {},
             task: {},
             comments: [],
-            comment: ''
+            comment: '',
+            editForm: false
         };
     }
 
@@ -71,7 +95,13 @@ export default class Task extends Component {
                 <br/>
                 <h2 className="title">Task#id {this.state.id} </h2>
                 <div className="form">
-                    <label className="labelbold">{this.state.task.theme}</label>
+                    <label className="labelbold">{this.state.task.theme}
+                        <button className="labelboldbutton">
+                            <img src={iconedit}  />
+                            Edit
+                        </button>
+
+                    </label>
                     <div className="task_form">
 
                         <div className="size_block">
@@ -80,7 +110,11 @@ export default class Task extends Component {
                             <label>Client's surname: <span>{this.state.task.surnameclient}</span> </label>
                             <label>Client's patronymic: <span>{this.state.task.patronymicclient}</span></label>
                             <label>E-mail:<span> {this.state.task.email}</span></label>
-                            <label>Priority of task: <span>{this.state.task.priority}</span></label>
+                            <label>Priority of task: <span>{this.state.task.priority}</span>
+
+
+
+                            </label>
                             <label>Date: <span>{ this.state.task.date && new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(new Date(Date.parse(this.state.task.date + "0000"))).toString()}</span></label>
 
                             <label>Author:<span> {this.state.task.consultant_id && this.state.task.consultant_id.name}</span></label>
@@ -88,7 +122,18 @@ export default class Task extends Component {
                             <label>Consult's
                                 id: <span>{this.state.task.consultant_id && this.state.task.consultant_id.id}</span></label>
 
-                            <label>Tracker: <span>{this.state.task.tracker}</span></label>
+                            <label>Tracker: <span>{this.state.task.tracker}</span>
+                                <div>
+                                    <select th:field="*{category_id}" required>
+                                        <option th:each="cat : ${categories}" th:value="${cat.id}"
+                                                th:text="${cat.name}">
+                                        </option>
+                                    </select>
+                                </div>
+
+
+
+                            </label>
                             <label>Status: <span>{this.state.task.status}</span></label>
 
 

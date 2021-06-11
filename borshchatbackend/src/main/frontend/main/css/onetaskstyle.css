@@ -26,8 +26,28 @@
     padding:12px 12px 0px;
     border-bottom:1px solid #777;
     width:750px;
-
 }
+
+.labelboldbutton {
+    border: 0px;
+    padding: 0px;
+    float: right;
+    background: rgba(255, 194, 56, 0);
+    color: #f83a0c;
+}
+.labelboldbutton:hover {
+    border: 0px;
+    padding: 0px;
+    float: right;
+    background: rgba(255, 194, 56, 0);
+    color: rgba(177, 172, 172, 0.69);
+}
+
+.labelbold button img {
+    vertical-align:middle
+}
+
+
 
 .form{
     border: 1px solid #2d2d2d;
