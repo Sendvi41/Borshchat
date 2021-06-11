@@ -255,6 +255,8 @@ public class ChatController extends FxController {
                     popup.getContent().add(vbox);
                     setSize(size);
                     showPoup(popup);
+                }else{
+                    hidePoup();
                 }
             }
         });
@@ -273,6 +275,11 @@ public class ChatController extends FxController {
     }
 
 
+    public void hidePoup(){
+        if (this.popup != null) {
+            this.popup.hide();
+        }
+    }
     public void showPoup(Popup popup) {
         if (this.popup != null) {
             this.popup.hide();

@@ -10,6 +10,7 @@
     -fx-pref-width: 346px;
     -fx-vgrow: "ALWAYS";
     -fx-max-width: 1200px;
+    -fx-wrap-text: true;
 }
 
 

@@ -6,9 +6,9 @@
 
 <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="491.0" prefWidth="676.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sendvi41.borshdesk.controllers.ChatController">
    <children>
-      <SplitPane  dividerPositions="0.7789317507418397" prefHeight="491.0" prefWidth="676.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.7789317507418397" prefHeight="491.0" prefWidth="676.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane  minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <SplitPane fx:id="firstsplit" dividerPositions="0.3873239436619718" prefHeight="491.0" prefWidth="676.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <items>
@@ -29,9 +29,9 @@
                            <children>
                               <VBox fx:id="sendChats" alignment="BOTTOM_RIGHT" layoutX="175.0" prefHeight="422.0" prefWidth="141.0" stylesheets="@/css/textstyle2.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0" />
                               <VBox fx:id="receivedChats" alignment="BOTTOM_LEFT" layoutY="-3.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="422.0" prefWidth="167.0" stylesheets="@/css/textstyle.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="-3.0" />
-                              <AnchorPane  fx:id="buttonarea"  layoutY="476.0" prefHeight="67.0" prefWidth="341.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <AnchorPane fx:id="buttonarea" layoutY="476.0" prefHeight="67.0" prefWidth="341.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
-                                    <TextArea fx:id="textarea" layoutY="-1.0" prefHeight="43.0" prefWidth="341.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0" />
+                                    <TextArea fx:id="textarea" layoutY="-1.0" prefHeight="43.0" prefWidth="341.0" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0" />
                                     <Button layoutX="241.0" layoutY="42.0" mnemonicParsing="false" onAction="#send" prefHeight="5.0" prefWidth="100.0" text="Отправить" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                     <Button layoutY="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Завершить чат" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
                                  </children>
@@ -43,29 +43,29 @@
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="578.0">
                <children>
-                  <AnchorPane fx:id="taskarea" layoutY="157.0" prefHeight="373.0" prefWidth="146.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <AnchorPane fx:id="taskarea" layoutY="157.0" prefHeight="388.0" prefWidth="146.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <Label layoutX="6.0" layoutY="81.0" text="Имя:" AnchorPane.leftAnchor="6.0" />
-                        <Label layoutX="5.0" layoutY="48.0" prefHeight="17.0" prefWidth="64.0" text="Фамилия:" AnchorPane.leftAnchor="5.0" />
-                        <Label layoutX="6.0" layoutY="114.0" prefHeight="17.0" prefWidth="58.0" text="Отчество:" AnchorPane.leftAnchor="6.0" />
-                        <Label layoutX="8.0" layoutY="146.0" prefHeight="17.0" prefWidth="58.0" text="E-mail:" AnchorPane.leftAnchor="8.0" />
-                        <Label layoutX="14.0" layoutY="256.0" text="Комментарий к задаче" />
-                        <Label layoutX="10.0" layoutY="14.0" prefHeight="19.0" prefWidth="126.0" text="Задача по клиенту" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0">
+                        <Label layoutX="10.0" layoutY="66.0" text="Имя:" AnchorPane.leftAnchor="10.0" />
+                        <Label layoutX="10.0" layoutY="30.0" prefHeight="18.0" prefWidth="58.0" text="Фамилия:" AnchorPane.leftAnchor="10.0" />
+                        <Label layoutX="10.0" layoutY="99.0" prefHeight="17.0" prefWidth="58.0" text="Отчество:" AnchorPane.leftAnchor="10.0" />
+                        <Label layoutX="10.0" layoutY="132.0" prefHeight="18.0" prefWidth="39.0" text="E-mail:" AnchorPane.leftAnchor="10.0" />
+                        <Label layoutX="8.0" layoutY="268.0" text="Комментарий к задаче" />
+                        <Label layoutX="13.0" layoutY="4.0" prefHeight="19.0" prefWidth="126.0" text="Задача по клиенту" textAlignment="CENTER" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="4.0">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font></Label>
-                        <TextArea fx:id="comment" layoutX="10.0" layoutY="280.0" prefHeight="67.0" prefWidth="133.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="3.0" />
+                        <TextArea fx:id="comment" layoutX="9.0" layoutY="293.0" prefHeight="67.0" prefWidth="126.0" wrapText="true" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="11.0" />
                         <Button layoutX="34.0" layoutY="347.0" mnemonicParsing="false" onAction="#createTask" prefHeight="25.0" prefWidth="116.0" text="Создать задачу" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="-4.0" />
-                        <TextField fx:id="email" layoutX="62.0" layoutY="142.0" prefHeight="25.0" prefWidth="79.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="5.0" />
-                        <TextField fx:id="patronymic" layoutX="62.0" layoutY="110.0" prefHeight="25.0" prefWidth="79.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="5.0" />
-                        <TextField fx:id="name" layoutX="62.0" layoutY="77.0" prefHeight="25.0" prefWidth="79.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="5.0" />
-                        <TextField fx:id="surname" layoutX="62.0" layoutY="44.0" prefHeight="25.0" prefWidth="79.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="5.0" />
-                        <TextField fx:id="theme" layoutX="62.0" layoutY="173.0" prefHeight="25.0" prefWidth="79.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="5.0" />
-                        <Label layoutX="8.0" layoutY="177.0" prefHeight="17.0" prefWidth="38.0" text="Тема" />
-                        <Label layoutX="7.0" layoutY="208.0" text="Приоритет" />
-                        <Label layoutX="8.0" layoutY="239.0" text="Трекер" />
-                        <ChoiceBox fx:id="priority" layoutX="83.0" layoutY="204.0" prefHeight="25.0" prefWidth="58.0" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="5.0" />
-                        <ChoiceBox fx:id="tracker" layoutX="83.0" layoutY="235.0" prefHeight="25.0" prefWidth="58.0" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="5.0" />
+                        <TextField fx:id="email" layoutX="68.0" layoutY="128.0" prefHeight="26.0" prefWidth="73.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="5.0" />
+                        <TextField fx:id="patronymic" layoutX="68.0" layoutY="95.0" prefHeight="26.0" prefWidth="73.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="5.0" />
+                        <TextField fx:id="name" layoutX="68.0" layoutY="62.0" prefHeight="26.0" prefWidth="73.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="5.0" />
+                        <TextField fx:id="surname" layoutX="68.0" layoutY="26.0" prefHeight="26.0" prefWidth="73.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="5.0" />
+                        <TextField fx:id="theme" layoutX="68.0" layoutY="162.0" prefHeight="26.0" prefWidth="73.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="5.0" />
+                        <Label layoutX="10.0" layoutY="165.0" prefHeight="18.0" prefWidth="39.0" text="Тема" />
+                        <Label layoutX="10.0" layoutY="198.0" text="Приоритет" />
+                        <Label layoutX="10.0" layoutY="233.0" text="Трекер" />
+                        <ChoiceBox fx:id="priority" layoutX="82.0" layoutY="194.0" prefHeight="25.0" prefWidth="58.0" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="6.0" />
+                        <ChoiceBox fx:id="tracker" layoutX="82.0" layoutY="229.0" prefHeight="25.0" prefWidth="58.0" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="6.0" />
                      </children></AnchorPane>
                </children></AnchorPane>
         </items>

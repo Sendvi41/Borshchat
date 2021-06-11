@@ -10,5 +10,6 @@
     -fx-vgrow: "ALWAYS";
     -fx-max-width: 600px;
     -fx-background-radius: 30px;
+    -fx-wrap-text: true;
 
 }

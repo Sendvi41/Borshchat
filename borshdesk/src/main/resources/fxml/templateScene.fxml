@@ -31,7 +31,7 @@
                         <Font name="Comic Sans MS Bold" size="28.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="textarea" layoutX="19.0" layoutY="97.0" prefHeight="177.0" prefWidth="292.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="97.0" />
+                  <TextArea fx:id="textarea" layoutX="19.0" layoutY="97.0" prefHeight="177.0" prefWidth="292.0" wrapText="true" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="97.0" />
 
                   <Button contentDisplay="TOP" layoutX="211.0" layoutY="275.0" mnemonicParsing="false" onAction="#createTemplate" prefHeight="78.0" prefWidth="130.0" text="Создать шаблон" AnchorPane.bottomAnchor="135.40000000000003" AnchorPane.rightAnchor="0.20000000000004547">
                      <graphic>
