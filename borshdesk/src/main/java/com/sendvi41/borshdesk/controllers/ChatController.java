@@ -9,8 +9,10 @@ import com.sendvi41.borshdesk.utils.Tools;
 import com.sendvi41.borshdesk.websocket.ConsultClient;
 
 import javafx.beans.InvalidationListener;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.beans.Observable;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.*;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
@@ -20,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.PopupWindow;
+import javafx.util.Callback;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.log4j.Logger;
@@ -30,6 +33,7 @@ import javafx.beans.value.ObservableValue;
 
 
 import javafx.event.EventHandler;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,8 +51,10 @@ public class ChatController extends FxController {
     ObservableList<String> trackers = FXCollections.observableArrayList("Bug", "Support");
     ObservableList<String> priorities = FXCollections.observableArrayList("High", "Normal", "Low", "Immediate");
 
+
     private Long selectedID = null;
     private Long userId;
+
 
     private List<Template> listTemplates = new LinkedList<>();
 
@@ -58,7 +64,6 @@ public class ChatController extends FxController {
     private Popup popup;
 
     private int size;
-
 
 
     @FXML
@@ -119,6 +124,73 @@ public class ChatController extends FxController {
     @Override
     public void initialize() {
         super.initialize();
+
+
+
+        Thread RefreshChats = new Thread() {
+            public volatile BooleanProperty updateChat;
+
+            public void run() {
+                updateChat =  new SimpleBooleanProperty(false);
+                updateChat.addListener(new ChangeListener<Boolean>() {
+
+                    @Override
+                    public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                        System.out.println("changed " + oldValue + "->" + newValue);
+                        if(newValue){
+                            List<LabelChat> list;
+                            list = Tools.getReceivedChats();
+                            if (selectedID != null) {
+                                List<LabelChat> result = list.stream()
+                                        .filter(item -> item.getId().equals(getSelectedID()))
+                                        .collect(Collectors.toList());
+                                LabelChat current = result.get(0);
+                                receivedChats.getChildren().clear();
+                                sendChats.getChildren().clear();
+
+                                for (ChatMessage a : current.getHistory()) {
+                                    if (a.getAuthor().equals("client")) {
+                                        receivedChats.getChildren().addAll(new Label(a.getMessage()));
+                                        Label emptyLabel = new Label();
+                                        emptyLabel.setVisible(false);
+                                        sendChats.getChildren().addAll(emptyLabel);
+                                    } else if (a.getAuthor().equals("consult")) {
+
+                                        sendChats.getChildren().addAll(new Label(a.getMessage()));
+                                        Label emptyLabel = new Label();
+                                        emptyLabel.setVisible(false);
+                                        receivedChats.getChildren().addAll(emptyLabel);
+                                    }
+
+                                }
+                            }
+                            updateChat.setValue(false);
+                        }
+
+                    }
+                });
+
+
+
+                try {
+                    while (true) {
+                        Thread.sleep(100);
+                        if (Tools.updateCurrentChat.getValue()) {
+                            updateChat.setValue(true);
+                            Tools.updateCurrentChat.setValue(false);
+                        }
+
+                    }
+
+                } catch (InterruptedException v) {
+                    logger.error(v);
+                }
+            }
+
+        };
+        RefreshChats.start();
+
+
         priority.setItems(priorities);
         tracker.setItems(trackers);
         this.listTemplates = Tools.getListTemplates();
@@ -126,7 +198,6 @@ public class ChatController extends FxController {
         firstsplit.setDividerPositions(0.4);
         leftpane.minWidthProperty().bind(firstsplit.widthProperty().multiply(0.4));
         leftpane.maxWidthProperty().bind(firstsplit.widthProperty().multiply(0.4));
-
 
 
         chatarea.layoutXProperty().addListener((InvalidationListener) observable -> {
@@ -185,8 +256,8 @@ public class ChatController extends FxController {
         this.size = size;
     }
 
-    public void updateSizePopup(){
-        if(this.popup!=null){
+    public void updateSizePopup() {
+        if (this.popup != null) {
             this.popup.setX(chatarea.localToScreen(0, 0).getX());
             this.popup.setY(chatarea.localToScreen(0, 0).getY() + chatarea.getHeight() - buttonarea.getHeight() - this.size);
         }
@@ -200,9 +271,8 @@ public class ChatController extends FxController {
         this.popup = popup;
 
 
-
         this.popup.show(chatarea, chatarea.localToScreen(0, 0).getX()
-                , chatarea.localToScreen(0, 0).getY() + chatarea.getHeight() - buttonarea.getHeight() - this.size );
+                , chatarea.localToScreen(0, 0).getY() + chatarea.getHeight() - buttonarea.getHeight() - this.size);
     }
 
     public void hidePopUp() {
@@ -280,6 +350,7 @@ public class ChatController extends FxController {
                 }
                 newlab.setStyle("-fx-text-fill: red; -fx-font-size: 16px");
                 this.selectedID = lc.getId();
+                Tools.setSelectedID(this.selectedID);
                 receivedChats.getChildren().clear();
                 sendChats.getChildren().clear();
                 for (ChatMessage a : lc.getHistory()) {

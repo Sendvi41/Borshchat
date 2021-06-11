@@ -1,6 +1,8 @@
 package com.sendvi41.borshdesk.utils;
 
 import com.sendvi41.borshdesk.controllers.QueueController;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.Label;
 import lombok.Getter;
 import lombok.Setter;

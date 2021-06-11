@@ -24,43 +24,5 @@ public class BorshchatdeskApplication extends Application {
 
     }
 
-//    Stage workStage = new Stage();
-//
-//        primaryStage.setResizable(false);
-//
-//    StartController startController = FxController.init(primaryStage, "/fxml/startScene.fxml");
-//
-//    WorkController workController = FxController.init(workStage, "/fxml/menuScene.fxml");
-//
-//        startController.getStage().show();
-
-
-
-//        FXMLLoader loader = new FXMLLoader();
-//        URL xmlUrl = getClass().getResource("/fxml/startScene.fxml");
-//        loader.setLocation(xmlUrl);
-//        Parent root = loader.load();
-//
-//        primaryStage.setScene(new Scene(root));
-//        primaryStage.setResizable(false);
-//        primaryStage.show();
-//    }
-
-//    public Parent getScene(String fxmlUrl) throws Exception {
-//        FXMLLoader loader = new FXMLLoader();
-//        URL xmlUrl = getClass().getResource(fxmlUrl);
-//        loader.setLocation(xmlUrl);
-//
-//        Parent root = loader.load();
-//
-//        return root;
-//    }
-//
-//    public Stage createNewStage(Parent root)
-//    {
-//        Stage stage = new Stage();
-//        stage.setScene(new Scene(root));
-//        return stage;
-//    }
 
 }

@@ -3,6 +3,8 @@ package com.sendvi41.borshdesk.utils;
 import com.sendvi41.borshdesk.controllers.MenuController;
 import com.sendvi41.borshdesk.controllers.QueueController;
 import com.sendvi41.borshdesk.dto.Template;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.control.Label;
 
 import java.util.LinkedList;
@@ -20,6 +22,8 @@ public class Tools {
     static List<LabelChat> receivedChats = new LinkedList<>();
     static List<LabelChat> listchats = new LinkedList<>();
     static List<Template> templates = new LinkedList<>();
+    static volatile Long selectedID = null;
+    public static volatile BooleanProperty updateCurrentChat =  new SimpleBooleanProperty(false);
 
     static public synchronized List<Template>getListTemplates(){
         return templates;
@@ -77,6 +81,12 @@ public class Tools {
         if(!result.isEmpty())
         {
             logger.info("Chat already exist");
+            if(selectedID!=null){
+                if(selectedID == Long.parseLong(id)){
+                    updateCurrentChat.setValue(true);
+                }
+            }
+
             result.get(0).setMessage(author, message);
         }else {
             LabelChat newLabel = new LabelChat(Long.parseLong(id), new Label(id));
@@ -84,6 +94,14 @@ public class Tools {
             listchats.add(newLabel);
         }
 
+    }
+
+    public static Long getSelectedID() {
+        return selectedID;
+    }
+
+    public static void setSelectedID(Long selectedID) {
+        Tools.selectedID = selectedID;
     }
 
 }
