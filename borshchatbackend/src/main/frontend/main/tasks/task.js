@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import TaskService from "./taskservice";
-import "./css/onetaskstyle.css"
+import "../css/onetaskstyle.css"
 import Comment from "./commenttask"
-import LogInService from "./login/logInservice";
-import taskservice from "./taskservice";
+
 
 
 export default class Task extends Component {

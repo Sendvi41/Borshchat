@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-import Listtasks from '../listtasks';
-import Docs from '../docs';
+import Listtasks from '../tasks/listtasks';
+import Docs from '../listdocs/docs';
 import { BrowserRouter as Router } from 'react-router-dom';
 import {Route,Switch} from 'react-router-dom';
-import Task from '../task'
+import Task from '../tasks/task'
 
 export default class Rout extends Component {
 

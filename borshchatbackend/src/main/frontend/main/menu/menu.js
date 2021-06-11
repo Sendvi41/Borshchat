@@ -1,9 +1,7 @@
 import React, {Component} from 'react'
 import './menu.css'
 import Rout from './router'
-import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
-import Listtasks from "../listtasks";
-import ListDocService from "../listdocs/listservice";
+
 
 
 export default class Menu extends Component {

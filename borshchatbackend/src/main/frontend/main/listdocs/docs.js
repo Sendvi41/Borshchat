@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import FileUpload from "./listdocs/fileupload";
-import ListDocs from "./listdocs/listdocs";
+import FileUpload from "./fileupload";
+import ListDocs from "./listdocs";
 
 
 
