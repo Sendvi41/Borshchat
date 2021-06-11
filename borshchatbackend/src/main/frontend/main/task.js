@@ -82,8 +82,7 @@ export default class Task extends Component {
                             <label>Client's patronymic: <span>{this.state.task.patronymicclient}</span></label>
                             <label>E-mail:<span> {this.state.task.email}</span></label>
                             <label>Priority of task: <span>{this.state.task.priority}</span></label>
-                            <label>Date: <span>{new Date(Date.parse(this.state.task.date + "0000")).toDateString()}
-                                {new Date(Date.parse(this.state.task.date + "0000")).toTimeString()}</span></label>
+                            <label>Date: <span>{ this.state.task.date && new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(new Date(Date.parse(this.state.task.date + "0000"))).toString()}</span></label>
 
                             <label>Author:<span> {this.state.task.consultant_id && this.state.task.consultant_id.name}</span></label>
 

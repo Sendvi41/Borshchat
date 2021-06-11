@@ -53,8 +53,11 @@ export default class Listtasks extends Component {
                                     <td>{task.priority}</td>
                                     <td>{task.theme}</td>
                                     <td>{task.consultant_id.name}</td>
-                                    <td>{new Date(Date.parse(task.date+"0000")).toDateString()}<br/>
-                                    {new Date(Date.parse(task.date+"0000")).toTimeString()}</td>
+
+                                    <td>{new Intl.DateTimeFormat('en-US', {year: 'numeric', month:
+                                            '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).
+                                    format(new Date(Date.parse(task.date + "0000"))).toString()}<br/>
+                                   </td>
                                 </tr>
                        )
                    }
