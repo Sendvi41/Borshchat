@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.CacheHint;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Glow;
 import javafx.scene.effect.Shadow;
@@ -83,6 +84,9 @@ public class MenuController extends FxController {
     public void initialize() {
         super.initialize();
 
+        QueueButtonKey.setTooltip(new Tooltip("hotkey: CTRL + 1"));
+        ChatButtonKey.setTooltip(new Tooltip("hotkey: CTRL + 2"));
+        TemplateButtonKey.setTooltip(new Tooltip("hotkey: CTRL + 3"));
 
     }
 
@@ -148,6 +152,10 @@ public class MenuController extends FxController {
 
     @Override
     public void init() {
+
+
+
+
         this.getStage().xProperty().addListener((InvalidationListener) observable -> {
             chatController.updateSizePopup();
         });

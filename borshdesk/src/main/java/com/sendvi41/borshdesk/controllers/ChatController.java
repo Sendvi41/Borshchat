@@ -133,6 +133,10 @@ public class ChatController extends FxController {
     public void initialize() {
         super.initialize();
 
+        send.setTooltip(new Tooltip("hotkey: CTRL + ENTER"));
+        createtask.setTooltip(new Tooltip("hotkey: CTRL + D"));
+
+
         receivedChats.prefWidthProperty().bind(chatarea.widthProperty().divide(2));
         sendChats.prefWidthProperty().bind(chatarea.widthProperty().divide(2));
 
@@ -449,7 +453,6 @@ public class ChatController extends FxController {
     @Override
     public void init() {
         taskarea.setVisible(false);
-
 
 
     }

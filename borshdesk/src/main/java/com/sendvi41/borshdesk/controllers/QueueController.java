@@ -11,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -52,6 +53,12 @@ public class QueueController extends FxController {
 
     @FXML
     private Button acceptchat;
+
+    @Override
+    public void initialize() {
+        super.initialize();
+        acceptchat.setTooltip(new Tooltip("hotkey: CTRL + R"));
+    }
 
     public void showHistoryChat(){
 
@@ -142,8 +149,6 @@ public class QueueController extends FxController {
     @Override
     public void init() {
         super.init();
-
-
 
 
     }
