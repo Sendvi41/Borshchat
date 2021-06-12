@@ -6,13 +6,21 @@ import com.sendvi41.borshdesk.services.Authorization;
 import com.sendvi41.borshdesk.websocket.StompClient;
 import javafx.beans.InvalidationListener;
 import javafx.fxml.FXML;
+import javafx.scene.CacheHint;
+import javafx.scene.control.Button;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.Glow;
+import javafx.scene.effect.Shadow;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 
 import java.io.IOException;
 
@@ -39,12 +47,33 @@ public class MenuController extends FxController {
     @Autowired
     private QueueController queueController;
 
+
+
+    private ImageView currentButton;
+
+    @FXML
+    private ImageView QueueButton;
+
+    @FXML
+    private ImageView ChatButton;
+
+    @FXML
+    private ImageView TemplateButton;
+
     @FXML
     private AnchorPane view;
 
 
     @FXML
     private void showTemplate() throws IOException {
+        if(currentButton!=null)
+        currentButton.setEffect(null);
+
+        ColorAdjust glow = new ColorAdjust();
+        glow.setBrightness(1.0);
+
+        TemplateButton.setEffect(glow);
+        currentButton=TemplateButton;
 
         templateController.updateRoot();
         templateController.setUserId(currentConsultant.getId());
@@ -56,6 +85,16 @@ public class MenuController extends FxController {
 
     @FXML
     private void showChat() throws IOException {
+        if(currentButton!=null)
+        currentButton.setEffect(null);
+
+        ColorAdjust glow = new ColorAdjust();
+        glow.setBrightness(1.0);
+
+        ChatButton.setEffect(glow);
+
+        currentButton=ChatButton;
+
         chatController.updateRoot();
         chatController.setUserId(currentConsultant.getId());
         view.getChildren().setAll(chatController.getRoot().getChildrenUnmodifiable());
@@ -65,6 +104,15 @@ public class MenuController extends FxController {
 
     @FXML
     private void showQueue() throws IOException {
+        if(currentButton!=null)
+        currentButton.setEffect(null);
+
+        ColorAdjust glow = new ColorAdjust();
+        glow.setBrightness(1.0);
+
+        QueueButton.setEffect(glow);
+        currentButton=QueueButton;
+
         queueController.updateRoot();
         queueController.setUserId(currentConsultant.getId());
         view.getChildren().setAll(queueController.getRoot().getChildrenUnmodifiable());
