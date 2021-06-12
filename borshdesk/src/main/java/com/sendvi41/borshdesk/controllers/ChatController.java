@@ -15,6 +15,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.*;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -126,7 +127,14 @@ public class ChatController extends FxController {
     public void initialize() {
         super.initialize();
 
+        receivedChats.prefWidthProperty().bind(chatarea.widthProperty().divide(2));
+        sendChats.prefWidthProperty().bind(chatarea.widthProperty().divide(2));
 
+        receivedChats.maxWidthProperty().bind(chatarea.widthProperty().divide(2));
+        sendChats.maxWidthProperty().bind(chatarea.widthProperty().divide(2));
+
+        receivedChats.setSpacing(5.0);
+        sendChats.setSpacing(5.0);
 
         Thread RefreshChats = new Thread() {
             public volatile BooleanProperty updateChat;
@@ -151,14 +159,22 @@ public class ChatController extends FxController {
 
                                 for (ChatMessage a : current.getHistory()) {
                                     if (a.getAuthor().equals("client")) {
-                                        receivedChats.getChildren().addAll(new Label(a.getMessage()));
-                                        Label emptyLabel = new Label();
+                                        Label newlabel = new Label(a.getMessage());
+                                        newlabel.setWrapText(true);
+                                        newlabel.prefWidthProperty().bind(receivedChats.widthProperty());
+                                        receivedChats.getChildren().addAll(newlabel);
+                                        Label emptyLabel = new Label(a.getMessage());
+                                        emptyLabel.prefWidthProperty().bind(sendChats.widthProperty());
                                         emptyLabel.setVisible(false);
                                         sendChats.getChildren().addAll(emptyLabel);
                                     } else if (a.getAuthor().equals("consult")) {
 
-                                        sendChats.getChildren().addAll(new Label(a.getMessage()));
-                                        Label emptyLabel = new Label();
+                                        Label newlabel = new Label(a.getMessage());
+                                        newlabel.setWrapText(true);
+                                        newlabel.prefWidthProperty().bind(sendChats.widthProperty());
+                                        sendChats.getChildren().addAll(newlabel);
+                                        Label emptyLabel = new Label(a.getMessage());
+                                        emptyLabel.prefWidthProperty().bind(receivedChats.widthProperty());
                                         emptyLabel.setVisible(false);
                                         receivedChats.getChildren().addAll(emptyLabel);
                                     }
@@ -337,15 +353,23 @@ public class ChatController extends FxController {
 
             for (ChatMessage a : current.getHistory()) {
                 if (a.getAuthor().equals("client")) {
-                    receivedChats.getChildren().addAll(new Label(a.getMessage()));
-                    Label emptyLabel = new Label();
+                    Label newlabel = new Label(a.getMessage());
+                    newlabel.setWrapText(true);
+                    newlabel.prefWidthProperty().bind(receivedChats.widthProperty());
+                    receivedChats.getChildren().addAll(newlabel);
+                    Label emptyLabel = new Label(a.getMessage());
                     emptyLabel.setVisible(false);
+                    emptyLabel.prefWidthProperty().bind(sendChats.widthProperty());
                     sendChats.getChildren().addAll(emptyLabel);
                 } else if (a.getAuthor().equals("consult")) {
 
-                    sendChats.getChildren().addAll(new Label(a.getMessage()));
-                    Label emptyLabel = new Label();
+                    Label newlabel = new Label(a.getMessage());
+                    newlabel.setWrapText(true);
+                    newlabel.prefWidthProperty().bind(sendChats.widthProperty());
+                    sendChats.getChildren().addAll(newlabel);
+                    Label emptyLabel = new Label(a.getMessage());
                     emptyLabel.setVisible(false);
+                    emptyLabel.prefWidthProperty().bind(receivedChats.widthProperty());
                     receivedChats.getChildren().addAll(emptyLabel);
                 }
 
@@ -364,22 +388,29 @@ public class ChatController extends FxController {
                     Label res = result.get(0).getLabel();
                     res.setStyle("");
                 }
-                newlab.setStyle("-fx-text-fill: red; -fx-font-size: 16px");
+                newlab.setStyle("-fx-text-fill: white; -fx-font-size: 16px");
                 this.selectedID = lc.getId();
                 Tools.setSelectedID(this.selectedID);
                 receivedChats.getChildren().clear();
                 sendChats.getChildren().clear();
                 for (ChatMessage a : lc.getHistory()) {
                     if (a.getAuthor().equals("client")) {
-                        receivedChats.getChildren().addAll(new Label(a.getMessage()));
-                        Label emptyLabel = new Label();
+                        Label newlabel = new Label(a.getMessage());
+                        newlabel.setWrapText(true);
+                        newlabel.prefWidthProperty().bind(receivedChats.widthProperty());
+                        receivedChats.getChildren().addAll(newlabel);
+                        Label emptyLabel = new Label(a.getMessage());
                         emptyLabel.setVisible(false);
+                        emptyLabel.prefWidthProperty().bind(sendChats.widthProperty());
                         sendChats.getChildren().addAll(emptyLabel);
                     } else if (a.getAuthor().equals("consult")) {
-
-                        sendChats.getChildren().addAll(new Label(a.getMessage()));
-                        Label emptyLabel = new Label();
+                        Label newlabel = new Label(a.getMessage());
+                        newlabel.setWrapText(true);
+                        newlabel.prefWidthProperty().bind(sendChats.widthProperty());
+                        sendChats.getChildren().addAll(newlabel);
+                        Label emptyLabel = new Label(a.getMessage());
                         emptyLabel.setVisible(false);
+                        emptyLabel.prefWidthProperty().bind(receivedChats.widthProperty());
                         receivedChats.getChildren().addAll(emptyLabel);
                     }
 

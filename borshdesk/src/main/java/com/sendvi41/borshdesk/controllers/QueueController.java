@@ -78,7 +78,7 @@ public class QueueController extends FxController {
                     res.setStyle("");
 
                 }
-                newlab.setStyle("-fx-text-fill: red; -fx-font-size: 16px");
+                newlab.setStyle("-fx-text-fill: white; -fx-font-size: 16px");
                 this.selectedID = lc.getId();
                 received.getChildren().clear();
                for( ChatMessage a :lc.getHistory()) {

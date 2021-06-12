@@ -27,9 +27,9 @@
                         </ScrollPane>
                         <AnchorPane fx:id="chatarea" prefHeight="490.0" prefWidth="310.0">
                            <children>
-                              <VBox fx:id="sendChats" alignment="BOTTOM_RIGHT" layoutX="175.0" prefHeight="422.0" prefWidth="141.0" stylesheets="@/css/textstyle2.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0" />
-                              <VBox fx:id="receivedChats" alignment="BOTTOM_LEFT" layoutY="-3.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="422.0" prefWidth="167.0" stylesheets="@/css/textstyle.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="-3.0" />
-                              <AnchorPane fx:id="buttonarea" layoutY="476.0" prefHeight="67.0" prefWidth="341.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <VBox fx:id="sendChats" alignment="BOTTOM_RIGHT" layoutX="175.0" prefHeight="422.0" prefWidth="155.0" stylesheets="@/css/textstyle2.css" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0" />
+                              <VBox fx:id="receivedChats" alignment="BOTTOM_LEFT" layoutY="-3.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="422.0" prefWidth="155.0" stylesheets="@/css/textstyle.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-3.0" />
+                              <AnchorPane fx:id="buttonarea" layoutY="476.0" prefHeight="67.0" prefWidth="341.0" stylesheets="@/css/buttonstylecommon.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
                                     <TextArea fx:id="textarea" layoutY="-1.0" prefHeight="43.0" prefWidth="341.0" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0" />
                                     <Button layoutX="241.0" layoutY="42.0" mnemonicParsing="false" onAction="#send" prefHeight="5.0" prefWidth="100.0" text="Отправить" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
@@ -43,7 +43,7 @@
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="578.0">
                <children>
-                  <AnchorPane fx:id="taskarea" layoutY="157.0" prefHeight="388.0" prefWidth="146.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <AnchorPane fx:id="taskarea" layoutY="157.0" prefHeight="388.0" prefWidth="146.0" stylesheets="@/css/buttonstylecommon.css" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
                         <Label layoutX="10.0" layoutY="66.0" text="Имя:" AnchorPane.leftAnchor="10.0" />
                         <Label layoutX="10.0" layoutY="30.0" prefHeight="18.0" prefWidth="58.0" text="Фамилия:" AnchorPane.leftAnchor="10.0" />
@@ -61,9 +61,9 @@
                         <TextField fx:id="name" layoutX="68.0" layoutY="62.0" prefHeight="26.0" prefWidth="73.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="5.0" />
                         <TextField fx:id="surname" layoutX="68.0" layoutY="26.0" prefHeight="26.0" prefWidth="73.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="5.0" />
                         <TextField fx:id="theme" layoutX="68.0" layoutY="162.0" prefHeight="26.0" prefWidth="73.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="5.0" />
-                        <Label layoutX="10.0" layoutY="165.0" prefHeight="18.0" prefWidth="39.0" text="Тема" />
-                        <Label layoutX="10.0" layoutY="198.0" text="Приоритет" />
-                        <Label layoutX="10.0" layoutY="233.0" text="Трекер" />
+                        <Label layoutX="10.0" layoutY="165.0" prefHeight="18.0" prefWidth="39.0" text="Тема:" />
+                        <Label layoutX="10.0" layoutY="198.0" text="Приоритет:" />
+                        <Label layoutX="10.0" layoutY="233.0" text="Трекер:" />
                         <ChoiceBox fx:id="priority" layoutX="82.0" layoutY="194.0" prefHeight="25.0" prefWidth="58.0" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="6.0" />
                         <ChoiceBox fx:id="tracker" layoutX="82.0" layoutY="229.0" prefHeight="25.0" prefWidth="58.0" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="6.0" />
                      </children></AnchorPane>

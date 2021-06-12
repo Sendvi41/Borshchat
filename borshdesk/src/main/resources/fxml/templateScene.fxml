@@ -7,7 +7,7 @@
 
 <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="491.0" prefWidth="676.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sendvi41.borshdesk.controllers.TemplateController">
    <children>
-      <SplitPane dividerPositions="0.4896142433234421" prefHeight="491.0" prefWidth="676.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane fx:id="splitpane" dividerPositions="0.4896142433234421" prefHeight="491.0" prefWidth="676.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="486.0" prefWidth="327.0">
                <content>
@@ -31,7 +31,10 @@
                         <Font name="Comic Sans MS Bold" size="28.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="textarea" layoutX="19.0" layoutY="97.0" prefHeight="177.0" prefWidth="292.0" wrapText="true" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="97.0" />
+                  <TextArea fx:id="textarea" layoutX="19.0" layoutY="97.0" prefHeight="177.0" prefWidth="292.0" wrapText="true" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="97.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextArea>
 
                   <Button contentDisplay="TOP" layoutX="211.0" layoutY="275.0" mnemonicParsing="false" onAction="#createTemplate" prefHeight="78.0" prefWidth="130.0" text="Создать шаблон" AnchorPane.bottomAnchor="135.40000000000003" AnchorPane.rightAnchor="0.20000000000004547">
                      <graphic>

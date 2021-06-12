@@ -4,9 +4,7 @@ import com.sendvi41.borshdesk.dto.Template;
 import com.sendvi41.borshdesk.services.TemplateService;
 import com.sendvi41.borshdesk.services.TemplateServiceInterface;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import lombok.Getter;
@@ -55,6 +53,9 @@ public class TemplateController extends FxController {
     private AnchorPane templates;
 
     @FXML
+    private SplitPane splitpane;
+
+    @FXML
     private VBox area;
 
     @FXML
@@ -79,6 +80,7 @@ public class TemplateController extends FxController {
 
             String message = tem.getMessage();
             Label newLabel = new Label(tem.getMessage());
+//            newLabel.maxWidthProperty().bind(splitpane.);
             listnode.add(new LabelNode(tem.getId(), newLabel));
 
             newLabel.setOnMouseClicked((e) -> {
@@ -91,7 +93,7 @@ public class TemplateController extends FxController {
 
                 }
                 this.selectedID = tem.getId();
-                newLabel.setStyle("-fx-text-fill: red; -fx-font-size: 16px");
+                newLabel.setStyle("-fx-text-fill: white; -fx-font-size: 16px");
                 showInTextArea(message);
             });
 

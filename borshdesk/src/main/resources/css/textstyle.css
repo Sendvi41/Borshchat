@@ -5,11 +5,13 @@
     -fx-background-color: rgba(252, 77, 113, 0.45);
     -fx-font-size: 10px;
     -fx-font-family:"Comic Sans MS";
-    -fx-pref-height: 30px;
-    -fx-pref-width: 250px;
+    /*-fx-pref-height: 30px;*/
+    /*-fx-pref-width: 250px;*/
+    /*-fx-wrap-text: true;*/
     -fx-vgrow: "ALWAYS";
-    -fx-max-width: 600px;
+    -fx-max-width: 350px;
     -fx-background-radius: 30px;
-    -fx-wrap-text: true;
+
+
 
 }
