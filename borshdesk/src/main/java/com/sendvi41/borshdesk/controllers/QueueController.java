@@ -84,7 +84,10 @@ public class QueueController extends FxController {
                for( ChatMessage a :lc.getHistory()) {
                     if(a.getAuthor()=="client")
                     {
-                        received.getChildren().addAll(new Label (a.getMessage()));
+                        Label newlabel = new Label(a.getMessage());
+                        newlabel.setWrapText(true);
+                        newlabel.prefWidthProperty().bind(received.widthProperty());
+                        received.getChildren().addAll(newlabel);
 //                        messages.add();
                     }
 
