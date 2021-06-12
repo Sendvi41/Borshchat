@@ -216,7 +216,10 @@ public class MenuController extends FxController {
                     KeyCombination.CONTROL_DOWN);
             public void handle(KeyEvent ke) {
                 if (keyComb.match(ke)) {
-                    queueController.takeChat();
+                    queueController.takeFirstChat();
+                    if(currentButton==ChatButton){
+                        chatController.showAllChats();
+                    }
                     logger.info("Key Pressed: " + keyComb);
                     ke.consume(); // <-- stops passing the event to next node
                 }

@@ -71,15 +71,21 @@ public class QueueController extends FxController {
 
 
 
-    public void takeFirstChat() throws IOException {
-        Tools.deleteChatFromMainQueue(selectedID.toString());
-        ConsultClient thread = new ConsultClient(userId.toString(), selectedID.toString());
-        thread.start();
-        ChatController.addThread(thread);
+    public void takeFirstChat() {
+        List<LabelChat> list;
+        list = Tools.getListChats();
+        if(list.size()!=0){
 
-        received.getChildren().clear();
-        selectedID = null;
-        showAllChats();
+            Tools.deleteChatFromMainQueue(list.get(0).getId().toString());
+            ConsultClient thread = new ConsultClient(userId.toString(), list.get(0).getId().toString());
+            thread.start();
+            ChatController.addThread(thread);
+
+            received.getChildren().clear();
+            selectedID = null;
+            showAllChats();
+        }
+
     }
 
 
