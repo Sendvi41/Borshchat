@@ -18,8 +18,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TouchEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
@@ -67,6 +66,13 @@ public class ChatController extends FxController {
 
     private int size;
 
+
+
+    @FXML
+    private Button send;
+
+    @FXML
+    private Button createtask;
 
     @FXML
     private SplitPane firstsplit;
@@ -247,7 +253,7 @@ public class ChatController extends FxController {
                         templates.add(tem.getMessage());
                     }
                 }
-                if (templates.size() != 0) {
+                if (templates.size() != 0 && textarea.getText().trim().length()!=0) {
                     ObservableList<String> templist = FXCollections.observableArrayList(templates);
                     ListView<String> langsListView = new ListView<String>(templist);
 
@@ -430,9 +436,20 @@ public class ChatController extends FxController {
                 tracker.getValue().toString(), priority.getValue().toString());
     }
 
+
+    public void fireSend(){
+        send.fire();
+    }
+
+    public void fireCreateTask(){
+        createtask.fire();
+    }
+
+
     @Override
     public void init() {
         taskarea.setVisible(false);
+
 
 
     }

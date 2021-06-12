@@ -7,8 +7,14 @@ import com.sendvi41.borshdesk.utils.LabelChat;
 import com.sendvi41.borshdesk.utils.Tools;
 import com.sendvi41.borshdesk.websocket.ConsultClient;
 import com.sendvi41.borshdesk.websocket.MyStompSessionHandler;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import lombok.Getter;
 import lombok.Setter;
@@ -44,6 +50,9 @@ public class QueueController extends FxController {
     @FXML
     private VBox received;
 
+    @FXML
+    private Button acceptchat;
+
     public void showHistoryChat(){
 
     }
@@ -59,6 +68,22 @@ public class QueueController extends FxController {
         selectedID = null;
         showAllChats();
     }
+
+
+
+    public void takeFirstChat() throws IOException {
+        Tools.deleteChatFromMainQueue(selectedID.toString());
+        ConsultClient thread = new ConsultClient(userId.toString(), selectedID.toString());
+        thread.start();
+        ChatController.addThread(thread);
+
+        received.getChildren().clear();
+        selectedID = null;
+        showAllChats();
+    }
+
+
+
 
 
 
@@ -102,5 +127,18 @@ public class QueueController extends FxController {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+
+    public void fireAcceptChat(){
+        acceptchat.fire();
+    }
+    @Override
+    public void init() {
+        super.init();
+
+
+
+
     }
 }

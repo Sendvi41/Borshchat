@@ -5,6 +5,7 @@ import com.sendvi41.borshdesk.dto.Consultant;
 import com.sendvi41.borshdesk.services.Authorization;
 import com.sendvi41.borshdesk.websocket.StompClient;
 import javafx.beans.InvalidationListener;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.CacheHint;
 import javafx.scene.control.Button;
@@ -12,6 +13,10 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Glow;
 import javafx.scene.effect.Shadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import lombok.Getter;
@@ -51,6 +56,16 @@ public class MenuController extends FxController {
 
     private ImageView currentButton;
 
+
+    @FXML
+    private Button ChatButtonKey;
+
+    @FXML
+    private Button TemplateButtonKey;
+
+    @FXML
+    private Button QueueButtonKey;
+
     @FXML
     private ImageView QueueButton;
 
@@ -63,6 +78,13 @@ public class MenuController extends FxController {
     @FXML
     private AnchorPane view;
 
+
+    @Override
+    public void initialize() {
+        super.initialize();
+
+
+    }
 
     @FXML
     private void showTemplate() throws IOException {
@@ -129,6 +151,79 @@ public class MenuController extends FxController {
         this.getStage().xProperty().addListener((InvalidationListener) observable -> {
             chatController.updateSizePopup();
         });
+
+        this.getScene().addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            final KeyCombination keyComb = new KeyCodeCombination(KeyCode.DIGIT1,
+                    KeyCombination.CONTROL_DOWN);
+            public void handle(KeyEvent ke) {
+                if (keyComb.match(ke)) {
+                    QueueButtonKey.fire();
+                    logger.info("Key Pressed: " + keyComb);
+                    ke.consume();
+                }
+            }
+        });
+        this.getScene().addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            final KeyCombination keyComb = new KeyCodeCombination(KeyCode.DIGIT2,
+                    KeyCombination.CONTROL_DOWN);
+            public void handle(KeyEvent ke) {
+                if (keyComb.match(ke)) {
+                    ChatButtonKey.fire();
+                    logger.info("Key Pressed: " + keyComb);
+                    ke.consume();
+                }
+            }
+        });
+
+
+        this.getScene().addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            final KeyCombination keyComb = new KeyCodeCombination(KeyCode.DIGIT3,
+                    KeyCombination.CONTROL_DOWN);
+            public void handle(KeyEvent ke) {
+                if (keyComb.match(ke)) {
+                    TemplateButtonKey.fire();
+                    logger.info("Key Pressed: " + keyComb);
+                    ke.consume();
+                }
+            }
+        });
+
+        this.getScene().addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            final KeyCombination keyComb = new KeyCodeCombination(KeyCode.ENTER,
+                    KeyCombination.CONTROL_DOWN);
+            public void handle(KeyEvent ke) {
+                if (keyComb.match(ke)) {
+                    chatController.fireSend();
+                    logger.info("Key Pressed: " + keyComb);
+                    ke.consume();
+                }
+            }
+        });
+
+        this.getScene().addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            final KeyCombination keyComb = new KeyCodeCombination(KeyCode.D,
+                    KeyCombination.CONTROL_DOWN);
+            public void handle(KeyEvent ke) {
+                if (keyComb.match(ke)) {
+                    chatController.fireCreateTask();
+                    logger.info("Key Pressed: " + keyComb);
+                    ke.consume();
+                }
+            }
+        });
+        this.getScene().addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            final KeyCombination keyComb = new KeyCodeCombination(KeyCode.R,
+                    KeyCombination.CONTROL_DOWN);
+            public void handle(KeyEvent ke) {
+                if (keyComb.match(ke)) {
+                    queueController.takeChat();
+                    logger.info("Key Pressed: " + keyComb);
+                    ke.consume(); // <-- stops passing the event to next node
+                }
+            }
+        });
+
+
 
     }
 }
