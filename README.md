@@ -39,7 +39,7 @@ The interaction of modules is provided by the server backend.
 ![image](https://user-images.githubusercontent.com/60449878/125175197-2a5cb580-e1d3-11eb-9661-40074b5af31d.png)
 ### Common queue of chats
 ![image](https://user-images.githubusercontent.com/60449878/125175213-452f2a00-e1d3-11eb-8904-8c52ffcec863.png)
-### ### Hotkeys
+### Hotkeys
 ![image](https://user-images.githubusercontent.com/60449878/125175232-5d06ae00-e1d3-11eb-97e8-f08f4d9c0085.png)
 ### Using templates
 ![image](https://user-images.githubusercontent.com/60449878/125175238-6a239d00-e1d3-11eb-83ca-c4bb686a51ef.png)
