@@ -26,6 +26,6 @@ The interaction of modules is provided by the server backend.
 - log4j
 - modelmapper
 ## Project architecture
-![image](https://user-images.githubusercontent.com/60449878/125172908-e6fb4a80-e1c4-11eb-83a8-dbf214892e7d.png)
-
+![image](https://user-images.githubusercontent.com/60449878/125173266-0eebad80-e1c7-11eb-9bd9-e61f4d66b3c1.png)
 ## Demonstration of work
+https://youtu.be/VkjGO8Kzu3A
