@@ -31,4 +31,23 @@ The interaction of modules is provided by the server backend.
 ![image](https://user-images.githubusercontent.com/60449878/125173266-0eebad80-e1c7-11eb-9bd9-e61f4d66b3c1.png)
 ## Backend architecture
 ![image](https://user-images.githubusercontent.com/60449878/125173317-6427bf00-e1c7-11eb-8be8-66fe46a4d330.png)
+## Chat
+![image](https://user-images.githubusercontent.com/60449878/125175184-13b65e80-e1d3-11eb-8163-e9ea3a15d65f.png)
+## Desktop-application
+![image](https://user-images.githubusercontent.com/60449878/125175194-2335a780-e1d3-11eb-8361-56cab1dabbc4.png)
+Templates
+![image](https://user-images.githubusercontent.com/60449878/125175197-2a5cb580-e1d3-11eb-9661-40074b5af31d.png)
+Common queue of chats
+![image](https://user-images.githubusercontent.com/60449878/125175213-452f2a00-e1d3-11eb-8904-8c52ffcec863.png)
+Hotkeys
+![image](https://user-images.githubusercontent.com/60449878/125175232-5d06ae00-e1d3-11eb-97e8-f08f4d9c0085.png)
+Using templates
+![image](https://user-images.githubusercontent.com/60449878/125175238-6a239d00-e1d3-11eb-83ca-c4bb686a51ef.png)
+Creating task
+![image](https://user-images.githubusercontent.com/60449878/125175242-7c9dd680-e1d3-11eb-99a7-ed3d042d23ae.png)
+## Interaction between chat and desktop-application
+![image](https://user-images.githubusercontent.com/60449878/125175262-9e975900-e1d3-11eb-97e6-2c47adda3d62.png)
+![image](https://user-images.githubusercontent.com/60449878/125175268-a22ae000-e1d3-11eb-8511-9d7bfb32f7d8.png)
+
+
 
