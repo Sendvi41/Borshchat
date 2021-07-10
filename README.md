@@ -3,7 +3,7 @@ The project combines a chat, a desktop application for a technical support opera
 a service for monitoring tasks and a service for working with documentation. 
 The interaction of modules is provided by the server backend.
 **The folder borshdesk contains the desktop application.** 
-**The folder borshchatbackend contains a chat for the client, services for working with documentation and tasks, and a server backend.**
+**The folder borshchatbackend contains a chat for the client, services for working with documentation and tasks and a server backend.**
 ## Demonstration of work
 **LINK:** https://youtu.be/VkjGO8Kzu3A
 ## List of technologies and languages
