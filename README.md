@@ -16,6 +16,7 @@ The interaction of modules is provided by the server backend.
 - SpringMVC
 - Rest
 - Jakson
+- JSON
 - WebSocket
 - Stomp
 - Maven
@@ -24,7 +25,7 @@ The interaction of modules is provided by the server backend.
 - lombock
 - log4j
 - modelmapper
-## Project functionality
+## Project architecture
 ![image](https://user-images.githubusercontent.com/60449878/125172908-e6fb4a80-e1c4-11eb-83a8-dbf214892e7d.png)
 
 ## Demonstration of work
