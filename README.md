@@ -30,4 +30,4 @@ The interaction of modules is provided by the server backend.
 ## Backend architecture
 ![image](https://user-images.githubusercontent.com/60449878/125173317-6427bf00-e1c7-11eb-8be8-66fe46a4d330.png)
 ## Demonstration of work
-https://youtu.be/VkjGO8Kzu3A
+**LINK:** https://youtu.be/VkjGO8Kzu3A
