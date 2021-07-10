@@ -48,6 +48,20 @@ The interaction of modules is provided by the server backend.
 ## Interaction between chat and desktop-application
 ![image](https://user-images.githubusercontent.com/60449878/125175262-9e975900-e1d3-11eb-97e6-2c47adda3d62.png)
 ![image](https://user-images.githubusercontent.com/60449878/125175268-a22ae000-e1d3-11eb-8511-9d7bfb32f7d8.png)
+## Web-application
+### Tasks
+![image](https://user-images.githubusercontent.com/60449878/125175332-149bc000-e1d4-11eb-8ac4-7cf47cbdf640.png)
+### Page for one task
+![image](https://user-images.githubusercontent.com/60449878/125175348-2b421700-e1d4-11eb-87dd-88ebe9fed55b.png)
+### Comments of task
+![image](https://user-images.githubusercontent.com/60449878/125175361-385f0600-e1d4-11eb-919c-326faff527cd.png)
+### Editing the task
+![image](https://user-images.githubusercontent.com/60449878/125175406-87a53680-e1d4-11eb-8d1f-8cd407fa86e0.png)
+### Documentation
+![image](https://user-images.githubusercontent.com/60449878/125175377-5298e400-e1d4-11eb-8c6f-101a1a3ae0a2.png)
+
+
+
 
 
 
